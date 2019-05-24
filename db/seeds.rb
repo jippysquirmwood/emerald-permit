@@ -5,7 +5,7 @@ puts 'Creating users...'
 users_attributes = [
   {
     email: "paulo@gmail.com",
-    first_name: "paulo",
+    first_name: "Paulo",
     last_name: "Di canio",
     password: "123456",
     password_confirmation: "123456",
@@ -15,8 +15,8 @@ users_attributes = [
   },
   {
     email: "julian@gmail.com",
-    first_name: "Dicks",
-    last_name: "Adams",
+    first_name: "Julian",
+    last_name: "Dicks",
     password: "123456",
     password_confirmation: "123456",
     approver: false,
