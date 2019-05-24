@@ -11,7 +11,8 @@ users_attributes = [
     password_confirmation: "123456",
     approver: true,
     author: false,
-    admin: false
+    admin: false,
+    avatar: "https://res.cloudinary.com/zachobbs/image/upload/v1558532976/gun_face_180622_hpMain_4x3_992_z2imdj.jpg"
   },
   {
     email: "julian@gmail.com",
@@ -21,7 +22,8 @@ users_attributes = [
     password_confirmation: "123456",
     approver: false,
     author: true,
-    admin: false
+    admin: false,
+    avatar: "https://res.cloudinary.com/zachobbs/image/upload/v1558532984/methode_2Ftimes_2Fprod_2Fweb_2Fbin_2Fa180333e-f0e1-11e8-8c84-29b2667b0b46_blfzcd.jpg"
   },
   {
     email: "mark@gmail.com",
@@ -31,7 +33,8 @@ users_attributes = [
     password_confirmation: "123456",
     approver: false,
     author: false,
-    admin: true
+    admin: true,
+    avatar: "https://res.cloudinary.com/zachobbs/image/upload/v1558532961/demo-pic4_gl82z5.jpg"
   },
   {
     email: "bobby@gmail.com",
@@ -41,7 +44,8 @@ users_attributes = [
     password_confirmation: "123456",
     approver: false,
     author: false,
-    admin: false
+    admin: false,
+    avatar: "https://res.cloudinary.com/zachobbs/image/upload/v1558532962/screen-shot-2019-02-15-at-19-16-58-720x720_ohivk8.jpg"
   }
 ]
 
