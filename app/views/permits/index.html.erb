@@ -1,11 +1,11 @@
 <h2>Links</h2>
-<%= link_to "Home", user_path %>
 <%= link_to "Create permit", new_permit_path %>
 <hr>
 
 <h2>Data</h2>
 <% @permits.each do |permit| %>
-  <% link_to permit_path(permit) do %>
+  <%= link_to permit_path(permit) do %>
+    <p><%= permit.id %></p>
     <p><%= permit.title %></p>
   <% end %>
 <% end %>
