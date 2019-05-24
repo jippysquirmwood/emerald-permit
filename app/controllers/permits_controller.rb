@@ -1,8 +1,11 @@
 class PermitsController < ApplicationController
   before_action :authenticate_user!
-
+  before_action :set_permit, only: [:show]
   def index
     @permits = policy_scope(Permit)
+  end
+
+  def show
   end
 
   private
