@@ -1,4 +1,11 @@
+<h2>Links</h2>
+
+
+<h2>Data</h2>
 <% @permits.each do |permit| %>
-  <%= permit.title %>
-  <%=  %>
+  <% link_to permit_path(permit) do %>
+    <%= permit.title %>
+  <% end %>gi
 <% end %>
+
+
