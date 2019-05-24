@@ -24,6 +24,7 @@ class PermitsController < ApplicationController
     authorize @permit
   end
 
+
   private
 
   def set_permit
