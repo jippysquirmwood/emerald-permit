@@ -8,6 +8,11 @@ class PermitsController < ApplicationController
   def show
   end
 
+  def new
+    @permit = Permit.new
+    authorize @permit
+  end
+
   private
 
   def set_permit
