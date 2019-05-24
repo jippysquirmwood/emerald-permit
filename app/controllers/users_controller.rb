@@ -16,13 +16,15 @@ class UsersController < ApplicationController
   end
 
   def edit
+    authorize @user
   end
 
   def update
-    if @user.update(user_params)
+    authorize @user
+    if @user.update(update_params)
       redirect_to user_path(@user)
     else
-      format.html { render :edit }
+      render :edit
     end
   end
 
@@ -34,6 +36,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:approver, :author, :admin)
+  end
+
+  def update_params
+    params.require(:user).permit(:password)
   end
 
   def set_user
