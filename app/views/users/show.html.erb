@@ -1,1 +1,18 @@
 <p><%= @user.first_name %> <%= @user.last_name %></p>
+<p><%= @user.email %></p>
+<p>Role: </p>
+
+<% if @user.approver %>
+  <p>Project Manager</p>
+<% elsif @user.author %>
+  <p>Engineer</p>
+<% elsif @user.approver == false && @user.author == false %>
+  <p> Viewer </p>
+<% end %>
+
+
+
+
+
+<%= link_to "Back", permits_path %>
+<%= link_to "Change my password", edit_user_path(@user) %>
