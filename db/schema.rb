@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2019_05_24_115802) do
     t.bigint "approver_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "title"
     t.index ["approver_id"], name: "index_permits_on_approver_id"
     t.index ["author_id"], name: "index_permits_on_author_id"
   end
