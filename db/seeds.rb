@@ -1,6 +1,6 @@
 puts 'Cleaning database...'
 User.destroy_all
-
+Permit.destroy_all
 puts 'Creating users...'
 users_attributes = [
   {
