@@ -12,7 +12,7 @@ users_attributes = [
     approver: true,
     author: false,
     admin: false,
-    avatar: "https://res.cloudinary.com/zachobbs/image/upload/v1558532976/gun_face_180622_hpMain_4x3_992_z2imdj.jpg"
+    avatar: "https://gq-images.condecdn.net/image/BXglzJm1l7p/crop/1020/f/Paolo-Di-Canio-West-Ham-GQ-16Sep16_pa_b.jpg"
   },
   {
     email: "julian@gmail.com",
@@ -23,7 +23,7 @@ users_attributes = [
     approver: false,
     author: true,
     admin: false,
-    avatar: "https://res.cloudinary.com/zachobbs/image/upload/v1558532984/methode_2Ftimes_2Fprod_2Fweb_2Fbin_2Fa180333e-f0e1-11e8-8c84-29b2667b0b46_blfzcd.jpg"
+    avatar: "https://premierleague-static-files.s3.amazonaws.com/premierleague/photos/players/250x250/p16129.png"
   },
   {
     email: "mark@gmail.com",
@@ -34,7 +34,7 @@ users_attributes = [
     approver: false,
     author: false,
     admin: true,
-    avatar: "https://res.cloudinary.com/zachobbs/image/upload/v1558532961/demo-pic4_gl82z5.jpg"
+    avatar: "https://www.telegraph.co.uk/content/dam/football/2016/09/25/109565018_noble_sport_trans_NvBQzQNjv4Bq90JsMauqkzRhOnTEP_rlOlOLxaasDc9KXcXbtqPGl_Y.jpg?imwidth=450"
   },
   {
     email: "bobby@gmail.com",
@@ -45,7 +45,7 @@ users_attributes = [
     approver: false,
     author: false,
     admin: false,
-    avatar: "https://res.cloudinary.com/zachobbs/image/upload/v1558532962/screen-shot-2019-02-15-at-19-16-58-720x720_ohivk8.jpg"
+    avatar: "https://cdn.hitc-s.com/i/473/reuters_picture_supplied_by_action_images_local_caption_rbborh20_349963.jpg"
   }
 ]
 
