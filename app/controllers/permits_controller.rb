@@ -8,6 +8,17 @@ class PermitsController < ApplicationController
   def show
   end
 
+  def create
+    @permit = Permit.new
+    @permit.author = current_user
+    authorize @permit
+    if @permit.save
+      redirect_to permits_path
+    else
+      render :new
+    end
+  end
+
   def new
     @permit = Permit.new
     authorize @permit
