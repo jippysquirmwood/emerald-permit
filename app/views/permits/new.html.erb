@@ -1,4 +1,9 @@
-<h1>hello</h1>
+<h2>Links</h2>
+<%= link_to permits_path do %>
+  Save & Exit
+<% end %>
+
+<h2>Form</h2>
 
 <%= simple_form_for @permit do |f| %>
   <%= f.input :title %>
@@ -47,7 +52,7 @@
   <%= f.input :cat_mode_transmitter %>
   <%= f.input :works_description %>
   <%= f.input :approver_id %>
-  <%= f.button :submit %>
+  <%= f.button :submit, value: "Request Approval" %>
 
 <% end %>
 
