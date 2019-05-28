@@ -1,4 +1,33 @@
-<h2>Permit to <%= @permit.title %></h2>
-<p>Start date: <%= @permit.start_date.strftime("%d/%m/%Y") %></p>
-<p>Expiry date: <%= @permit.end_date.strftime("%d/%m/%Y") %></p>
+<h2><%= @permit.title %></h2>
+<h4>Project <%= @permit.project_id %></h4>
+<h4><%= @permit.location %> - <%= @permit.level %></h4>
+<p><%= @permit.permit_type %>: <%= @permit.permit_number %>
+<p>Date created: <%= @permit.created_at.strftime("%d/%m/%Y") %> at <%= @permit.created_at.strftime("%I:%M%p") %></p>
+<p>Start date: <%= @permit.start_date.strftime("%d/%m/%Y") %> at <%= @permit.start_date.strftime("%I:%M%p") %></p>
+<p>Expiry date: <%= @permit.end_date.strftime("%d/%m/%Y") %> at <%= @permit.end_date.strftime("%I:%M%p") %></p>
+<p>Method Statement: <%= @permit.method_statement %></p>
+<p>Created by: <%= @author %></p>
+<% if @permit.status == "draft" %>
+  <p><i><strong>DRAFT</strong></i></p>
+<% elsif @permit.status == "pending approval" %>
+  <p>Awaiting approval from <strong><%= @approver %></strong></p>
+<% elsif @permit.status == "approved" %>
+  <p>Approved by: <%= @approver %></p>
+<% elsif @permit.status == "rejected" %>
+  <p>Permit rejected by: <%= @approver %></p>
+<% elsif @permit.status == "expired" %>
+  <p><strong>Permit expired</strong></p>
+<% end %>
+<hr>
+
+<% @permit.attributes.each do |att| %>
+  <% if att[1] == true %>
+    <p><%= att[0].gsub(/_/, " ").capitalize %></p>
+  <% end %>
+<% end %>
+
+
+
+
+
 
