@@ -9,4 +9,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :first_name, presence: true
   validates :last_name, presence: true
+
+  include PgSearch
+  multisearchable against: [:email, :approver, :author, :first_name, :last_name, :role]
 end

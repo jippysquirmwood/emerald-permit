@@ -13,7 +13,7 @@
       <div class="index-cards">
         <% @permits[0..3].each do |permit| %>
           <%= link_to permit_path(permit) do %>
-            <div class="permit-card">
+            <div class="permit-cgiard">
               <p><%= permit.title %></p>
               <p><%= permit.author.first_name %> <%= permit.author.last_name %></p>
               <p><%= permit.status %></p>
@@ -38,7 +38,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @all_permits[0..4].each do |permit| %>
+      <% @permits[0..4].each do |permit| %>
         <%= link_to permit_path(permit) do %>
           <tr>
             <th scope="row"> <%= permit.id %></th>

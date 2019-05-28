@@ -3,7 +3,14 @@ class PermitsController < ApplicationController
   before_action :set_permit, only: [:show]
   def index
     @permits = policy_scope(Permit)
-    @all_permits = Permit.all
+    if params[:s].present?
+      PgSearch::Multisearch.rebuild(Permit)
+      PgSearch::Multisearch.rebuild(User)
+      results = PgSearch.multisearch(params[:s])
+      @permits = results.map {|result| result.searchable}
+    else
+      @permits = Permit.all
+    end
   end
 
   def show
