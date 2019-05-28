@@ -1,53 +1,60 @@
-<div class="container col-8">
-  <div class='top-bar'>
-    <div class="top-lhs">
-      <h3>Permits</h3>
-    </div>
-    <div class="btn-emerald-top">
-      <%= link_to new_permit_path do %>
-        <button>New Permit</button>
-      <% end %>
+<div class="container col-9">
+
+  <div class="top-index">
+    <h2>permits</h2>
+
+    <%= link_to new_permit_path do %>
+      New Permit
+    <% end %>
+  </div>
+
+  <h4>my permits</h4>
+  <div class="my-perm-index">
+      <div class="index-cards">
+        <% @permits[0..3].each do |permit| %>
+          <%= link_to permit_path(permit) do %>
+            <div class="permit-card">
+              <p><%= permit.title %></p>
+              <p><%= permit.author.first_name %> <%= permit.author.last_name %></p>
+              <p><%= permit.status %></p>
+              <p><%= permit.permit_type %></p>
+              <p><%= permit.created_at %></p>
+              <p><%= permit.level%> | <%= permit.location %></p>
+            </div>
+          <% end %>
+        <% end %>
     </div>
   </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="recc">
-
-  <h4>Reccomended</h4>
-  <% @permits.each do |permit| %>
-    <%= link_to permit_path(permit) do %>
-      <p><%= permit.id %></p>
-      <p><%= permit.title %></p>
-    <% end %>
-  <% end %>
-
-
-
-</div>
-
-
-
-
+  <h4>all permits</h4>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col"># ID</th>
+        <th scope="col">author</th>
+        <th scope="col">type</th>
+        <th scope="col">created</th>
+        <th scope="col">status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @all_permits[0..4].each do |permit| %>
+        <%= link_to permit_path(permit) do %>
+          <tr>
+            <th scope="row"> <%= permit.id %></th>
+            <td> <%= permit.author.first_name + " " + permit.author.last_name %> </td>
+            <td> <%= permit.permit_type %> </td>
+            <td> <%= permit.created_at %> </td>
+            <td> <%= permit.status %> </td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="index-btm">
+    <p>show more</p>
+  </div>
+>>>>>>> 3d83e99743a9dddac2c0ebf6222e6243e7b2ab63
 
 
 </div>
