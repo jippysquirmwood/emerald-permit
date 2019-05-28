@@ -9,7 +9,7 @@ class PermitsController < ApplicationController
   end
 
   def create
-    @permit = Permit.new
+    @permit = Permit.new(permit_params)
     @permit.author = current_user
     authorize @permit
     if @permit.save
@@ -24,11 +24,14 @@ class PermitsController < ApplicationController
     authorize @permit
   end
 
-
   private
 
   def set_permit
     @permit = Permit.find(params[:id])
     authorize @permit
+  end
+
+  def permit_params
+    params.require(:permit).permit(Permit.column_names)
   end
 end

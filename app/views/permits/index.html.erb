@@ -5,12 +5,6 @@
 
 <hr>
 
-<h2>Data</h2>
-<% @permits.each do |permit| %>
-  <%= link_to permit_path(permit) do %>
-    <p><%= permit.id %></p>
-    <p><%= permit.title %></p>
-  <% end %>
-<% end %>
+<%= render 'shared/authored_permits' %>
 
 
