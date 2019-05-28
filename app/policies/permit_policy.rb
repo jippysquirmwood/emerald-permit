@@ -18,7 +18,7 @@ class PermitPolicy < ApplicationPolicy
   end
 
   def create?
-    user.author
+    user.author || user.approver
   end
 
   def update?
