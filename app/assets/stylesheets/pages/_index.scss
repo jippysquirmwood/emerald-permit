@@ -1,2 +1,31 @@
 // Import page-specific CSS files here.
 @import "home";
+
+// top header and add new permit
+.top-index {
+  margin-top: 10vh;
+  margin-bottom: 2vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+// cards div
+
+
+// cards in div
+.index-cards {
+  padding-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  flex: wrap;
+  align-items: flex-end;
+  position: relative;
+}
+
+// individual cards
+.permit-card {
+  background-color: white;
+  padding: 40px;
+
+}
