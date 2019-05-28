@@ -1,6 +1,6 @@
 .navbar-lewagon {
   // justify-content: space-between;
-  background: black;
+  background: $charcoal;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -8,21 +8,22 @@
   position: sticky;
   top: 0;
   z-index: 1;
-  height: 72px;
+  height: 55px;
 }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  height: 40px;
+.input-append {
+  display: flex;
+  padding: 0;
 }
 
 .input-medium {
-  border-radius: 25px;
-  height: 40px;
-  border: 1px solid yellow;
+  border-radius: 0px;
+  height: 35px;
+  border: 0px solid $charcoal;
   padding-left: 15px;
   padding-right: 60px;
   background-color: #c4c4c4;
@@ -36,14 +37,10 @@
 }
 
 .lhs img {
-  height: 40px;
-  padding-right: 20px;
-}
-
-.search-btn {
-  position: absolute;
-  top: 16px;
-  left: 280px;
+  height: 70px;
+  padding-right: 10px;
+  display: inline;
+  float: left;
 }
 
 
@@ -90,3 +87,30 @@
 .notice {
   position: absolute;
 }
+
+.emerald-nav {
+  color: $emerald-dark;
+  margin-top: 12px;
+  margin-right: 28px;
+  text-decoration: none;
+  &:hover {
+  text-decoration: none;
+  color: $emerald-dark;
+  }
+}
+
+
+
+
+.btn-invisible {
+  background-color: $charcoal;
+  color: white;
+  outline: none;
+  &:hover {
+    color: #c4c4c4;
+    outline: none;
+  }
+}
+
+
+
