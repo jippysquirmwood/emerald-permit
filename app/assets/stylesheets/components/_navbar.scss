@@ -26,7 +26,7 @@
   border: 0px solid $charcoal;
   padding-left: 15px;
   padding-right: 60px;
-  background-color: #c4c4c4;
+  background-color: $grey-lightest;
   //gonzalo's styling
   position: relative;
   outline: none;
@@ -98,9 +98,6 @@
   color: $emerald-dark;
   }
 }
-
-
-
 
 .btn-invisible {
   background-color: $charcoal;

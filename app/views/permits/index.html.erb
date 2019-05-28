@@ -1,16 +1,56 @@
-<h2>Links</h2>
-<%= link_to new_permit_path do %>
-  New Permit
-<% end %>
+<div class="container col-8">
+  <div class='top-bar'>
+    <div class="top-lhs">
+      <h3>Permits</h3>
+    </div>
+    <div class="btn-emerald-top">
+      <%= link_to new_permit_path do %>
+        <button>New Permit</button>
+      <% end %>
+    </div>
+  </div>
 
-<hr>
 
-<h2>Data</h2>
-<% @permits.each do |permit| %>
-  <%= link_to permit_path(permit) do %>
-    <p><%= permit.id %></p>
-    <p><%= permit.title %></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="recc">
+
+  <h4>Reccomended</h4>
+  <% @permits.each do |permit| %>
+    <%= link_to permit_path(permit) do %>
+      <p><%= permit.id %></p>
+      <p><%= permit.title %></p>
+    <% end %>
   <% end %>
-<% end %>
+
+
+
+</div>
+
+
+
+
+
+
+</div>
+
 
 
