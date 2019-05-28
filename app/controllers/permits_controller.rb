@@ -3,6 +3,7 @@ class PermitsController < ApplicationController
   before_action :set_permit, only: [:show]
   def index
     @permits = policy_scope(Permit)
+    @all_permits = Permit.all
   end
 
   def show

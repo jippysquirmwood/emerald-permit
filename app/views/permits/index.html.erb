@@ -7,4 +7,16 @@
 
 <%= render 'shared/authored_permits' %>
 
+<h2>All permits</h2>
 
+<% @all_permits.each do |permit| %>
+  <%= link_to permit_path(permit) do %>
+    <p><%= permit.id %></p>
+    <p><%= permit.title %></p>
+    <p><%= permit.author.first_name %> <%= permit.author.last_name %></p>
+    <p><%= permit.status %></p>
+    <p><%= permit.permit_type %></p>
+    <p><%= permit.created_at %></p>
+    <p><%= permit.level%> | <%= permit.location %></p>
+  <% end %>
+<% end %>
