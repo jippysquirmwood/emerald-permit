@@ -1,7 +1,76 @@
+require 'faker'
+
+roles = [
+  {
+    name: "Site Administrator",
+    permissions: {
+      approver: true,
+      author: true,
+      admin: true,
+    }
+  },
+  {
+    name: "Project Manager",
+    permissions: {
+      approver: true,
+      author: true,
+      admin: true,
+    }
+  },
+  {
+    name: "Agent",
+    permissions: {
+      approver: true,
+      author: true,
+      admin: true,
+    }
+  },
+  {
+    name: "Sub Agent",
+    permissions: {
+      approver: true,
+      author: true,
+      admin: true,
+    }
+  },
+  {
+    name: "Section Engineer",
+    permissions: {
+      approver: true,
+      author: true,
+      admin: true,
+    }
+  },
+  {
+    name: "Site Engineer",
+    permissions: {
+      approver: true,
+      author: true,
+      admin: true,
+    }
+  },
+  {
+    name: "Site Supervisor",
+    permissions: {
+      approver: true,
+      author: true,
+      admin: true,
+    }
+  },
+  {
+    name: "Site Personnel",
+    permissions: {
+      approver: true,
+      author: true,
+      admin: true,
+    }
+  }
+]
+
 puts 'Cleaning database...'
 User.destroy_all
 Permit.destroy_all
-puts 'Creating users...'
+puts 'Creating first 4 users...'
 users_attributes = [
   {
     email: "paulo@gmail.com",
@@ -9,6 +78,7 @@ users_attributes = [
     last_name: "Di canio",
     password: "123456",
     password_confirmation: "123456",
+    role: "Project Manager",
     approver: true,
     author: false,
     admin: false,
@@ -20,6 +90,7 @@ users_attributes = [
     last_name: "Dicks",
     password: "123456",
     password_confirmation: "123456",
+    role: "Site Engineer",
     approver: false,
     author: true,
     admin: false,
@@ -31,6 +102,7 @@ users_attributes = [
     last_name: "Noble",
     password: "123456",
     password_confirmation: "123456",
+    role: "Site Administrator",
     approver: false,
     author: false,
     admin: true,
@@ -42,6 +114,7 @@ users_attributes = [
     last_name: "Zamora",
     password: "123456",
     password_confirmation: "123456",
+    role: "Site Personnel",
     approver: false,
     author: false,
     admin: false,
@@ -50,7 +123,28 @@ users_attributes = [
 ]
 
 User.create!(users_attributes)
-puts "Users created"
+puts "First 4 Users created"
+
+puts "Creating 30 random users"
+roles.each do |role|
+  puts "creating 5 #{role[:name]}s"
+  5.times do
+    User.create!(
+      email: Faker::Internet.email,
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name.last_name,
+      password: "123456",
+      password_confirmation: "123456",
+      role: role[:name],
+      approver: role[:permissions][:approver],
+      author: role[:permissions][:author],
+      admin: role[:permissions][:admin],
+      avatar: "https://source.unsplash.com/featured/?face"
+  )
+  end
+end
+puts "30 random users created!"
+
 
 statuses = ["draft", "rejected", "pending approval", "approved", "expired"]
 permit_types = ["permit to dig", "permit to drill", "permit to penetrate", "permit to work at height", "permit to load", "confined space permit"]
