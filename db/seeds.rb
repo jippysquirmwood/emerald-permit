@@ -112,7 +112,7 @@ roles = [
     }
   },
   {
-    name: "Site Personell",
+    name: "Site Personnel",
     permissions: {
       approver: true,
       author: true,
@@ -123,21 +123,23 @@ roles = [
 
 puts "Creating 30 random users"
 roles.each do |role|
+  puts "creating 5 #{role[:name]}s"
   5.times do
-    {
+    User.create!(
       email: Faker::Internet.email,
       first_name: Faker::Name.first_name,
       last_name: Faker::Name.last_name,
       password: "123456",
       password_confirmation: "123456",
       role: role[:name],
-      approver: role.permissions[:approver],
-      author: role.permissions[:author],
-      admin: role.permissions[:admin],
+      approver: role[:permissions][:approver],
+      author: role[:permissions][:author],
+      admin: role[:permissions][:admin],
       avatar: "https://source.unsplash.com/featured/?face"
-    }
+  )
   end
 end
+puts "30 random users created!"
 
 
 statuses = ["draft", "rejected", "pending approval", "approved", "expired"]
