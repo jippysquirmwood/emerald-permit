@@ -2,24 +2,25 @@
   <div class="lhs">
     <a class="navbar-brand">
       <%= link_to permits_path do %>
-        <%= image_tag("logo-emerald-lrg-bright.png") %> emerald
+        <%= image_tag(("logo-emerald-lrg-bright.png"), class: "emerald-logo") %>
       <% end %>
     </a>
-   <!--  <form class="form-search" method="get" id="s" action="/bikes">
-      <div class="input-append">
+    <%= link_to permits_path, class: "emerald-nav" do %>
+      <h2>emerald</h2>
+     <% end %>
+     <% if current_user %>
+     <form class="form-search" method="get" id="s" action="/bikes">
+        <div class="input-append">
           <input type="text" class="input-medium search-query" name="s" placeholder="Search..." value="">
-          <button type="submit" class="btn btn-yellow search-btn">Go</button>
-      </div>
-    </form> -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+          <button type="submit" class="btn btn-emerald-header">go</button>
+        </div>
+      </form>
+      <% end %>
   </div>
   <% if current_user %>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item dropdown">
-        <!-- <div class="btn btn-yellow">Sign Up</div> -->
         <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="<%= current_user.avatar %>" />
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
           <%= link_to "my dashboard", permits_path, class: "dropdown-item" %>
@@ -31,8 +32,7 @@
   </div>
   <% else %>
   <div>
-   <!--  <%= link_to "Sign-up", new_user_registration_path, class: "btn btn-yellow" %> -->
-    <%= link_to "Login", new_user_session_path, class: "btn btn-blue" %>
+    <%= link_to "log in", new_user_session_path, class: "btn btn-invisible" %>
     </div>
   <% end %>
 </div>
