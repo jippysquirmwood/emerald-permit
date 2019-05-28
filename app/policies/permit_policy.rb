@@ -14,7 +14,7 @@ class PermitPolicy < ApplicationPolicy
   end
 
   def show?
-    record.author == user || record.approver == user || user.admin
+    true
   end
 
   def create?

@@ -1,1 +1,4 @@
-<p><%= @permit.title %></p>
+<h2>Permit to <%= @permit.title %></h2>
+<p>Start date: <%= @permit.start_date.strftime("%d/%m/%Y") %></p>
+<p>Expiry date: <%= @permit.end_date.strftime("%d/%m/%Y") %></p>
+
