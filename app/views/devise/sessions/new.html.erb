@@ -1,28 +1,30 @@
-<div>
-  <%= image_tag("logo-emerald-lrg-bright.png", size: "92x92") %>
-  <h1>emerald</h2>
+<div class="container col-6">
+  <div>
+    <%= image_tag("logo-emerald-lrg-bright.png", size: "92x92") %>
+    <h1>emerald</h2>
+  </div>
+
+  <h2>log in</h2>
+
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-inputs">
+      <%= f.input :email,
+                  required: false,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" },
+                  placeholder: 'email address or phone number',
+                  error: 'please enter a valid email address or phone number' %>
+      <%= f.input :password,
+                  required: false,
+                  input_html: { autocomplete: "current-password" },
+                  placeholder: 'password' %>
+      <!-- <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %> -->
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "sign in" %>
+    </div>
+  <% end %>
+
+  <%= render "devise/shared/links" %>
 </div>
-
-<h2>log in</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email,
-                required: false,
-                autofocus: true,
-                input_html: { autocomplete: "email" },
-                placeholder: 'email address or phone number',
-                error: 'please enter a valid email address or phone number' %>
-    <%= f.input :password,
-                required: false,
-                input_html: { autocomplete: "current-password" },
-                placeholder: 'password' %>
-    <!-- <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %> -->
-  </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "sign in" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
