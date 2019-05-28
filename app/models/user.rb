@@ -12,4 +12,8 @@ class User < ApplicationRecord
 
   include PgSearch
   multisearchable against: [:email, :approver, :author, :first_name, :last_name, :role]
+
+  def fullname
+    first_name + " " + last_name
+  end
 end
