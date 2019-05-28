@@ -35,6 +35,22 @@ class PermitsController < ApplicationController
     stasuses
   end
 
+  def approve
+    @permit = Permit.find(params[:permit_id])
+    authorize @permit
+    @permit.status = "approved"
+    @permit.save
+    redirect_to dashboard_path
+  end
+
+  def reject
+    @permit = Permit.find(params[:permit_id])
+    authorize @permit
+    @permit.status = "rejected"
+    @permit.save
+    redirect_to dashboard_path
+  end
+
   private
 
   def set_permit

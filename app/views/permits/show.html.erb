@@ -2,9 +2,9 @@
 <h4>Project <%= @permit.project_id %></h4>
 <h4><%= @permit.location %> - <%= @permit.level %></h4>
 <p><%= @permit.permit_type %>: <%= @permit.permit_number %>
-<p>Date created: <%= @permit.created_at.strftime("%d/%m/%Y") %> at <%= @permit.created_at.strftime("%I:%M%p") %></p>
-<p>Start date: <%= @permit.start_date.strftime("%d/%m/%Y") %> at <%= @permit.start_date.strftime("%I:%M%p") %></p>
-<p>Expiry date: <%= @permit.end_date.strftime("%d/%m/%Y") %> at <%= @permit.end_date.strftime("%I:%M%p") %></p>
+<p>Date created: <%= @permit.created_at.strftime("%d-%m-%Y") %> at <%= @permit.created_at.strftime("%I:%M%p") %></p>
+<p>Start date: <%= @permit.start_date.strftime("%d-%m-%Y") %> at <%= @permit.start_date.strftime("%I:%M%p") %></p>
+<p>Expiry date: <%= @permit.end_date.strftime("%d-%m-%Y") %> at <%= @permit.end_date.strftime("%I:%M%p") %></p>
 <p>Method Statement: <%= @permit.method_statement %></p>
 <p>Created by: <%= @author %></p>
 <% if @permit.status == "draft" %>
@@ -26,8 +26,10 @@
   <% end %>
 <% end %>
 
-
-
+<% if (@permit.status == "pending approval" && @permit.approver == current_user) %>
+<p><%= link_to 'approve', permit_approve_path(@permit)%></p>
+<p><%= link_to 'reject', permit_reject_path(@permit) %></p>
+<% end %>
 
 
 

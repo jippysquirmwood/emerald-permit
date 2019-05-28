@@ -18,14 +18,22 @@ class PermitPolicy < ApplicationPolicy
   end
 
   def create?
-    user.author || user.approver
+    user.author || user.approver || user.admin
   end
 
   def update?
-    record.author == user || record.approver == user
+    record.author == user || record.approver == user || user.admin
   end
 
   def destroy?
     update?
+  end
+
+  def approve?
+    record.approver == user || user.admin
+  end
+
+  def reject?
+    approve?
   end
 end
