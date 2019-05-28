@@ -1,7 +1,9 @@
+require 'faker'
+
 puts 'Cleaning database...'
 User.destroy_all
 Permit.destroy_all
-puts 'Creating users...'
+puts 'Creating first 4 users...'
 users_attributes = [
   {
     email: "paulo@gmail.com",
@@ -50,7 +52,93 @@ users_attributes = [
 ]
 
 User.create!(users_attributes)
-puts "Users created"
+puts "First 4 Users created"
+
+roles = [
+  {
+    name: "Site Administrator",
+    permissions: {
+      approver: true,
+      author: true,
+      admin: true,
+    }
+  },
+  {
+    name: "Project Manager",
+    permissions: {
+      approver: true,
+      author: true,
+      admin: true,
+    }
+  },
+  {
+    name: "Agent",
+    permissions: {
+      approver: true,
+      author: true,
+      admin: true,
+    }
+  },
+  {
+    name: "Sub Agent",
+    permissions: {
+      approver: true,
+      author: true,
+      admin: true,
+    }
+  },
+  {
+    name: "Section Engineer",
+    permissions: {
+      approver: true,
+      author: true,
+      admin: true,
+    }
+  },
+  {
+    name: "Site Engineer",
+    permissions: {
+      approver: true,
+      author: true,
+      admin: true,
+    }
+  },
+  {
+    name: "Site Supervisor",
+    permissions: {
+      approver: true,
+      author: true,
+      admin: true,
+    }
+  },
+  {
+    name: "Site Personell",
+    permissions: {
+      approver: true,
+      author: true,
+      admin: true,
+    }
+  }
+]
+
+puts "Creating 30 random users"
+roles.each do |role|
+  5.times do
+    {
+      email: Faker::Internet.email,
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name.last_name,
+      password: "123456",
+      password_confirmation: "123456",
+      role: role[:name],
+      approver: role.permissions[:approver],
+      author: role.permissions[:author],
+      admin: role.permissions[:admin],
+      avatar: "https://source.unsplash.com/featured/?face"
+    }
+  end
+end
+
 
 statuses = ["draft", "rejected", "pending approval", "approved", "expired"]
 permit_types = ["permit to dig", "permit to drill", "permit to penetrate", "permit to work at height", "permit to load", "confined space permit"]
