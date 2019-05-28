@@ -1,10 +1,21 @@
-// Define variables for your color scheme
+// emerald greens
 
-// For example:
-$red: #FD1015;
-$blue: #167FFB;
-$yellow: #FFC65A;
+$emerald-dark: #1BAA6F;
+$emerald-bright: #00FDC8;
+
+// emerald grey-scale
+
+$charcoal: #3F464A;
+$grey-light: #AAAAAA;
+$grey-lighter: #E6E6E6;
+$grey-lightest: #F9F9F9;
+
+
+// bootstrap colors:
+$red: #f90606;
+$blue: #0099ff;
+$yellow: #ffff33;
 $orange: #E67E22;
-$green: #1EDD88;
-$gray: #0E0000;
-$light-gray: #F4F4F4;
+$green: #1BAA6F; // copied the hexadecimal value from $emerald-dark
+$gray: #3F464A; // copied the hexadecimal value from emerald $charcoal
+$light-gray: #E6E6E6; // copied the hexadecimal from emerald $grey-lighter
