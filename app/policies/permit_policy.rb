@@ -22,7 +22,7 @@ class PermitPolicy < ApplicationPolicy
   end
 
   def update?
-    record.author == user
+    record.author == user || record.approver == user
   end
 
   def destroy?

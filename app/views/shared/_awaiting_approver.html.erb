@@ -1,7 +1,1 @@
-<h1>Pending Permits</h1>
 
-<% @permits.each do |permit| %>
-  <%= link_to permit_path(permit) do %>
-  <%= permit.status.where(status: "pending") %>
-  <% end %>
-<% end %>

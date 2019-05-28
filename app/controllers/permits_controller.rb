@@ -12,6 +12,7 @@ class PermitsController < ApplicationController
   def create
     @permit = Permit.new(permit_params)
     @permit.author = current_user
+    @permit.status = "pending approval"
     authorize @permit
     if @permit.save
       redirect_to permits_path
@@ -23,6 +24,12 @@ class PermitsController < ApplicationController
   def new
     @permit = Permit.new
     authorize @permit
+    @approvers = User.all.where(approver: true)
+  end
+
+  def self.statuses
+    stasuses = ["draft", "rejected", "pending approval", "approved", "expired"]
+    stasuses
   end
 
   private
@@ -33,6 +40,6 @@ class PermitsController < ApplicationController
   end
 
   def permit_params
-    params.require(:permit).permit(Permit.column_names)
+    params.require(:permit).permit(Permit.column_names, :approver_id)
   end
 end
