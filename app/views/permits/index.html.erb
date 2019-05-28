@@ -2,9 +2,8 @@
 
   <div class="top-index">
     <h2>permits</h2>
-
     <%= link_to new_permit_path do %>
-      New Permit
+      <button class="btn btn-green">New Permit</button>
     <% end %>
   </div>
 
@@ -12,10 +11,7 @@
   <div class="my-perm-index">
       <div class="index-cards">
         <% @permits[0..3].each do |permit| %>
-          <%= link_to permit_path(permit) do %>
-            <div class="permit-card">
-              <p><%= permit.title %></p>
-              <p><%= permit.author.first_name %> <%= permit.author.last_name %></p>
+         %> <%= permit.author.last_name %></p>
               <p><%= permit.status %></p>
               <p><%= permit.permit_type %></p>
               <p><%= permit.created_at %></p>
@@ -26,8 +22,18 @@
     </div>
   </div>
 
-  <h4>all permits</h4>
-  <table class="table table-hover">
+  <div class="filter-row">
+    <button class="btn btn-green2">all permits</button>
+    <button class="btn btn-green2">my drafts</button>
+    <button class="btn btn-green2 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">status</button>
+
+      <div class="dropdown-menu" id="dropdown" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" id="approved" href="">approved</a>
+        <a class="dropdown-item" id="pending" href="#">pending</a>
+        <a class="dropdown-item" id="rejected" href="#">rejected</a>
+      </div>
+  </div>
+  <table class="table table-hover" id="permit-table">
     <thead>
       <tr>
         <th scope="col"># ID</th>
@@ -54,10 +60,7 @@
   <div class="index-btm">
     <p>show more</p>
   </div>
-<<<<<<< HEAD
->>>>>>> 3d83e99743a9dddac2c0ebf6222e6243e7b2ab63
-
-
-=======
->>>>>>> 982e3690ef47f92e6f61847123879d5b114e428d
 </div>
+
+
+

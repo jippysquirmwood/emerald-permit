@@ -5,9 +5,11 @@
         <%= image_tag(("logo-emerald-lrg-bright.png"), class: "emerald-logo") %>
       <% end %>
     </a>
-    <%= link_to permits_path, class: "emerald-nav" do %>
-      <h2>emerald</h2>
-     <% end %>
+    <% unless current_user %>
+      <%= link_to permits_path, class: "emerald-nav" do %>
+        <h2>emerald</h2>
+       <% end %>
+       <% end %>
      <% if current_user %>
      <form class="form-search" method="get" id="s" action="/bikes">
         <div class="input-append">
