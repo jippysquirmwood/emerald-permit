@@ -1,15 +1,6 @@
-<h2>Links</h2>
-<%= link_to new_permit_path do %>
-  New Permit
-<% end %>
+<h2>My Permits</h2>
 
-<hr>
-
-<%= render 'shared/authored_permits' %>
-
-<h2>All permits</h2>
-
-<% @all_permits.each do |permit| %>
+<% @permits.each do |permit| %>
   <%= link_to permit_path(permit) do %>
     <p><%= permit.id %></p>
     <p><%= permit.title %></p>
