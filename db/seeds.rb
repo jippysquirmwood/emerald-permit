@@ -14,7 +14,7 @@ roles = [
     permissions: {
       approver: true,
       author: true,
-      admin: true,
+      admin: false,
     }
   },
   {
@@ -22,47 +22,47 @@ roles = [
     permissions: {
       approver: true,
       author: true,
-      admin: true,
+      admin: false,
     }
   },
   {
     name: "Sub Agent",
     permissions: {
-      approver: true,
+      approver: false,
       author: true,
-      admin: true,
+      admin: false,
     }
   },
   {
     name: "Section Engineer",
     permissions: {
-      approver: true,
+      approver: false,
       author: true,
-      admin: true,
+      admin: false,
     }
   },
   {
     name: "Site Engineer",
     permissions: {
-      approver: true,
+      approver: false,
       author: true,
-      admin: true,
+      admin: false,
     }
   },
   {
     name: "Site Supervisor",
     permissions: {
-      approver: true,
-      author: true,
-      admin: true,
+      approver: false,
+      author: false,
+      admin: false,
     }
   },
   {
     name: "Site Personnel",
     permissions: {
-      approver: true,
-      author: true,
-      admin: true,
+      approver: false,
+      author: false,
+      admin: false,
     }
   }
 ]
