@@ -16,5 +16,6 @@ class PagesController < ApplicationController
     @rejected_permits = Permit.where(status: "rejected").where(approver_id: current_user.id).order(start_date: :asc)
     @edit_permits = Permit.where(status: "rejected").where(approver_id: current_user.id).order(start_date: :asc)
     @edit_permits = Permit.where(status: "rejected").where(author_id: current_user.id).order(start_date: :asc)
+    @edit_permits = Permit.where(status: "draft").where(author_id: current_user.id).order(start_date: :asc)
   end
 end
