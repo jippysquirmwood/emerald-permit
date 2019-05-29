@@ -77,4 +77,6 @@
 <% if (@permit.status == "pending approval" && @permit.approver == current_user) %>
 <p><%= link_to 'approve', permit_approve_path(@permit)%></p>
 <p><%= link_to 'reject', permit_reject_path(@permit) %></p>
+<% elsif (@permit.status == "rejected" && @permit.approver == current_user || @permit.author == current_user) %>
+<p><%= link_to 'edit', edit_permit_path(@permit) %></p>
 <% end %>
