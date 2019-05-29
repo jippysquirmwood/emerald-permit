@@ -109,5 +109,21 @@
   }
 }
 
+.badge {
+  position: relative;
+}
+
+.badge-num {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background-color: #ff4c00;
+  border-radius: 50px;
+  height: 20px;
+  width: 20px;
+  left: -5px;
+  color: white;
+}
 
 
