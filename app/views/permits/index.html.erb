@@ -1,3 +1,7 @@
+<% if params[:s] %>
+  <%= render 'shared/search_results' %>
+<% end %>
+
 <div class="container col-9">
 
   <div class="top-index">
@@ -76,7 +80,6 @@ function filterTable() {
   filter = input.value.toUpperCase();
   table = document.getElementById("permit-table");
   tr = table.getElementsByTagName("tr");
-
   // Loop through all table rows, and hide those who don't match the search query
   for (i = 0; i < tr.length; i++) {
     td = tr[i].getElementsByTagName("td")[0];
@@ -92,6 +95,3 @@ function filterTable() {
 }
 </script>
  -->
-
-
-

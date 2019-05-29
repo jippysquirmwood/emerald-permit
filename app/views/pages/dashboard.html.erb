@@ -1,3 +1,7 @@
+<% if params[:s] %>
+  <%= render 'shared/search_results' %>
+<% end %>
+
 <div class="container col-9">
 
   <div class="top-index">
@@ -11,7 +15,7 @@
   <h4>recent permits</h4>
   <div class="my-perm-index">
       <div class="index-cards">
-        <% @permits[0..3].each do |permit| %>
+        <% @all_permits.each do |permit| %>
           <%= link_to permit_path(permit) do %>
             <div class="permit-card">
               <p><%= permit.title %></p>
