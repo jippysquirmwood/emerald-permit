@@ -13,6 +13,8 @@ class PermitsController < ApplicationController
     @pending_permits = Permit.where(status: "pending approval").where(approver_id: current_user.id).order(start_date: :asc)
     @approved_permits = Permit.where(status: "approved").where(approver_id: current_user.id).order(start_date: :asc)
     @rejected_permits = Permit.where(status: "rejected").where(approver_id: current_user.id).order(start_date: :asc)
+    @edit_permits = Permit.where(status: "rejected").where(author_id: current_user.id).order(start_date: :asc)
+    @edit_permits = Permit.where(status: "draft").where(author_id: current_user.id).order(start_date: :asc)
     if params[:s].present?
       PgSearch::Multisearch.rebuild(Permit)
       # PgSearch::Multisearch.rebuild(User)
