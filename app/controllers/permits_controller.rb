@@ -55,6 +55,19 @@ class PermitsController < ApplicationController
     redirect_to dashboard_path
   end
 
+  def update
+    @permit = Permit.find(params[:id])
+    authorize @permit
+    @permit.status = "pending approval"
+    @permit.save
+    redirect_to permit_path
+  end
+
+  def edit
+    @permit = Permit.find(params[:id])
+    authorize @permit
+  end
+
   private
 
   def set_permit

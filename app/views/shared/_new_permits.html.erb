@@ -1,0 +1,54 @@
+
+
+
+<%= simple_form_for @permit do |f| %>
+  <%= f.input :title %>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.input :permit_type %>
+  <%= f.input :level %>
+  <%= f.input :location %>
+  <%= f.input :project_id %>
+  <%= f.input :permit_number %>
+  <%= f.input :method_statement %>
+  <%= f.input :xwidth %>
+  <%= f.input :xlength %>
+  <%= f.input :xdepth %>
+  <%= f.input :gas %>
+  <%= f.input :fibre_optic %>
+  <%= f.input :water %>
+  <%= f.input :unknown %>
+  <%= f.input :hv_electricity %>
+  <%= f.input :permit_type %>
+  <%= f.input :bt %>
+  <%= f.input :traffic_signal %>
+  <%= f.input :signal_cable %>
+  <%= f.input :lv_electricity %>
+  <%= f.input :drains %>
+  <%= f.input :street_lighting %>
+  <%= f.input :no_services %>
+  <%= f.input :hand_digging %>
+  <%= f.input :confirm_work_package_plan %>
+  <%= f.input :confirm_machine_operator %>
+  <%= f.input :services_protected %>
+  <%= f.input :exlusion_zone %>
+  <%= f.input :buried_cables_identified %>
+  <%= f.input :drawing_updated %>
+  <%= f.input :physical_barrier_available %>
+  <%= f.input :excavation_undermining_foundations %>
+  <%= f.input :project_manager_phone %>
+  <%= f.input :cat_scan_model %>
+  <%= f.input :genny_model %>
+  <%= f.input :calibration_expires %>
+  <%= f.input :cat_scanner_serial %>
+  <%= f.input :genny_serial %>
+  <%= f.input :cat_genny_operator %>
+  <%= f.input :cat_mode_power %>
+  <%= f.input :cat_mode_radio %>
+  <%= f.input :cat_mode_transmitter %>
+  <%= f.input :works_description %>
+  <%= f.input :approver_id, collection: User.where(approver: true), label_method: :fullname %>
+  <%= f.button :submit, value: "Request Approval" %>
+
+<% end %>
+
