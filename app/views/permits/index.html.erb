@@ -2,84 +2,31 @@
   <%= render 'shared/search_results' %>
 <% end %>
 
+
 <div class="container col-9">
+  <!-- top header with add button -->
+  <%= render 'shared/index_top_section' %>
 
-  <div class="top-index">
-    <h2>awaiting my approval</h2>
+  <!-- cards - DONE -->
+  <% if current_user.approver %>
+    <%= render 'shared/index_cards_approver' %>
+  <% elsif current_user.author %>
+    <%= render 'shared/index_cards_author' %>
+  <% elsif current_user.admin %>
+  <% else %>
+    <%= render 'shared/index_cards_worker' %>
+  <% end %>
 
-    <%= link_to new_permit_path do %>
-      <button class="btn btn-green">New Permit</button>
-    <% end %>
-  </div>
-
-  <div class="my-perm-index">
-      <div class="index-cards">
-        <% if @pending_permits.present? %>
-          <% @pending_permits.each do |permit| %>
-            <%= link_to permit_path(permit) do %>
-              <div class="permit-card">
-                <p><%= permit.title %></p>
-                <p><%= permit.author.first_name %> <%= permit.author.last_name %></p>
-                <p><%= permit.status %></p>
-                <p><%= permit.permit_type %></p>
-                <p><%= permit.created_at %></p>
-                <p><%= permit.level%> | <%= permit.location %></p>
-              </div>
-            <% end %>
-          <% end %>
-        <% else %>
-          <h3>Nothing to see here!</h3>
-        <% end %>
-    </div>
-  </div>
-
-  <div class="filter-row">
-    <button class="btn btn-green2"><%= link_to "all permits", dashboard_path %></button>
-    <button class="btn btn-green2"><%= link_to "approved", "#" %></button>
-    <button class="btn btn-green2"><%= link_to "rejected", "#" %></button>
-    <button class="btn btn-green2">my drafts</button>
-    <button class="btn btn-green2 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">status</button>
-      <div class="dropdown-menu" id="dropdown" aria-labelledby="dropdownMenuButton">
-        <ul id="status-list">
-          <li><%= link_to "approved", dashboard_path(status:  "approved") %></li>
-          <li><%= link_to "pending", dashboard_path(status:  "pending") %></li>
-          <li><%= link_to "rejected", dashboard_path(status:  "rejected") %></li>
-          <li><%= link_to "draft", dashboard_path(status:  "draft") %></li>
-        </ul>
-      </div>
-  </div>
-  <table class="table table-hover" id="permit-table">
-    <thead>
-      <tr>
-        <th scope="col"># ID</th>
-        <th scope="col">title</th>
-        <th scope="col">type</th>
-        <th scope="col">start-date</th>
-        <th scope="col">exp-date</th>
-        <th scope="col">author</th>
-        <th scope="col">status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @all_permits[0..4].each do |permit| %>
-          <tr>
-            <%= link_to permit_path(permit) do %>
-            <th scope="row"> <%= permit.permit_number %></th>
-            <td> <%= permit.title %> </td>
-            <td> <%= permit.permit_type %> </td>
-            <td> <%= permit.start_date %> </td>
-            <td> <%= permit.end_date %> </td>
-            <td> <%= permit.author.first_name[0] + " " + permit.author.last_name %> </td>
-            <td> <%= permit.status %> </td>
-            <% end %>
-          </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <div class="index-btm">
-    <p>show more</p>
-  </div>
+  <!-- table -->
+  <% if current_user.admin %>
+    <%= render 'shared/index_table_admin' %>
+  <% elsif current_user.author || current_user.approver %>
+    <%= render 'shared/index_table_auth_app.html.erb' %>
+  <% else %>
+    <%= render 'shared/index_table_worker.html.erb' %>
+  <% end %>
 </div>
+
 
 
 
@@ -88,7 +35,7 @@
   <%= link_to permit.title, permit_path(permit) %>
 <% end %> -->
 
-
+<!--
 <h1>approved</h1>
 <% @approved_permits.each do |permit| %>
   <%= link_to permit.title, permit_path(permit) %>
@@ -97,4 +44,4 @@
 <h1>Rejected</h1>
 <% @rejected_permits.each do |permit| %>
 <%= link_to permit.title, permit_path(permit) %>
-<% end %>
+<% end %> -->
