@@ -1,11 +1,13 @@
 class PermitsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_permit, only: [:show]
+
   def index
     @permits = policy_scope(Permit)
     if params[:status].present?
       @all_permits = Permit.where(status: params[:status])
     else
+      @all_permits = Permit.all
       @all_permits = Permit.all.order(created_at: :desc)
     end
     @pending_permits = Permit.where(status: "pending approval").where(approver_id: current_user.id).order(start_date: :asc)
@@ -21,6 +23,7 @@ class PermitsController < ApplicationController
     else
       @search_users = []
       @search_permits = []
+
     end
   end
 
