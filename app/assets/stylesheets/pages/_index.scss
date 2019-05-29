@@ -1,16 +1,17 @@
 // Import page-specific CSS files here.
 @import "home";
 
+
 // top header and add new permit
 .top-index {
   margin-top: 8vh;
   margin-bottom: 2vh;
+
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   border-bottom: 0.5px solid $grey-light;
 }
-
 // cards div
 
 
@@ -41,6 +42,7 @@
   }
 }
 
+
 .btn-green2 {
   background-color: $grey-lighter;
   border-bottom: 2px solid rgba(27, 170, 111, .2);
@@ -49,6 +51,14 @@
     // background-color: $emerald-dark;
     color: $charcoal;
     border-bottom: 2px solid $emerald-dark;
+  }
+}
+
+.btn-green2 a {
+  text-decoration: none;
+  color: $charcoal;
+  &:hover {
+    text-decoration: none;
   }
 }
 

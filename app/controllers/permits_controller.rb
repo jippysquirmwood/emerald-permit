@@ -7,13 +7,14 @@ class PermitsController < ApplicationController
       PgSearch::Multisearch.rebuild(Permit)
       # PgSearch::Multisearch.rebuild(User)
       results = PgSearch.multisearch(params[:s])
-      @results = results.map {|result| result.searchable}
-      @search_users = @results.select{|r| r.respond_to? :first_name}
-      @search_permits = @results.select{|r| r.respond_to? :title}
+      @results = results.map { |result| result.searchable }
+      @search_users = @results.select{ |r| r.respond_to? :first_name }
+      @search_permits = @results.select{ |r| r.respond_to? :title }
     else
       @search_users = []
       @search_permits = []
     end
+    @all_permits = Permit.all
   end
 
   def show
