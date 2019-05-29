@@ -1,0 +1,37 @@
+<%= link_to permits_path do %>
+  <h2><i class="fas fa-arrow-left"></i> Search Results</h2>
+<% end %>
+
+  <h4>permits (<%= @search_permits.size %>) found</h4>
+  <div class="my-perm-index">
+      <div class="index-cards">
+        <% @search_permits.each do |permit| %>
+          <%= link_to permit_path(permit) do %>
+            <div class="permit-card">
+              <p><%= permit.title %></p>
+              <p><%= permit.author_first_name %> <%= permit.author_last_name %></p>
+              <p><%= permit.approver_first_name %> <%= permit.approver_last_name %></p>
+              <p><%= permit.status %></p>
+              <p><%= permit.permit_type %></p>
+              <p><%= permit.start_date %></p>
+              <p><%= permit.end_date %></p>
+              <p><%= permit.level%> | <%= permit.location %></p>
+            </div>
+          <% end %>
+        <% end %>
+    </div>
+  </div>
+
+  <h4>people (<%= @search_users.size %>) found</h4>
+  <div class="my-perm-index">
+      <div class="index-cards">
+        <% @search_users.each do |user| %>
+          <%= link_to user_path(user) do %>
+            <div class="user-card">
+              <p><%= user.first_name %> <%= user.last_name %></p>
+              <p><%= user.role %></p>
+            </div>
+          <% end %>
+        <% end %>
+    </div>
+  </div>

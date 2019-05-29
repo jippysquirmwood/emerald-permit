@@ -5,11 +5,14 @@ class PermitsController < ApplicationController
     @permits = policy_scope(Permit)
     if params[:s].present?
       PgSearch::Multisearch.rebuild(Permit)
-      PgSearch::Multisearch.rebuild(User)
+      # PgSearch::Multisearch.rebuild(User)
       results = PgSearch.multisearch(params[:s])
-      @permits = results.map {|result| result.searchable}
+      @results = results.map {|result| result.searchable}
+      @search_users = @results.select{|r| r.respond_to? :first_name}
+      @search_permits = @results.select{|r| r.respond_to? :title}
     else
-      @permits = Permit.all
+      @search_users = []
+      @search_permits = []
     end
   end
 

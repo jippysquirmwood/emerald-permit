@@ -1,7 +1,5 @@
 <% if params[:s] %>
-  <%= link_to permits_path do %>
-    <h2><i class="fas fa-arrow-left"></i> Search Results</h2>
-  <% end %>
+  <%= render 'shared/search_results' %>
 <% end %>
 
 
@@ -18,10 +16,10 @@
       <div class="index-cards">
         <% @permits[0..3].each do |permit| %>
           <%= link_to permit_path(permit) do %>
-            <div class="permit-cgiard">
+            <div class="permit-card">
               <p><%= permit.title %></p>
               <p><%= permit.author.first_name %> <%= permit.author.last_name %></p>
-              <p><%= permit.author.last_name %></p>
+              <p><%= permit.approver_first_name %></p>
               <p><%= permit.status %></p>
               <p><%= permit.permit_type %></p>
               <p><%= permit.created_at %></p>
