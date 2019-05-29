@@ -23,12 +23,14 @@
   flex: wrap;
   align-items: flex-end;
   position: relative;
+  overflow: scroll;
 }
 
 // individual cards
 .permit-card {
   background-color: white;
   padding: 20px;
+  margin-right: 10px;
   width: 250px;
 }
 
