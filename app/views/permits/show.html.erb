@@ -1,82 +1,107 @@
-<h2><%= @permit.title %></h2> - <%= link_to "Dashboard", dashboard_path %>
-<h4>Project <%= @permit.project_id %></h4>
-<h4><%= @permit.location %> - <%= @permit.level %></h4>
-<p><%= @permit.permit_type %>: <%= @permit.permit_number %>
-<p>Date created: <%= @permit.created_at.strftime("%d-%m-%Y") %> at <%= @permit.created_at.strftime("%I:%M%p") %></p>
-<p>Start date: <%= @permit.start_date.strftime("%d-%m-%Y") %> at <%= @permit.start_date.strftime("%I:%M%p") %></p>
-<p>Expiry date: <%= @permit.end_date.strftime("%d-%m-%Y") %> at <%= @permit.end_date.strftime("%I:%M%p") %></p>
-<p>Method Statement: <%= @permit.method_statement %></p>
-<p>Created by: <%= @author %></p>
+<h1><%= @permit.title %></h1>
 
-<% if @permit.status == "draft" %>
-  <p><i><strong>DRAFT</strong></i></p>
-<% elsif @permit.status == "pending approval" %>
-  <p>Awaiting approval from <strong><%= @approver %> - phone number in permit but not user table</strong></p>
-<% elsif @permit.status == "approved" %>
-  <p>Approved by: <%= @approver %> - phone number in permit but not user table</p>
-<% elsif @permit.status == "rejected" %>
-  <p>Permit rejected by: <%= @approver %> - phone number in permit but not user table</p>
-<% elsif @permit.status == "expired" %>
-  <p><strong>Permit expired</strong></p>
-<% end %>
+<div class="container">
+  <div class="permit-details">
+    <h4>Project <%= @permit.project_id %></h4>
+    <h4>Location : <%= @permit.location %> </h4>
+    <h4>Level : <%= @permit.level %></h4>
+    <p>Type: <%= @permit.permit_type %>
+      <p>number: <%= @permit.permit_number %></p>
+
+    <p>Start date: <%= @permit.start_date.strftime("%d-%m-%Y") %> at <%= @permit.start_date.strftime("%I:%M%p") %></p>
+    <p>Expiry date: <%= @permit.end_date.strftime("%d-%m-%Y") %> at <%= @permit.end_date.strftime("%I:%M%p") %></p>
+    <p>Method Statement: <%= @permit.method_statement %></p>
+    <p>Author: <%= @author %></p>
+
+    <% if @permit.status == "draft" %>
+      <p><i><strong>DRAFT</strong></i></p>
+    <% elsif @permit.status == "pending approval" %>
+      <p>Awaiting approval from <strong><%= @approver %></strong></p>
+    <% elsif @permit.status == "approved" %>
+      <p>Approved by: <%= @approver %></p>
+    <% elsif @permit.status == "rejected" %>
+      <p>Permit rejected by: <%= @approver %></p>
+    <% elsif @permit.status == "expired" %>
+      <p><strong>Permit expired</strong></p>
+    <% end %>
+  </div>
+</div>
 <hr>
 
-<h4>Excavation dimensions:</h4>
-<p>xwidth: <%= @permit.xwidth %>mm</p>
-<p>xdepth: <%= @permit.xdepth %>mm</p>
-<p>xlength: <%= @permit.xlength %>m</p>
+<div class="container">
+  <div class="excavation">
+    <h4>Mechanical Dig:</h4>
 
-<hr>
-
-<h4>Confirmation:</h4>
-<p>Cat Scanner model: <%= @permit.cat_scan_model %> - Serial number: <%= @permit.cat_scanner_serial %></p>
-<p>Genny model: <%= @permit.genny_model %> - Serial number: <%= @permit.genny_serial %></p>
-<p>Operator: <%= @permit.cat_genny_operator %></p>
-<p>Calibration expires: <%= @permit.calibration_expires.strftime("%d/%m/%Y") %></p>
-<p>Modes used:</p>
-<ul>
- <% if @permit.cat_mode_power == true %>
- <li>Power <i class="far fa-check-circle"></i></li>
- <% else %>
- <li>Power <i class="far fa-times-circle"></i></li>
- <% end %>
- <% if @permit.cat_mode_radio == true %>
- <li>Radio <i class="far fa-check-circle"></i></li>
- <% else %>
- <li>Radio <i class="far fa-times-circle"></i></li>
- <% end %>
- <% if @permit.cat_mode_transmitter == true %>
- <li>Transmitter <i class="far fa-check-circle"></i></li>
- <% else %>
- <li>Transmitter <i class="far fa-times-circle"></i></li>
- <% end %>
-</ul>
+    <% @permit.attributes.to_a[(25..33)].each do |ele| %>
+      <% if ele[1] == true %>
+        <p><%= ele[0].gsub(/_/, " ").capitalize %> <i class="far fa-check-circle"></i></p>
+      <% end %>
+    <% end %>
+  </div>
+</div>
 
 <hr>
 
-<h4>Mechanical Dig:</h4>
-
-<% @permit.attributes.to_a[(25..33)].each do |ele| %>
-  <% if ele[1] == true %>
-    <p><%= ele[0].gsub(/_/, " ").capitalize %> <i class="far fa-check-circle"></i></p>
-  <% end %>
-<% end %>
+<div class="container">
+  <div class="excavation">
+    <h4>Excavation dimensions:</h4>
+    <p>xwidth: <%= @permit.xwidth %>mm</p>
+    <p>xdepth: <%= @permit.xdepth %>mm</p>
+    <p>xlength: <%= @permit.xlength %>m</p>
+  </div>
+</div>
 
 <hr>
 
-<h4>Servies located within the area:</h4>
+<div class="container">
+  <div class="excavation">
+    <h4>Confirmation:</h4>
+    <p>Cat Scanner model: <%= @permit.cat_scan_model %> | Serial number: <%= @permit.cat_scanner_serial %></p>
+    <p>Genny model: <%= @permit.genny_model %> | Serial number: <%= @permit.genny_serial %></p>
+    <p>Operator: <%= @permit.cat_genny_operator %></p>
+    <p>Calibration expires: <%= @permit.calibration_expires.strftime("%d-%m-%Y") %></p>
+    <p>Modes used:</p>
+    <ul>
+      <% if @permit.cat_mode_power == true %>
+        <li>Power <i class="far fa-check-circle"></i></li>
+        <% else %>
+        <li>Power <i class="far fa-times-circle"></i></li>
+      <% end %>
+     <% if @permit.cat_mode_radio == true %>
+        <li>Radio <i class="far fa-check-circle"></i></li>
+     <% else %>
+        <li>Radio <i class="far fa-times-circle"></i></li>
+     <% end %>
+     <% if @permit.cat_mode_transmitter == true %>
+        <li>Transmitter <i class="far fa-check-circle"></i></li>
+     <% else %>
+        <li>Transmitter <i class="far fa-times-circle"></i></li>
+     <% end %>
+    </ul>
+  </div>
+</div>
 
-<% @permit.attributes.to_a[(13..24)].each do |ele| %>
-  <% if ele[1] == true %>
-    <p><%= ele[0].gsub(/_/, " ").capitalize %></p>
-  <% end %>
-<% end %>
+<hr>
 
-<hr><hr>
+<div class="container">
+  <div class="excavation">
+    <h4>Services located within the area:</h4>
+
+    <% @permit.attributes.to_a[(13..24)].each do |ele| %>
+      <% if ele[1] == true %>
+        <p><%= ele[0].gsub(/_/, " ").capitalize %></p>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<hr>
 
 <% if (@permit.status == "pending approval" && @permit.approver == current_user) %>
-  <%= link_to 'Approve permit', permit_approve_path(@permit)%>
-  <%= link_to 'Reject permit', permit_reject_path(@permit) %>
+<div class="container btn-approval">
+    <%= link_to 'Approve permit', permit_approve_path(@permit), class: "approve-btn"%>
+    <%= link_to 'Reject permit', permit_reject_path(@permit), class: "approve-btn reject-btn" %>
+  </div>
 <% elsif (@permit.status == "rejected" || @permit.status == "draft") && (@permit.approver == current_user || @permit.author == current_user) %>
 <%# elsif (@permit.status == "rejected" && @permit.approver == current_user || @permit.author == current_user) %>
   <%= link_to 'edit', edit_permit_path(@permit) %>
