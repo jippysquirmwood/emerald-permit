@@ -85,6 +85,7 @@ class PermitsController < ApplicationController
     authorize @permit
   end
 
+
   def destroy
     @permit.delete
     redirect_to dashboard_path
