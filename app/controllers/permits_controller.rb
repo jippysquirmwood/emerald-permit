@@ -3,6 +3,14 @@ class PermitsController < ApplicationController
   before_action :set_permit, only: [:show]
   def index
     @permits = policy_scope(Permit)
+    if params[:status].present?
+      @all_permits = Permit.where(status: params[:status])
+    else
+      @all_permits = Permit.all.order(created_at: :desc)
+    end
+    @pending_permits = Permit.where(status: "pending approval").where(approver_id: current_user.id).order(start_date: :asc)
+    @approved_permits = Permit.where(status: "approved").where(approver_id: current_user.id).order(start_date: :asc)
+    @rejected_permits = Permit.where(status: "rejected").where(approver_id: current_user.id).order(start_date: :asc)
     if params[:s].present?
       PgSearch::Multisearch.rebuild(Permit)
       # PgSearch::Multisearch.rebuild(User)
@@ -14,7 +22,6 @@ class PermitsController < ApplicationController
       @search_users = []
       @search_permits = []
     end
-    @all_permits = Permit.all
   end
 
   def show
@@ -29,7 +36,7 @@ class PermitsController < ApplicationController
     @permit.status = "pending approval"
     authorize @permit
     if @permit.save
-      redirect_to permits_path
+      redirect_to dashboard_path
     else
       render :new
     end
