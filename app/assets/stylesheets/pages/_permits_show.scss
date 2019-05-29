@@ -1,0 +1,42 @@
+h1 {
+  text-align: center;
+}
+
+.permit-details {
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  padding: 15px;
+  text-align: center;
+}
+
+.excavation {
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  padding: 15px;
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.approve-btn {
+  color: white;
+  background-color: $emerald-dark;
+  height: 30px;
+  // display: flex;
+  float: top-left;
+  padding: 8px;
+  border-radius: 2px;
+  margin-bottom: 10px;
+  &:hover {
+    color: $charcoal;
+  }
+}
+
+.reject-btn {
+  background-color: $red;
+}
+
+.container {
+  text-align: center;
+}
+

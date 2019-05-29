@@ -1,18 +1,65 @@
-<p><%= @user.first_name %> <%= @user.last_name %></p>
-<p><%= @user.email %></p>
-<p>Role: </p>
+<div class="col-9 user-page">
+  <div class="return">
+    <%= link_to "Back to your dashboard", permits_path, class: "btn-emerald-header user-btn"%>
+    <% if @user == current_user %>
+      <%= link_to "Change my password", edit_user_path(@user), class: "btn-emerald-header user-btn"%>
+    <% end %>
+  </div>
+  <div class="user-info">
+    <img class="user-img" src=<%= @user.avatar %> alt="avatar">
+    <div class="user-text">
+      <h2><%= @user.first_name %> <strong><%= @user.last_name %></strong></h2>
+      <p><%= @user.role %></p>
+      <hr>
+      <div class="content-around">
+        <div class="titles">
+          <p>Phone number: </p>
+          <p>Email: </p>
+          <p>Role: </p>
+          <p>Location: </p>
+        </div>
+        <div class="info">
+          <p><%= @user.phone %></p>
+          <p><%= @user.email %></p>
+          <p><%= @user.role %></p>
+          <p>London</p>
+          <% if @user.approver %>
+            <p class="approver">Permit approver</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-<% if @user.approver %>
-  <p>Project Manager</p>
-<% elsif @user.author %>
-  <p>Engineer</p>
-<% elsif @user.approver == false && @user.author == false %>
-  <p> Viewer </p>
-<% end %>
 
 
-<img src=<%= @user.avatar %> alt="avatar">
 
 
-<%= link_to "Back", permits_path %>
-<%= link_to "Change my password", edit_user_path(@user) %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

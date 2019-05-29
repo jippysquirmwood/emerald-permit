@@ -1,0 +1,63 @@
+.user-page {
+  margin: 10vh auto 0 auto;
+}
+
+.user-info {
+  margin: 0 auto;
+  width: 60vw;
+  height: 60vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: white;
+  padding: 35px 15px;
+  border-radius: 2px;
+  box-shadow: 1px 1px 3px rgba(63, 70, 74, 0.3);
+  img {
+    border-radius: 2px;
+  }
+}
+
+.user-img {
+  height: 40vh;
+  width: 20vw;
+}
+
+.user-text {
+  width: 50%;
+}
+
+.info {
+  margin-left: 100px;
+}
+
+.titles {
+  font-weight: bold;
+}
+
+.content-around {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.approver {
+  background-color: $emerald-dark;
+  color: white;
+  border-radius: 3px;
+  border: 1px solid $charcoal;
+  text-align: center;
+}
+
+.return {
+  display: flex;
+  justify-content: space-between;
+  width: 60vw;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.user-btn {
+  padding: 15px;
+  border-radius: 2px;
+}
+
