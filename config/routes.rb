@@ -6,6 +6,6 @@ Rails.application.routes.draw do
     get "reject", to: "permits#reject"
   end
   resources :users, except: [:index]
-  get "dashboard", to: "pages#dashboard"
+  get "dashboard", to: "permits#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
