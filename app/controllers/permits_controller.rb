@@ -1,14 +1,15 @@
 class PermitsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_permit, only: [:show]
-  def index
-    @permits = policy_scope(Permit)
-    if params[:status].present?
-      @all_permits = Permit.where(status: params[:status])
-    else
-      @all_permits = Permit.all
-    end
-  end
+
+  # def index
+  #   @permits = policy_scope(Permit)
+  #   if params[:status].present?
+  #     @all_permits = Permit.where(status: params[:status])
+  #   else
+  #     @all_permits = Permit.all
+  #   end
+  # end
 
   def show
     # @columns = Permit.column
