@@ -1,6 +1,6 @@
 class PermitsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_permit, only: [:show]
+  before_action :set_permit, only: [:show, :destroy]
 
   # def index
   #   @permits = policy_scope(Permit)
@@ -67,6 +67,11 @@ class PermitsController < ApplicationController
   def edit
     @permit = Permit.find(params[:id])
     authorize @permit
+  end
+
+  def destroy
+    @permit.delete
+    redirect_to dashboard_path
   end
 
   private
