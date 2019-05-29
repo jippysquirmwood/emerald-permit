@@ -98,7 +98,7 @@
 <hr>
 
 <% if (@permit.status == "pending approval" && @permit.approver == current_user) %>
-<div class="container btn-approval">
+<div class="container-btn-approval">
     <%= link_to 'Approve permit', permit_approve_path(@permit), class: "approve-btn"%>
     <%= link_to 'Reject permit', permit_reject_path(@permit), class: "approve-btn reject-btn" %>
   </div>
