@@ -4,7 +4,9 @@ class PermitsController < ApplicationController
 
   def index
     @permits = policy_scope(Permit)
-    if params[:status].present?
+    if params[:status].present? && params[:author_id].present?
+      @all_permits = Permit.where(status: params[:status]).where(author: current_user)
+    elsif params[:status].present?
       @all_permits = Permit.where(status: params[:status])
     else
       @all_permits = Permit.all
@@ -13,8 +15,10 @@ class PermitsController < ApplicationController
     @pending_permits = Permit.where(status: "pending approval").where(approver_id: current_user.id).order(start_date: :asc)
     @approved_permits = Permit.where(status: "approved").where(approver_id: current_user.id).order(start_date: :asc)
     @rejected_permits = Permit.where(status: "rejected").where(approver_id: current_user.id).order(start_date: :asc)
+    @draft_permits = Permit.where(status: "draft").where(approver_id: current_user.id).order(start_date: :asc)
     @edit_permits = Permit.where(status: "rejected").where(author_id: current_user.id).order(start_date: :asc)
     @edit_permits = Permit.where(status: "draft").where(author_id: current_user.id).order(start_date: :asc)
+
     if params[:s].present?
       PgSearch::Multisearch.rebuild(Permit)
       # PgSearch::Multisearch.rebuild(User)
@@ -25,7 +29,6 @@ class PermitsController < ApplicationController
     else
       @search_users = []
       @search_permits = []
-
     end
   end
 

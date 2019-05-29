@@ -1,0 +1,16 @@
+<div class="top-index">
+    <% if current_user.approver %>
+      <h2>awaiting my approval</h2>
+    <% elsif current_user.admin %>
+      <h2>admin</h2>
+    <% elsif current_user.author %>
+      <h2>my permits</h2>
+    <% else %>
+      <h2>permits to be breifed</h2>
+    <% end %>
+    <% if current_user.admin || current_user.author || current_user.approver %>
+      <%= link_to new_permit_path do %>
+        <button class="btn btn-green">New Permit</button>
+      <% end %>
+    <% end %>
+  </div>

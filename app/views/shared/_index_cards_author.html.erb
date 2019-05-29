@@ -1,0 +1,20 @@
+<div class="my-perm-index">
+  <div class="index-cards">
+    <% if @permits.present? %>
+      <% @permits.each do |permit| %>
+        <%= link_to permit_path(permit) do %>
+          <div class="permit-card">
+            <p><%= permit.title %></p>
+            <p><%= permit.author.first_name %> <%= permit.author.last_name %></p>
+            <p><%= permit.status %></p>
+            <p><%= permit.permit_type %></p>
+            <p><%= permit.created_at %></p>
+            <p><%= permit.level%> | <%= permit.location %></p>
+          </div>
+        <% end %>
+      <% end %>
+    <% else %>
+      <h3>Nothing to see here!</h3>
+    <% end %>
+  </div>
+</div>
