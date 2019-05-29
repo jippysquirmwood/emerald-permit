@@ -1,33 +1,42 @@
+<% if params[:s] %>
+  <%= render 'shared/search_results' %>
+<% end %>
+
 <div class="container col-9">
 
   <div class="top-index">
-    <h2>permits</h2>
+    <h2>awaiting my approval</h2>
 
     <%= link_to new_permit_path do %>
       <button class="btn btn-green">New Permit</button>
     <% end %>
   </div>
 
-  <h4>recent permits</h4>
   <div class="my-perm-index">
       <div class="index-cards">
-        <% @permits[0..3].each do |permit| %>
-          <%= link_to permit_path(permit) do %>
-            <div class="permit-card">
-              <p><%= permit.title %></p>
-              <p><%= permit.author.first_name %> <%= permit.author.last_name %></p>
-              <p><%= permit.status %></p>
-              <p><%= permit.permit_type %></p>
-              <p><%= permit.created_at %></p>
-              <p><%= permit.level%> | <%= permit.location %></p>
-            </div>
+        <% if @pending_permits.present? %>
+          <% @pending_permits.each do |permit| %>
+            <%= link_to permit_path(permit) do %>
+              <div class="permit-card">
+                <p><%= permit.title %></p>
+                <p><%= permit.author.first_name %> <%= permit.author.last_name %></p>
+                <p><%= permit.status %></p>
+                <p><%= permit.permit_type %></p>
+                <p><%= permit.created_at %></p>
+                <p><%= permit.level%> | <%= permit.location %></p>
+              </div>
+            <% end %>
           <% end %>
+        <% else %>
+          <h3>Nothing to see here!</h3>
         <% end %>
     </div>
   </div>
 
   <div class="filter-row">
-    <button class="btn btn-green2"><%= link_to "all permits", permits_path %></button>
+    <button class="btn btn-green2"><%= link_to "all permits", dashboard_path %></button>
+    <button class="btn btn-green2"><%= link_to "approved", "#" %></button>
+    <button class="btn btn-green2"><%= link_to "rejected", "#" %></button>
     <button class="btn btn-green2">my drafts</button>
     <button class="btn btn-green2 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">status</button>
       <div class="dropdown-menu" id="dropdown" aria-labelledby="dropdownMenuButton">
@@ -43,9 +52,11 @@
     <thead>
       <tr>
         <th scope="col"># ID</th>
-        <th scope="col">author</th>
+        <th scope="col">title</th>
         <th scope="col">type</th>
-        <th scope="col">created</th>
+        <th scope="col">start-date</th>
+        <th scope="col">exp-date</th>
+        <th scope="col">author</th>
         <th scope="col">status</th>
       </tr>
     </thead>
@@ -53,10 +64,12 @@
       <% @all_permits[0..4].each do |permit| %>
           <tr>
             <%= link_to permit_path(permit) do %>
-            <th scope="row"> <%= permit.id %></th>
-            <td> <%= permit.author.first_name + " " + permit.author.last_name %> </td>
+            <th scope="row"> <%= permit.permit_number %></th>
+            <td> <%= permit.title %> </td>
             <td> <%= permit.permit_type %> </td>
-            <td> <%= permit.created_at %> </td>
+            <td> <%= permit.start_date %> </td>
+            <td> <%= permit.end_date %> </td>
+            <td> <%= permit.author.first_name[0] + " " + permit.author.last_name %> </td>
             <td> <%= permit.status %> </td>
             <% end %>
           </tr>
@@ -70,10 +83,10 @@
 
 
 
-<h1>to approve</h1>
+<!-- <h1>to approve</h1>
 <% @pending_permits.each do |permit| %>
   <%= link_to permit.title, permit_path(permit) %>
-<% end %>
+<% end %> -->
 
 
 <h1>approved</h1>

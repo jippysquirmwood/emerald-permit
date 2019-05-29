@@ -10,6 +10,9 @@ class User < ApplicationRecord
   validates :first_name, presence: true
   validates :last_name, presence: true
 
+  # include PgSearch
+  # multisearchable against: [:email, :first_name, :last_name, :role]
+
   def fullname
     first_name + " " + last_name
   end
