@@ -1,8 +1,8 @@
 
 
+    <h4 id="headers-permit">Section 1 - Permit Details</h4>
 <div class="container-permit-details">
   <div class="permit-details-left">
-    <h4>Section 1 - Permit Details</h4>
     <p>Project <%= @permit.project_id %></p>
     <p>number: <%= @permit.permit_number %></p>
     <p>Start date: <%= @permit.start_date.strftime("%d-%m-%Y") %> at <%= @permit.start_date.strftime("%I:%M%p") %></p>
@@ -20,27 +20,40 @@
       <% end %>
     </div>
 
-    <div class="permit-details-right">
-      <p>Permit title: <%= @permit.title %></p>
-      <p>Level : <%= @permit.level %></p>
-      <p>Location : <%= @permit.location %> </p>
-      <p>Method Statement: <%= @permit.method_statement %></p>
-      <p>Permit Type: <%= @permit.permit_type %></p>
-    </div>
-    <div class="author-details">
-      <img class="author-avatar" src= '<%= author.photo %>' />
-      <div class="author-name">
-        <p><%= author.fullname %></p>
+      <div class="permit-details-right">
+        <p>Permit title: <%= @permit.title %></p>
+        <p>Level : <%= @permit.level %></p>
+        <p>Location : <%= @permit.location %> </p>
+        <p>Method Statement: <%= @permit.method_statement %></p>
+        <p>Permit Type: <%= @permit.permit_type %></p>
+      </div>
+
+    <div class="detail-card-permit" style= "height: 100%;">
+      <div class="author-avatar">
+        <img class="avatar" src= <%= @permit.author.avatar %> />
+        <div class="author-name">
+          <p>Author: <%= @permit.author.fullname %></p>
+          <p>Role: <%= @permit.author.role %></p>
+        </div>
+      </div>
+      <hr>
+      <div class="approver-avatar">
+        <img class="avatar" src= <%= @permit.approver.avatar %> />
+        <div class="approver-name">
+          <p>Approver: <%= @permit.approver.fullname %></p>
+          <p>Role: <%= @permit.approver.role %></p>
+        </div>
       </div>
     </div>
+
   </div>
 </div>
 
 <hr>
 
+    <h4 id="headers-permit">Section 2 - Excavation dimensions</h4>
 <div class="container">
   <div class="excavation">
-    <h4>Excavation dimensions:</h4>
     <p>xwidth: <%= @permit.xwidth %>mm</p>
     <p>xdepth: <%= @permit.xdepth %>mm</p>
     <p>xlength: <%= @permit.xlength %>m</p>
@@ -49,9 +62,9 @@
 
 <hr>
 
+    <h4 id="headers-permit">Section 3 - Services located within the area</h4>
 <div class="container">
   <div class="excavation">
-    <h4>Services located within the area:</h4>
 
     <% @permit.attributes.to_a[(13..24)].each do |ele| %>
       <% if ele[1] == true %>
@@ -63,9 +76,9 @@
 
 <hr>
 
+    <h4 id="headers-permit">Section 4 - Confirmation</h4>
 <div class="container">
   <div class="excavation">
-    <h4>Confirmation:</h4>
     <p>Cat Scanner model: <%= @permit.cat_scan_model %> | Serial number: <%= @permit.cat_scanner_serial %></p>
     <p>Genny model: <%= @permit.genny_model %> | Serial number: <%= @permit.genny_serial %></p>
     <p>Operator: <%= @permit.cat_genny_operator %></p>
@@ -92,9 +105,9 @@
 </div>
 
 <hr>
+    <h4 id="headers-permit">Section 5 - Mechanical Dig</h4>
 <div class="container">
   <div class="excavation">
-    <h4>Mechanical Dig:</h4>
 
     <% @permit.attributes.to_a[(25..33)].each do |ele| %>
       <% if ele[1] == true %>
@@ -103,6 +116,8 @@
     <% end %>
   </div>
 </div>
+
+<hr>
 
 
 <% if (@permit.status == "pending approval" && @permit.approver == current_user) %>
