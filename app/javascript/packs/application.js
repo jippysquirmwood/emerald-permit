@@ -1,2 +1,2 @@
 import "bootstrap";
-import "hinding-form";
+// import "hiding-form";

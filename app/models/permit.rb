@@ -6,27 +6,27 @@ class Permit < ApplicationRecord
   multisearchable against: [:location, :level, :permit_number, :method_statement, :title, :author_last_name, :author_first_name, :approver_first_name, :approver_last_name, :author_email, :approver_email]
 
   def approver_first_name
-    approver.first_name
+    approver.present? ? approver.first_name : ""
   end
 
   def approver_last_name
-    approver.last_name
+    approver.present? ? approver.last_name : ""
   end
 
   def author_last_name
-    author.last_name
+    author.present? ? author.last_name : ""
   end
 
   def author_first_name
-    author.first_name
+    author.present? ? author.first_name : ""
   end
 
   def approver_email
-    approver.email
+    approver.present? ? approver.email : ""
   end
 
   def author_email
-    author.email
+    author.present? ? author.email : ""
   end
 
   def permit_type_img

@@ -21,7 +21,7 @@ class PermitsController < ApplicationController
 
     if params[:s].present?
       PgSearch::Multisearch.rebuild(Permit)
-      # PgSearch::Multisearch.rebuild(User)
+      PgSearch::Multisearch.rebuild(User)
       results = PgSearch.multisearch(params[:s])
       @results = results.map { |result| result.searchable }
       @search_users = @results.select{ |r| r.respond_to? :first_name }
@@ -43,6 +43,7 @@ class PermitsController < ApplicationController
     @permit.author = current_user
     @permit.status = "pending approval"
     authorize @permit
+    @permit.status = "draft" if params[:draft]
     if @permit.save
       redirect_to dashboard_path
     else
