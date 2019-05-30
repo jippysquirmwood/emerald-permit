@@ -1,5 +1,7 @@
 // Import page-specific CSS files here.
 @import "home";
+@import "permits_show";
+@import "user-show";
 
 
 // top header and add new permit
@@ -19,20 +21,21 @@
 .index-cards {
   padding-bottom: 16px;
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
   flex: wrap;
   align-items: flex-end;
   position: relative;
-
   a {
     text-decoration: none !important;
   }
+  overflow: scroll;
 }
 
 // individual cards
 .permit-card {
   background-color: white;
   padding: 20px;
+  margin-right: 10px;
   width: 250px;
 }
 
