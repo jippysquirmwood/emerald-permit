@@ -1,50 +1,59 @@
-<h1><%= @permit.title %></h1>
 
-<div class="container">
-  <div class="permit-details">
-    <h4>Project <%= @permit.project_id %></h4>
-    <h4>Location : <%= @permit.location %> </h4>
-    <h4>Level : <%= @permit.level %></h4>
-    <p>Type: <%= @permit.permit_type %>
-      <p>number: <%= @permit.permit_number %></p>
 
+    <h4 id="headers-permit">Section 1 - Permit Details</h4>
+<div class="container-permit-details">
+  <div class="permit-details-left">
+    <p>Project <%= @permit.project_id %></p>
+    <p>number: <%= @permit.permit_number %></p>
     <p>Start date: <%= @permit.start_date.strftime("%d-%m-%Y") %> at <%= @permit.start_date.strftime("%I:%M%p") %></p>
     <p>Expiry date: <%= @permit.end_date.strftime("%d-%m-%Y") %> at <%= @permit.end_date.strftime("%I:%M%p") %></p>
-    <p>Method Statement: <%= @permit.method_statement %></p>
-    <p>Author: <%= @author %></p>
-
     <% if @permit.status == "draft" %>
-      <p><i><strong>DRAFT</strong></i></p>
-    <% elsif @permit.status == "pending approval" %>
-      <p>Awaiting approval from <strong><%= @approver %></strong></p>
-    <% elsif @permit.status == "approved" %>
-      <p>Approved by: <%= @approver %></p>
-    <% elsif @permit.status == "rejected" %>
-      <p>Permit rejected by: <%= @approver %></p>
-    <% elsif @permit.status == "expired" %>
-      <p><strong>Permit expired</strong></p>
-    <% end %>
-  </div>
-</div>
-<hr>
-
-<div class="container">
-  <div class="excavation">
-    <h4>Mechanical Dig:</h4>
-
-    <% @permit.attributes.to_a[(25..33)].each do |ele| %>
-      <% if ele[1] == true %>
-        <p><%= ele[0].gsub(/_/, " ").capitalize %> <i class="far fa-check-circle"></i></p>
+        <p><i><strong>DRAFT</strong></i></p>
+      <% elsif @permit.status == "pending approval" %>
+        <p>Awaiting approval from <strong><%= @approver %></strong></p>
+      <% elsif @permit.status == "approved" %>
+        <p>Approved by: <%= @approver %></p>
+      <% elsif @permit.status == "rejected" %>
+        <p>Permit rejected by: <%= @approver %></p>
+      <% elsif @permit.status == "expired" %>
+        <p><strong>Permit expired</strong></p>
       <% end %>
-    <% end %>
+    </div>
+
+      <div class="permit-details-right">
+        <p>Permit title: <%= @permit.title %></p>
+        <p>Level : <%= @permit.level %></p>
+        <p>Location : <%= @permit.location %> </p>
+        <p>Method Statement: <%= @permit.method_statement %></p>
+        <p>Permit Type: <%= @permit.permit_type %></p>
+      </div>
+
+    <div class="detail-card-permit" style= "height: 100%;">
+      <div class="author-avatar">
+        <img class="avatar" src= <%= @permit.author.avatar %> />
+        <div class="author-name">
+          <p>Author: <%= @permit.author.fullname %></p>
+          <p>Role: <%= @permit.author.role %></p>
+        </div>
+      </div>
+      <hr>
+      <div class="approver-avatar">
+        <img class="avatar" src= <%= @permit.approver.avatar %> />
+        <div class="approver-name">
+          <p>Approver: <%= @permit.approver.fullname %></p>
+          <p>Role: <%= @permit.approver.role %></p>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
 <hr>
 
+    <h4 id="headers-permit">Section 2 - Excavation dimensions</h4>
 <div class="container">
   <div class="excavation">
-    <h4>Excavation dimensions:</h4>
     <p>xwidth: <%= @permit.xwidth %>mm</p>
     <p>xdepth: <%= @permit.xdepth %>mm</p>
     <p>xlength: <%= @permit.xlength %>m</p>
@@ -53,9 +62,23 @@
 
 <hr>
 
+    <h4 id="headers-permit">Section 3 - Services located within the area</h4>
 <div class="container">
   <div class="excavation">
-    <h4>Confirmation:</h4>
+
+    <% @permit.attributes.to_a[(13..24)].each do |ele| %>
+      <% if ele[1] == true %>
+        <p><%= ele[0].gsub(/_/, " ").capitalize %></p>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<hr>
+
+    <h4 id="headers-permit">Section 4 - Confirmation</h4>
+<div class="container">
+  <div class="excavation">
     <p>Cat Scanner model: <%= @permit.cat_scan_model %> | Serial number: <%= @permit.cat_scanner_serial %></p>
     <p>Genny model: <%= @permit.genny_model %> | Serial number: <%= @permit.genny_serial %></p>
     <p>Operator: <%= @permit.cat_genny_operator %></p>
@@ -82,20 +105,20 @@
 </div>
 
 <hr>
-
+    <h4 id="headers-permit">Section 5 - Mechanical Dig</h4>
 <div class="container">
   <div class="excavation">
-    <h4>Services located within the area:</h4>
 
-    <% @permit.attributes.to_a[(13..24)].each do |ele| %>
+    <% @permit.attributes.to_a[(25..33)].each do |ele| %>
       <% if ele[1] == true %>
-        <p><%= ele[0].gsub(/_/, " ").capitalize %></p>
+        <p><%= ele[0].gsub(/_/, " ").capitalize %> <i class="far fa-check-circle"></i></p>
       <% end %>
     <% end %>
   </div>
 </div>
 
 <hr>
+
 
 <% if (@permit.status == "pending approval" && @permit.approver == current_user) %>
 <div class="container-btn-approval">
