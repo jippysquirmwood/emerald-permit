@@ -53,7 +53,7 @@ class Permit < ApplicationRecord
   end
 
   def date_time(date)
-    date.strftime("%-d-%m-%y %H:%M")
+    date.strftime("%-d-%-m-%y %H:%M")
   end
 
   def time(date)
