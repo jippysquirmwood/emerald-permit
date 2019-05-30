@@ -1,0 +1,33 @@
+<div class="permit-card">
+
+  <div class="card-top">
+    <p class="charcoal"><%= permit.permit_number %></p>
+    <h2 class="charcoal">Title: <%= permit.title %></h2>
+  </div>
+
+  <div class="card-mid" style="background-image: url(<%= permit.permit_type_img %>)">
+    <i class="far fa-clock icon-status"></i>
+    <div class="img-tooltip">
+      <%= image_tag((permit.author.avatar), class: "avatar-sml")%>
+      <span class="tooltip-text"><%= permit.author.short_last_name %></span>
+    </div>
+  </div>
+
+  <div class="card-bottom">
+    <p class="grey-light"><span class="charcoal">Valid:</span>  <%= permit.date_time(permit.start_date) %> <span class="charcoal">to</span> <%= permit.date_time(permit.end_date) %></p>
+  </div>
+</div>
+
+<!--   <%= permit.title %>
+  <%= permit.author_first_name %> <%= permit.author_last_name %>
+  <%= permit.status %>
+  <%= permit.permit_type %>
+  <%= permit.start_date %>
+  <%= permit.end_date %>
+  <%= permit.level%>
+  <%= permit.location %>
+  <%= permit.author.short_last_name %>
+
+
+  <%= image_tag((permit.permit_type_img), class: "permit-type-img") %> -->
+
