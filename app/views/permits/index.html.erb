@@ -1,9 +1,9 @@
-<% if params[:s] %>
-  <%= render 'shared/search_results' %>
-<% end %>
 
 
 <div class="container col-11">
+  <% if params[:s] %>
+    <%= render 'shared/search_results' %>
+  <% end %>
   <!-- top header with add button -->
   <%= render 'shared/index_top_section' %>
 
