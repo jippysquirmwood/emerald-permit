@@ -47,6 +47,7 @@
   <%= f.input :cat_mode_transmitter %>
   <%= f.input :works_description %>
   <%= f.input :approver_id, collection: User.where(approver: true), label_method: :fullname %>
+  <%= f.button :submit, value: "Save as draft", name: "draft" %>
   <%= f.button :submit, value: "Request Approval" %>
 
 <% end %>
