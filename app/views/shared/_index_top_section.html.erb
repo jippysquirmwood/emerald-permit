@@ -1,10 +1,10 @@
 <div class="top-index">
     <% if current_user.approver %>
-      <h2>awaiting my approval</h2>
+      <h2>awaiting my approval (<%= @pending_permits.size %>)</h2>
     <% elsif current_user.admin %>
       <h2>admin</h2>
     <% elsif current_user.author %>
-      <h2>my permits</h2>
+      <h2>my permits (<%= @permits.size %>)</h2>
     <% else %>
       <h2>permits to be breifed</h2>
     <% end %>
