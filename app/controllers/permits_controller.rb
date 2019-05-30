@@ -34,8 +34,8 @@ class PermitsController < ApplicationController
 
   def show
     # @columns = Permit.column
-    @author = "#{@permit.author.first_name.capitalize} #{@permit.author.last_name.capitalize}"
-    @approver = "#{@permit.approver.first_name.capitalize} #{@permit.approver.last_name.capitalize}"
+    @author = "#{@permit.author_first_name.capitalize} #{@permit.author_last_name.capitalize}"
+    @approver = "#{@permit.approver_first_name.capitalize} #{@permit.approver_last_name.capitalize}"
   end
 
   def create
