@@ -7,18 +7,77 @@
   }
 
   .card-mid {
-    height: 70%;
+    height: 150px;
     border-bottom: 0.5px solid $grey-light;
     display: flex;
+    justify-content: center;
+    border: 1px solid $red;
+    // align-items: center;
 
-    .icon-status {
-      color: $status-pending;
-      font-size: 24px;
+    .permit-type-img {
+      width: 100px;
+      height: 100px;
+      opacity: 0.1;
     }
+    .icons-container {
+      display: flex;
+      border: 1px solid $red;
+    }
+    .icon-status {
+      font-size: 24px;
+      border: 1px solid $red;
+    }
+
+  .status-draft {
+    color: $status-draft;
+  }
+  .status-pending {
+    color: $status-pending;
+  }
+  .status-rejected {
+    color: $status-rejected;
+  }
+  .status-approved {
+    color: $status-approved;
+  }
+    .status-expired {
+    color: $status-expired;
+  }
+
+//   $status-draft: #0099ff;
+// $status-pending: #FFD633;
+// $status-rejected: #E67E22;
+// $status-approved: #00FDC8;
+// $status-expired: #f90606;
+
+    // .avatar-sml {
+    //   position: absolute;
+    //   top: 0;
+    //   right: 0;
+    // }
+    .img-tooltip {
+      // position: absolute;
+      font-size: 16px;
+        &:hover .tooltip-text{
+          position: absolute;
+          display: inline-block;
+        }
+    .tooltip-text {
+      display: none;
+      background-color: $emerald-dark;
+      color: #fff;
+      font-size: 10px;
+      text-align: center;
+      padding: 2px 4px;
+      z-index: 1;
+    }
+  }
+
   }
 
   .card-bottom {
     height: 15%;
+    padding-top: 8px;
   }
 
   .charcoal {
@@ -36,30 +95,12 @@
   h2 {
     font-size: 12px;
     font-weight: 700;
+    border: 1px solid $red;
   }
 
   p {
     font-size: 10px;
-  }
-
-  .img-tooltip {
-  position: relative;
-  font-size: 16px;
-  width: 56px;
-    &:hover .tooltip-text{
-      display: block;
-    }
-    .tooltip-text {
-      display: none;
-      background-color: $emerald-dark;
-      color: #fff;
-      font-size: 10px;
-      text-align: center;
-      padding: 2px 4px;
-      position: absolute;
-      bottom: -22px;
-      z-index: 1;
-    }
+    border: 1px solid $red;
   }
 }
 

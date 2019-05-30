@@ -49,7 +49,7 @@ class Permit < ApplicationRecord
   end
 
   def short_date(date)
-     date.strftime("%e %b %y")
+    date.strftime("%e %b %y")
   end
 
   def date_time(date)
@@ -58,5 +58,20 @@ class Permit < ApplicationRecord
 
   def time(date)
     date.strftime("%H:%M")
+  end
+
+  def status_icon
+    if status == "draft"
+      icon = 'far fa-edit status-draft'
+    elsif status == "pending approval"
+      icon = 'far fa-clock status-pending'
+    elsif status == "rejected"
+      icon = 'fas fa-times status-rejected'
+    elsif status == "approved"
+      icon = 'fas fa-check status-approved'
+    elsif status == "expired"
+      icon = 'fas fa-exclamation status-expired'
+    end
+    icon
   end
 end
