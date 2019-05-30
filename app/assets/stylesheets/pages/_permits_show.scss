@@ -1,17 +1,27 @@
-h1 {
-  text-align: center;
+.container-permit-details {
+  display: flex;
+  justify-content: space-around;
 }
 
-.permit-details {
-  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+.permit-details-left {
   padding: 15px;
-  text-align: center;
+  margin-top: 20px;
+
+}
+
+.permit-details-right {
+  border-left-style: solid;
+  border-left-style: $charcoal;
+  padding-left: 200px;
+  margin-top: 20px;
+
+
 }
 
 .excavation {
-  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  // box-shadow: 0 0 5px rgba(0,0,0,0.2);
   padding: 15px;
-  text-align: center;
+  // text-align: center;
 }
 
 ul {
