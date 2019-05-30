@@ -1,82 +1,48 @@
 .permit-card {
+  height: 300px;
+  display: flex;
+  align-items: space-around;
 
-  .card-top {
-    height: 15%;
+  .permit-sections {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+
+
+    .card-top {
+    // height: 15%;
     border-bottom: 0.5px solid $grey-light;
     padding-bottom: 8px;
   }
 
   .card-mid {
-    height: 150px;
+    height: 100%;
     border-bottom: 0.5px solid $grey-light;
     display: flex;
-    justify-content: center;
-    border: 1px solid $red;
+    justify-content: space-around;
+    // display: flex;
+    // justify-content: center;
     // align-items: center;
 
-    .permit-type-img {
-      width: 100px;
-      height: 100px;
-      opacity: 0.1;
-    }
-    .icons-container {
+    .permit-type-container {
       display: flex;
-      border: 1px solid $red;
-    }
-    .icon-status {
-      font-size: 24px;
-      border: 1px solid $red;
+      align-items: center;
+      justify-content: center;
+
+      .permit-type-img {
+        width: 100px;
+        height: 100px;
+        opacity: 0.1;
+      }
     }
 
-  .status-draft {
-    color: $status-draft;
-  }
-  .status-pending {
-    color: $status-pending;
-  }
-  .status-rejected {
-    color: $status-rejected;
-  }
-  .status-approved {
-    color: $status-approved;
-  }
-    .status-expired {
-    color: $status-expired;
-  }
-
-//   $status-draft: #0099ff;
-// $status-pending: #FFD633;
-// $status-rejected: #E67E22;
-// $status-approved: #00FDC8;
-// $status-expired: #f90606;
-
-    // .avatar-sml {
-    //   position: absolute;
-    //   top: 0;
-    //   right: 0;
-    // }
-    .img-tooltip {
-      // position: absolute;
-      font-size: 16px;
-        &:hover .tooltip-text{
-          position: absolute;
-          display: inline-block;
-        }
-    .tooltip-text {
-      display: none;
-      background-color: $emerald-dark;
-      color: #fff;
-      font-size: 10px;
-      text-align: center;
-      padding: 2px 4px;
-      z-index: 1;
-    }
-  }
 
   }
 
   .card-bottom {
-    height: 15%;
+    // height: 15%;
     padding-top: 8px;
   }
 
@@ -95,12 +61,62 @@
   h2 {
     font-size: 12px;
     font-weight: 700;
-    border: 1px solid $red;
   }
 
   p {
     font-size: 10px;
-    border: 1px solid $red;
   }
+
+  }
+
+
 }
+
+    .icons-container {
+      display: flex;
+      position: absolute;
+      top: 50px;
+      right: 4px;
+
+      .icon-status {
+      font-size: 24px;
+      margin-right: 4px;
+      margin-top: 2px;
+
+    }
+      .img-tooltip {
+        // position: absolute;
+        font-size: 16px;
+          &:hover .tooltip-text{
+            position: absolute;
+            display: inline-block;
+          }
+      .tooltip-text {
+        display: none;
+        background-color: $emerald-dark;
+        color: #fff;
+        font-size: 10px;
+        text-align: center;
+        // padding: 2px 4px;
+        z-index: 1;
+      }
+    }
+  }
+
+
+  .status-draft {
+    color: $status-draft;
+  }
+  .status-pending {
+    color: $status-pending;
+  }
+  .status-rejected {
+    color: $status-rejected;
+  }
+  .status-approved {
+    color: $status-approved;
+  }
+    .status-expired {
+    color: $status-expired;
+  }
 
