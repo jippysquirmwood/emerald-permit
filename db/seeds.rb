@@ -152,7 +152,7 @@ puts "30 random users created!"
 
 
 statuses = ["draft", "rejected", "pending approval", "approved", "expired"]
-permit_types = ["permit to dig", "permit to drill", "permit to penetrate", "permit to work at height", "permit to load", "confined space permit"]
+permit_types = ["permit to dig", "permit to drill", "permit to work at height", "permit to load", "confined space permit", "hot work permit"]
 levels = ["B02 - Basement 2", "B01 - Basement 1", "G01 - Ground", "L01 - Level 1", "L02 - Level 2", "L03 - Level 3", "R01 - Roof"]
 locations = ["west corridor", "toilet block", "staff accommodation room", "lobby", "drainage culvert"]
 project_id = "P257-COT"
