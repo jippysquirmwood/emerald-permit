@@ -1,0 +1,65 @@
+.permit-card {
+
+  .card-top {
+    height: 15%;
+    border-bottom: 0.5px solid $grey-light;
+    padding-bottom: 8px;
+  }
+
+  .card-mid {
+    height: 70%;
+    border-bottom: 0.5px solid $grey-light;
+    display: flex;
+
+    .icon-status {
+      color: $status-pending;
+      font-size: 24px;
+    }
+  }
+
+  .card-bottom {
+    height: 15%;
+  }
+
+  .charcoal {
+    color: $charcoal;
+  }
+
+  .grey-light {
+    color: $grey-light;
+  }
+
+  * {
+    margin: 0;
+  }
+
+  h2 {
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  p {
+    font-size: 10px;
+  }
+
+  .img-tooltip {
+  position: relative;
+  font-size: 16px;
+  width: 56px;
+    &:hover .tooltip-text{
+      display: block;
+    }
+    .tooltip-text {
+      display: none;
+      background-color: $emerald-dark;
+      color: #fff;
+      font-size: 10px;
+      text-align: center;
+      padding: 2px 4px;
+      position: absolute;
+      bottom: -22px;
+      z-index: 1;
+    }
+  }
+}
+
