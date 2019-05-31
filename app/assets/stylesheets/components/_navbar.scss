@@ -11,6 +11,12 @@
   height: 55px;
 }
 
+.navbar {
+  @media only screen and (max-width: 576px) {
+    flex-wrap: none !important;
+  }
+}
+
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
@@ -27,12 +33,19 @@
   padding-left: 15px;
   padding-right: 60px;
   background-color: $grey-lightest;
-  //gonzalo's styling
   position: relative;
   outline: none;
   &:hover {
   background-color: white;
   outline: none;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .input-medium {
+    padding-right: 0px;
+    margin-right: none;
+    width: 110px;
   }
 }
 

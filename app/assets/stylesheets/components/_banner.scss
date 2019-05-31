@@ -6,4 +6,17 @@
   background-position: center;
   display: flex;
   align-items: center;
+  padding-left: 110px;
+  // padding-top: 100px;
+  vertical-align: center;
+  @media only screen and (max-width: 576px) {
+    padding-left: 20px;
+  }
+
 }
+
+// @media only screen and (max-width: 600px) {
+//   obdy {
+//     background-color: lightblue;
+//   }
+// }
