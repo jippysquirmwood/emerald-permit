@@ -1,2 +1,77 @@
 // Import page-specific CSS files here.
 @import "home";
+@import "permits_show";
+@import "user-show";
+
+
+// top header and add new permit
+.top-index {
+  margin-top: 8vh;
+  margin-bottom: 2vh;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 0.5px solid $grey-light;
+}
+// cards div
+
+
+// cards in div
+.index-cards {
+  padding-bottom: 16px;
+  display: flex;
+  // justify-content: space-between;
+  flex: wrap;
+  align-items: flex-end;
+  position: relative;
+  a {
+    text-decoration: none !important;
+  }
+  overflow: scroll;
+}
+
+// individual cards
+.permit-card {
+  background-color: white;
+  padding: 10px;
+  margin-right: 10px;
+  width: 250px;
+}
+
+.btn-green {
+  background-color: $emerald-dark;
+  opacity: 0.85;
+  color: white;
+  &:hover {
+    opacity: 1;
+    color: white;
+  }
+}
+
+
+.btn-green2 {
+  background-color: $grey-lighter;
+  border-bottom: 2px solid rgba(27, 170, 111, .2);
+  color: $charcoal;
+  &:hover {
+    // background-color: $emerald-dark;
+    color: $charcoal;
+    border-bottom: 2px solid $emerald-dark;
+  }
+}
+
+.btn-green2 a {
+  text-decoration: none;
+  color: $charcoal;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+a {
+  h2 {
+  text-decoration: none !important;
+  }
+}
+

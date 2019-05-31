@@ -1,12 +1,46 @@
-<h2>Links</h2>
-<!-- todo - links -->
-<hr>
 
-<h2>Data</h2>
-<% @permits.each do |permit| %>
-  <% link_to permit_path(permit) do %>
-    <p><%= permit.title %></p>
+
+<div class="container col-11">
+  <% if params[:s] %>
+    <%= render 'shared/search_results' %>
   <% end %>
+  <!-- top header with add button -->
+  <%= render 'shared/index_top_section' %>
+
+  <!-- cards - DONE -->
+  <% if current_user.approver %>
+    <%= render 'shared/index_cards_approver' %>
+  <% elsif current_user.author %>
+    <%= render 'shared/index_cards_author' %>
+  <% elsif current_user.admin %>
+  <% else %>
+    <%= render 'shared/index_cards_worker' %>
+  <% end %>
+  <!-- table -->
+  <% if current_user.admin %>
+    <%= render 'shared/index_table_admin' %>
+  <% elsif current_user.author || current_user.approver %>
+    <%= render 'shared/index_table_auth_app.html.erb' %>
+  <% else %>
+    <%= render 'shared/index_table_worker.html.erb' %>
+  <% end %>
+</div>
+
+
+
+
+<!-- <h1>to approve</h1>
+<% @pending_permits.each do |permit| %>
+  <%= link_to permit.title, permit_path(permit) %>
+<% end %> -->
+
+<!--
+<h1>approved</h1>
+<% @approved_permits.each do |permit| %>
+  <%= link_to permit.title, permit_path(permit) %>
 <% end %>
 
-
+<h1>Rejected</h1>
+<% @rejected_permits.each do |permit| %>
+<%= link_to permit.title, permit_path(permit) %>
+<% end %> -->
