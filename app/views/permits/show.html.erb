@@ -164,21 +164,22 @@
   statusBar = document.querySelector(".status-container");
   icons = document.querySelectorAll("i");
 
-
   <% if @permit.status == "pending approval" %>
     progressOne.style.backgroundColor = "#1BAA6F";
-    icons[1].style.display = "none";
-    icons[3].style.display = "none";
+    icons.forEach(function(icon) {
+      icon.style.display = "none";
+    })
     icons[2].style.display = "block";
     icons[4].style.display = "block";
+    icons[6].style.display = "block";
   <% elsif @permit.status == "rejected" %>
     icons[3].style.color = "#E67E22";
   <% elsif @permit.status == "approved" %>
     progressOne.style.backgroundColor = "#1BAA6F";
     progressTwo.style.backgroundColor = "#1BAA6F";
-    icons[1].style.display = "none";
-    icons[3].style.display = "none";
-    icons[6].style.display = "none";
+    icons.forEach(function(icon) {
+      icon.style.display = "none";
+    })
     icons[2].style.display = "block";
     icons[5].style.display = "block";
     icons[7].style.display = "block";
@@ -186,8 +187,8 @@
     icons.forEach(function(icon) {
       icon.style.color = "#f90606";
     })
-    icons[0].style.display = "block";
     icons[1].style.display = "none";
+    icons[0].style.display = "block";
     progressOne.style.backgroundColor = "#f90606";
     progressTwo.style.backgroundColor = "#f90606";
     expired.style.display = "block";
