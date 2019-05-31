@@ -2,18 +2,27 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  &:hover {
+    border: 1px solid $emerald-bright;
+  }
 }
 
 .avatar-sml {
   width: 24px;
   height: 24px;
   border-radius: 50%;
+  &:hover {
+    border: 1px solid $emerald-bright;
+  }
 }
 
 .avatar-large {
   width: 56px;
   height: 56px;
   border-radius: 50%;
+  &:hover {
+    border: 1px solid $emerald-bright;
+  }
 }
 
 .avatar-bordered {
