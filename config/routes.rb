@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
+
   resources :permits do
     get "approve", to: "permits#approve"
     get "reject", to: "permits#reject"
+    get "request_approval", to: "permits#request_approval"
+    patch "submit_request", to: "permits#submit_request"
   end
   resources :users, except: [:index]
   get "dashboard", to: "permits#index"

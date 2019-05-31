@@ -84,15 +84,16 @@ class Permit < ApplicationRecord
   end
 
   def status_icon
-    if status == "draft"
+    statuses = perm_statuses
+    if status == statuses[0]
       icon = 'far fa-edit status-draft'
-    elsif status == "pending approval"
+    elsif status == statuses[1]
       icon = 'far fa-clock status-pending'
-    elsif status == "rejected"
+    elsif status == statuses[2]
       icon = 'fas fa-times status-rejected'
-    elsif status == "approved"
+    elsif status == statuses[3]
       icon = 'fas fa-check status-approved'
-    elsif status == "expired"
+    elsif status == statuses[4]
       icon = 'fas fa-exclamation status-expired'
     end
     icon
