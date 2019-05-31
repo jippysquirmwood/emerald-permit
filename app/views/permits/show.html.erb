@@ -1,5 +1,4 @@
 <!-- Left side of the show, with the Clickable Sections -->
-
 <div class="container" style="border: 2px solid $grey-lighter; padding: 0px; display: flex; min-height: 100vh;">
   <div class="section-container">
     <div class="section-item" data-id="1">Section 1 - Permit Details</div>
@@ -8,9 +7,7 @@
     <div class="section-item" data-id="4">Section 4 - Confirmation</div>
     <div class="section-item" data-id="5">Section 5 - Mechanical Dig</div>
   </div>
-
   <!-- Middle section with the permit info -->
-
   <div class="selected-container">
     <div class="selected-section show-section" data-id="1">
       <div class="container-permit-details">
@@ -37,7 +34,6 @@
       </div>
     </div>
 
-
     <div class="selected-section" data-id="2">
       <div class="container">
         <div class="excavation">
@@ -47,7 +43,6 @@
         </div>
       </div>
     </div>
-
 
     <div class="selected-section" data-id="3">
       <div class="container">
@@ -60,7 +55,6 @@
         </div>
       </div>
     </div>
-
 
     <div class="selected-section" data-id="4">
       <div class="container">
@@ -93,7 +87,6 @@
       </div>
     </div>
 
-
     <div class="selected-section" data-id="5">
       <div class="container">
         <div class="mechanical-dig">
@@ -106,10 +99,26 @@
       </div>
     </div>
   </div>
-
 <!-- Right side with button and user card -->
-
   <div class="action-btn-container">
+    <% if @permit.who_with == @permit.author %>
+        <% if @permit.author == current_user %>
+          <%= link_to 'Delete permit', permit_path(@permit), class: "approve-btn reject-btn", method: :delete, data: { confirm: "Deleting permit... Are you sure?" } %>
+          <%= link_to 'Edit permit', edit_permit_path(@permit) %>
+          <%= link_to 'Submit for Approval', permit_request_approval_path(@permit), method: :get %>
+        <% end %>
+        <%= link_to 'Back to Dashboard', permits_path %>
+    <% elsif @permit.who_with == @permit.approver %>
+      <% if @permit.author == current_user %>
+        <%= link_to 'recall approval request', permit_recall_path(@permit), method: :get, data: { confirm: "Are you sure you want to recall?" } %>
+      <% end %>
+    <% end %>
+
+
+
+
+
+
     <% if (@permit.status == "pending approval" && @permit.approver == current_user) %>
       <div class="container-btn-approval">
         <%= link_to 'Approve permit', permit_approve_path(@permit), class: "approve-btn"%>
@@ -169,7 +178,7 @@
       });
       if (selectedSection != deselectedSection) {
         selectedSection.classList.add("show-section");
-        deselectedSection.classList.remove("show-section");
+        deselectedSectiongi.classList.remove("show-section");
       }
     });
   });

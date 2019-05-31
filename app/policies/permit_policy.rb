@@ -37,6 +37,10 @@ class PermitPolicy < ApplicationPolicy
     request_approval?
   end
 
+  def recall?
+    request_approval?
+  end
+
   def approve?
     record.approver == user || user.admin
   end
