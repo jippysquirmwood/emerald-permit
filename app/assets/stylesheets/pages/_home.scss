@@ -1,8 +1,4 @@
-.banner {
-  padding-left: 110px;
-  // padding-top: 100px;
-  vertical-align: center;
-}
+
 #banner-head {
   color: white;
   font-weight: bold;
@@ -12,6 +8,9 @@
 }
 .p-container {
   width: 400px;
+  @media only screen and (max-width: 576px) {
+    width: 200px;
+  }
 }
 .home-body {
   display: flex;
@@ -30,6 +29,12 @@
 }
 .phone {
   height: 400px;
+  @media only screen and (max-width: 576px) {
+    display:none;
+  }
+  @media only screen and (max-width: 992px) {
+    display: none;
+  }
 }
 
 .header-b-text {
