@@ -1,1 +1,40 @@
-// Specific CSS for your home-page
+.banner {
+  padding-left: 110px;
+  // padding-top: 100px;
+  vertical-align: center;
+}
+#banner-head {
+  color: white;
+  font-weight: bold;
+}
+#banner-p {
+  color: white;
+}
+.p-container {
+  width: 400px;
+}
+.home-body {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+}
+.body-list {
+  list-style: none;
+  padding-left: 0;
+  p {
+    padding-bottom: 20px;
+  }
+  h2 {
+    padding-bottom: 20px;
+  }
+}
+.phone {
+  height: 400px;
+}
+
+.header-b-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+

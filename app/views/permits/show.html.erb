@@ -121,6 +121,10 @@
     <% if @permit.status == "draft" || @permit.status == "rejected" && @permit.author == current_user %>
       <%= link_to 'Delete permit', permit_path(@permit), class: "approve-btn reject-btn", method: :delete, data: { confirm: "Deleting permit... Are you sure?" } %>
     <% end %>
+    <% if @permit.who_with == current_user && @permit.author == current_user %>
+      <%= link_to 'Delete draft', permit_path(@permit), method: :delete, data: { confirm: "Deleting permit... Are you sure?" } %>
+        <%= link_to 'Submit for Approval', permit_request_approval_path(@permit), method: :get %>
+    <% end %>
     <div class="detail-card-permit">
       <div class="author-avatar">
         <img class="avatar" src= <%= @permit.author.avatar %> />
@@ -146,8 +150,6 @@
     </div>
   </div>
 </div>
-
-
 
 
 

@@ -1,6 +1,7 @@
 class PermitsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_permit, only: [:show, :destroy]
+  before_action :set_permit, only: [:show, :destroy, :approve, :reject, :edit, :update]
+  before_action :set_root_permit, only: [:request_approval, :submit_request]
 
   def index
     @permits = policy_scope(Permit)
@@ -38,12 +39,17 @@ class PermitsController < ApplicationController
     @approver = "#{@permit.approver_first_name.capitalize} #{@permit.approver_last_name.capitalize}"
   end
 
+  def new
+    @permit = Permit.new
+    authorize @permit
+    @approvers = User.all.where(approver: true)
+  end
+
   def create
     @permit = Permit.new(permit_params)
     @permit.author = current_user
-    @permit.status = "pending approval"
     authorize @permit
-    @permit.status = "draft" if params[:draft]
+    @permit.status = "draft"
     if @permit.save
       redirect_to dashboard_path
     else
@@ -51,46 +57,48 @@ class PermitsController < ApplicationController
     end
   end
 
-  def new
-    @permit = Permit.new
-    authorize @permit
-    @approvers = User.all.where(approver: true)
-  end
-
   def self.statuses
     stasuses = ["draft", "rejected", "pending approval", "approved", "expired"]
     stasuses
   end
 
+  def request_approval
+  end
+
+  def submit_request
+    if params[:submit]
+      @permit.status = "pending approval"
+      @permit.update_attributes(permit_params)
+    elsif params[:cancel]
+     @permit.status = "draft"
+    end
+    if @permit.save
+      redirect_to permit_path(@permit)
+    else
+      render :request_approval
+    end
+  end
+
   def approve
-    @permit = Permit.find(params[:permit_id])
-    authorize @permit
     @permit.status = "approved"
     @permit.save
     redirect_to dashboard_path
   end
 
   def reject
-    @permit = Permit.find(params[:permit_id])
-    authorize @permit
     @permit.status = "rejected"
     @permit.save
     redirect_to dashboard_path
   end
 
-  def update
-    @permit = Permit.find(params[:id])
-    authorize @permit
-    @permit.status = "pending approval"
-    @permit.save
-    redirect_to permit_path
-  end
-
   def edit
-    @permit = Permit.find(params[:id])
-    authorize @permit
   end
 
+  def update
+    @permit.update_attributes(permit_params)
+    @permit.save
+    redirect_to dashboard_path
+  end
 
   def destroy
     @permit.delete
@@ -101,6 +109,11 @@ class PermitsController < ApplicationController
 
   def set_permit
     @permit = Permit.find(params[:id])
+    authorize @permit
+  end
+
+  def set_root_permit
+    @permit = Permit.find(params[:permit_id])
     authorize @permit
   end
 

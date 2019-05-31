@@ -29,6 +29,14 @@ class PermitPolicy < ApplicationPolicy
     update?
   end
 
+  def request_approval?
+    record.author == user || user.admin
+  end
+
+  def submit_request?
+    request_approval?
+  end
+
   def approve?
     record.approver == user || user.admin
   end

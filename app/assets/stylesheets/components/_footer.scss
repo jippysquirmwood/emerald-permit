@@ -1,0 +1,15 @@
+.footer {
+  background: $charcoal;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  height: 180px;
+  padding: 0px 150px;
+  color: rgba(0,0,0,0.3);
+  margin-top: 20px;
+  p {
+    color: white;
+  }
+}
+
+
