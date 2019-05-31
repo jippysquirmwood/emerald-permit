@@ -1,26 +1,5 @@
 <%= render 'shared/status_bar' %>
 
-    <h4 id="headers-permit">Section 1 - Permit Details</h4>
-<div class="container-permit-details">
-  <div class="permit-details-left">
-    <p>Project <%= @permit.project_id %></p>
-    <p>number: <%= @permit.permit_number %></p>
-    <p>Start date: <%= @permit.start_date.strftime("%d-%m-%Y") %> at <%= @permit.start_date.strftime("%I:%M%p") %></p>
-    <p>Expiry date: <%= @permit.end_date.strftime("%d-%m-%Y") %> at <%= @permit.end_date.strftime("%I:%M%p") %></p>
-    <% if @permit.status == "draft" %>
-        <p><i><strong>DRAFT</strong></i></p>
-      <% elsif @permit.status == "pending approval" %>
-        <p>Awaiting approval from <strong><%= @approver %></strong></p>
-      <% elsif @permit.status == "approved" %>
-        <p>Approved by: <%= @approver %></p>
-      <% elsif @permit.status == "rejected" %>
-        <p>Permit rejected by: <%= @approver %></p>
-      <% elsif @permit.status == "expired" %>
-        <p><strong>Permit expired</strong></p>
-      <% end %>
-    </div>
-
-      <div class="permit-details-right">
 
 <!-- Left side of the show, with the Clickable Sections -->
 
@@ -211,15 +190,10 @@
     icons[1].style.display = "none";
     progressOne.style.backgroundColor = "#f90606";
     progressTwo.style.backgroundColor = "#f90606";
-    expired.style.display = "block"
-    statusBar.style.opacity = "0.3"
+    expired.style.display = "block";
+    statusBar.style.opacity = "0.3";
   <% end %>
 
-
-
-</script>
-
-<script>
   var sectionItems = document.querySelectorAll(".section-item");
   sectionItems.forEach((sectionItem) => {
     sectionItem.addEventListener("click", (event) => {
