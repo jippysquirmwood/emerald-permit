@@ -5,6 +5,29 @@ class Permit < ApplicationRecord
   include PgSearch
   multisearchable against: [:location, :level, :permit_number, :method_statement, :title, :author_last_name, :author_first_name, :approver_first_name, :approver_last_name, :author_email, :approver_email]
 
+  def perm_statuses
+    statuses = [
+      "draft",
+      "pending approval",
+      "rejected",
+      "approved",
+      "expired"
+    ]
+    statuses
+  end
+
+  def perm_types
+    permit_types = [
+      "permit to dig",
+      "permit to drill",
+      "permit to work at height",
+      "permit to load",
+      "confined space permit",
+      "hot work permit"
+    ]
+    permit_types
+  end
+
   def approver_first_name
     approver.present? ? approver.first_name : ""
   end
@@ -73,5 +96,17 @@ class Permit < ApplicationRecord
       icon = 'fas fa-exclamation status-expired'
     end
     icon
+  end
+
+  def who_with
+    statuses = perm_statuses
+    if status == statuses[0] || status == statuses[2] || status == statuses[3]
+      with_who = author
+    elsif status == statuses[1]
+      with_who = approver
+    else
+      with_who = nil
+    end
+    with_who
   end
 end
