@@ -2,7 +2,7 @@
 
 <div class="container" style="border: 2px solid $grey-lighter; padding: 0px; display: flex; min-height: 100vh;">
   <div class="section-container">
-    <div class="section-item" data-id="1">Section 1 - Permit Details</div>
+    <div class="section-item section-header-active" data-id="1">Section 1 - Permit Details</div>
     <div class="section-item" data-id="2">Section 2 - Excavation dimensions</div>
     <div class="section-item" data-id="3">Section 3 - Services located within the area</div>
     <div class="section-item" data-id="4">Section 4 - Confirmation</div>
@@ -127,7 +127,7 @@
     <% end %>
     <div class="detail-card-permit">
       <div class="author-avatar">
-        <img class="avatar" src= <%= @permit.author.avatar %> />
+        <img class="avatar permit-show" src= <%= @permit.author.avatar %> />
         <div class="author-name">
           <p>Author: <%= @permit.author.fullname %></p>
           <p>Role: <%= @permit.author.role %></p>
@@ -136,7 +136,7 @@
       <hr>
       <% if @permit.approver.present? %>
         <div class="approver-avatar">
-          <img class="avatar" src= <%= @permit.approver.avatar %> />
+          <img class="avatar permit-show" src= <%= @permit.approver.avatar %> />
           <div class="approver-name">
             <p>Approver: <%= @permit.approver.fullname %></p>
             <p>Role: <%= @permit.approver.role %></p>
@@ -158,6 +158,10 @@
   var sectionItems = document.querySelectorAll(".section-item");
   sectionItems.forEach((sectionItem) => {
     sectionItem.addEventListener("click", (event) => {
+      var deselectedSectionHeader = document.querySelector(".section-header-active");
+      var selectedSectionHeader = event.currentTarget;
+      deselectedSectionHeader.classList.remove("section-header-active");
+      selectedSectionHeader.classList.add("section-header-active");
       var sectionId = event.currentTarget.dataset.id
       var selectedSections = document.querySelectorAll(`div.selected-section`);
       var selectedSection;
