@@ -1,6 +1,31 @@
-
-
+<div class="section-menu">
     <h4 id="headers-permit">Section 1 - Permit Details</h4>
+    <h4 id="headers-permit">Section 2 - Excavation dimensions</h4>
+    <h4 id="headers-permit">Section 3 - Services located within the area</h4>
+    <h4 id="headers-permit">Section 4 - Confirmation</h4>
+    <h4 id="headers-permit">Section 5 - Mechanical Dig</h4>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="container-permit-details">
   <div class="permit-details-left">
     <p>Project <%= @permit.project_id %></p>
@@ -51,7 +76,6 @@
 
 <hr>
 
-    <h4 id="headers-permit">Section 2 - Excavation dimensions</h4>
 <div class="container">
   <div class="excavation">
     <p>xwidth: <%= @permit.xwidth %>mm</p>
@@ -62,7 +86,6 @@
 
 <hr>
 
-    <h4 id="headers-permit">Section 3 - Services located within the area</h4>
 <div class="container">
   <div class="excavation">
 
@@ -76,7 +99,6 @@
 
 <hr>
 
-    <h4 id="headers-permit">Section 4 - Confirmation</h4>
 <div class="container">
   <div class="excavation">
     <p>Cat Scanner model: <%= @permit.cat_scan_model %> | Serial number: <%= @permit.cat_scanner_serial %></p>
@@ -105,7 +127,6 @@
 </div>
 
 <hr>
-    <h4 id="headers-permit">Section 5 - Mechanical Dig</h4>
 <div class="container">
   <div class="excavation">
 
@@ -127,11 +148,11 @@
   </div>
 <% elsif (@permit.status == "rejected" || @permit.status == "draft") && (@permit.approver == current_user || @permit.author == current_user) %>
 <%# elsif (@permit.status == "rejected" && @permit.approver == current_user || @permit.author == current_user) %>
-  <%= link_to 'edit', edit_permit_path(@permit) %>
+  <%= link_to 'Edit', edit_permit_path(@permit) %>
 <% end %>
 
-<% if @permit.status == "draft" && @permit.author == current_user %>
-  <%= link_to 'Delete draft', permit_path(@permit), method: :delete, data: { confirm: "Deleting permit... Are you sure?" } %>
+<% if @permit.status == "draft" || @permit.status == "rejected" && @permit.author == current_user %>
+  <%= link_to 'Delete permit', permit_path(@permit), method: :delete, data: { confirm: "Deleting permit... Are you sure?" } %>
 <% end %>
 
 
