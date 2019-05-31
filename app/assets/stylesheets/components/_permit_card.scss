@@ -10,21 +10,16 @@
     position: relative;
     width: 100%;
 
-
     .card-top {
-    // height: 15%;
     border-bottom: 0.5px solid $grey-light;
     padding-bottom: 8px;
-  }
+    }
 
   .card-mid {
     height: 100%;
     border-bottom: 0.5px solid $grey-light;
     display: flex;
     justify-content: space-around;
-    // display: flex;
-    // justify-content: center;
-    // align-items: center;
 
     .permit-type-container {
       display: flex;
@@ -37,86 +32,86 @@
         opacity: 0.1;
       }
     }
-
-
   }
 
-  .card-bottom {
-    // height: 15%;
-    padding-top: 8px;
+    .card-bottom {
+      padding-top: 8px;
+    }
+
+    .charcoal {
+      color: $charcoal;
+    }
+
+    .grey-light {
+      color: $grey-light;
+    }
+
+    * {
+      margin: 0;
+    }
+
+    h2 {
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    p {
+      font-size: 10px;
+    }
   }
-
-  .charcoal {
-    color: $charcoal;
-  }
-
-  .grey-light {
-    color: $grey-light;
-  }
-
-  * {
-    margin: 0;
-  }
-
-  h2 {
-    font-size: 12px;
-    font-weight: 700;
-  }
-
-  p {
-    font-size: 10px;
-  }
-
-  }
-
-
 }
 
-    .icons-container {
-      display: flex;
-      position: absolute;
-      top: 50px;
-      right: 4px;
+.icons-container {
+  display: flex;
+  position: absolute;
+  top: 50px;
+  right: 4px;
 
-      .icon-status {
-      font-size: 24px;
-      margin-right: 4px;
-      margin-top: 2px;
+  span {
+    font-size: 10px;
+    padding-top: 7px;
+    padding-right: 3px;
+    text-decoration: none;
+  }
 
-    }
-      .img-tooltip {
-        // position: absolute;
-        font-size: 16px;
-          &:hover .tooltip-text{
-            position: absolute;
-            display: inline-block;
-          }
-      .tooltip-text {
-        display: none;
-        background-color: $emerald-dark;
-        color: #fff;
-        font-size: 10px;
-        text-align: center;
-        // padding: 2px 4px;
-        z-index: 1;
+  .icon-status {
+  font-size: 12px;
+  margin-right: 4px;
+  margin-top: 9px;
+  }
+
+  .img-tooltip {
+    // position: absolute;
+    font-size: 16px;
+      &:hover .tooltip-text{
+        position: absolute;
+        display: inline-block;
       }
+    .tooltip-text {
+      display: none;
+      background-color: $emerald-dark;
+      color: #fff;
+      font-size: 10px;
+      text-align: center;
+      // padding: 2px 4px;
+      z-index: 1;
     }
   }
+}
 
-
-  .status-draft {
-    color: $status-draft;
-  }
-  .status-pending {
-    color: $status-pending;
-  }
-  .status-rejected {
-    color: $status-rejected;
-  }
-  .status-approved {
-    color: $status-approved;
-  }
-    .status-expired {
-    color: $status-expired;
-  }
+.status-draft {
+  color: $status-draft;
+}
+.status-pending {
+  color: $status-pending;
+}
+.status-rejected {
+  color: $status-rejected;
+}
+.status-approved {
+  color: $status-approved;
+}
+  .status-expired {
+  color: $status-expired;
+}
 
