@@ -62,13 +62,19 @@
         </div>
       </div>
       <hr>
-      <div class="approver-avatar">
-        <img class="avatar" src= <%= @permit.approver.avatar %> />
-        <div class="approver-name">
-          <p>Approver: <%= @permit.approver.fullname %></p>
-          <p>Role: <%= @permit.approver.role %></p>
+      <% if @permit.approver.present? %>
+        <div class="approver-avatar">
+            <img class="avatar" src= <%= @permit.approver.avatar %> />
+          <div class="approver-name">
+            <p>Approver: <%= @permit.approver.fullname %></p>
+            <p>Role: <%= @permit.approver.role %></p>
+          </div>
         </div>
+      <% else %>
+      <div class="approver-avatar">
+        <p>Approver to be confirmed</p>
       </div>
+      <% end %>
     </div>
 
   </div>
@@ -132,7 +138,7 @@
 
     <% @permit.attributes.to_a[(25..33)].each do |ele| %>
       <% if ele[1] == true %>
-        <p><%= ele[0].gsub(/_/, " ").capitalize %> <i class="far fa-check-circle"></i></p>
+        <p class="tag"><%= ele[0].gsub(/_/, " ").capitalize %></p>
       <% end %>
     <% end %>
   </div>
