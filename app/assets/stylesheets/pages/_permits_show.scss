@@ -1,47 +1,77 @@
-.container-permit-details {
-  display: flex;
-  justify-content: space-around;
-}
+// Css for main section (Middle one) Section Show
 
-.permit-details-left {
-  padding: 15px;
-  margin-top: 20px;
-
-}
-
-.permit-details-right {
-  margin-top: 20px;
-  padding: 15px;
-}
-
-
-.permit-details {
-  // box-shadow: 0 0 5px rgba(0,0,0,0.2);
-  padding: 15px;
-  // text-align: center;
-}
-
-.excavation {
-  // box-shadow: 0 0 5px rgba(0,0,0,0.2);
+.mechanical-dig {
   padding: 15px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 40vw;
-  // text-align: center;
 }
 
 ul {
   list-style-type: none;
 }
 
+.section-item {
+   border: 1px solid $grey-lighter;
+   height: 15%;
+   background-color: $grey-lightest;
+}
+
+.container-permit-details {
+  border: 1px solid $grey-lighter;
+  height: 100vh;
+}
+
+.selected-container {
+  border: 1px solid $grey-lighter;
+  width: 60%;
+}
+
+.section-container {
+  border: 1px solid $grey-lighter;
+  width: 20%;
+}
+
+
+// Css for User card Approver and author
+
+.author-avatar, .approver-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 180px;
+  p {
+    margin-bottom: 0;
+    font-size: 12px
+  }
+}
+
+.detail-card-permit {
+  justify-content: center;
+  // padding: 15px 15px;
+  align-items: center;
+  background-color: $grey-lightest;
+  height: 100%;
+  margin-top: 100px;
+}
+
+// Css for BTN
+
+.action-btn-container {
+  background-color: $grey-lightest;
+  border: 1px solid $grey-lighter;
+  width: 20%;
+  a {
+    display: block;
+  }
+}
+
 .approve-btn {
   color: white;
   background-color: $emerald-dark;
   height: 30px;
-  // display: flex;
   float: top-left;
   padding: 8px;
-  border-radius: 2px;
   margin-bottom: 10px;
   &:hover {
     color: $charcoal;
@@ -52,44 +82,16 @@ ul {
   background-color: $red;
 }
 
-.detail-card-permit {
-  // margin: 30vw;
-  // height: 35vh;
-  // width: 40vh;
-  justify-content: center;
-  // border-radius: 3px;
-  padding: 15px 15px;
-  align-items: center;
-  background-color: $grey-lightest;
-  // box-shadow: 0px 0px 5px rgba(20,20,20,0.2);
+.edit-btn {
+  background-color: #EAD94C;
 }
 
-.author-avatar, .approver-avatar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 180px;
-  p {
-    margin-bottom: 0;
-    font-size: 12px
-  }
+// Css for javascript Section
+
+.selected-section {
+  display: none;
 }
 
-#headers-permit {
-  margin-left: 38px;
-  margin-top: 13px;
-  }
-
-  html {
-    background-color: $grey-lighter;
-  }
-// .user-details {
-//   img {
-//     height:75px;
-//     width:75px;
-//   }
-//   p {
-//     margin: 0;
-//   }
-// }
-// }
+.show-section {
+  display: block !important;
+}
