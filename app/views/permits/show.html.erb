@@ -136,8 +136,9 @@
   <%= link_to 'edit', edit_permit_path(@permit) %>
 <% end %>
 
-<% if @permit.status == "draft" && @permit.author == current_user %>
+<% if @permit.who_with == current_user && @permit.author == current_user %>
   <%= link_to 'Delete draft', permit_path(@permit), method: :delete, data: { confirm: "Deleting permit... Are you sure?" } %>
+    <%= link_to 'Submit for Approval', permit_request_approval_path(@permit), method: :get %>
 <% end %>
 
 

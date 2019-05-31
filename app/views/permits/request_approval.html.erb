@@ -1,0 +1,5 @@
+<%= simple_form_for @permit, url: permit_submit_request_path(@permit) do |f| %>
+  <%= f.input :approver_id, collection: User.where(approver: true), label_method: :fullname, default: @permit.approver %>
+  <%= f.button :submit, value: "Cancel", name: "cancel" %>
+  <%= f.button :submit, value: "Confirm & Submit", name: "submit" %>
+<% end %>
