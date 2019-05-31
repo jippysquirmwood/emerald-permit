@@ -1,6 +1,70 @@
+<div class="container" style="border: 1px solid black; padding: 0px; display: flex; min-height: 100vh;">
+  <div class="section-container" style="border: 1px solid black; width: 25%;">
+    <div class="section-item">Section 1 - Permit Details</div>
+    <div class="section-item">Section 2 - Excavation dimensions</div>
+    <div class="section-item">Section 3 - Services located within the area</div>
+    <div class="section-item">Section 4 - Confirmation</div>
+    <div class="section-item">Section 5 - Mechanical Dig</div>
+  </div>
+
+  <div class="selected-container" style="border: 1px solid black; width: 50%;">
+    <h1>Selected Section</h1>
+  </div>
+
+  <div class="action-btn-container" style="border: 1px solid black; width: 25%;">
+    <% if (@permit.status == "pending approval" && @permit.approver == current_user) %>
+      <div class="container-btn-approval">
+        <%= link_to 'Approve permit', permit_approve_path(@permit), class: "approve-btn"%>
+        <%= link_to 'Reject permit', permit_reject_path(@permit), class: "approve-btn reject-btn" %>
+      </div>
+    <% elsif (@permit.status == "rejected" || @permit.status == "draft") && (@permit.approver == current_user || @permit.author == current_user) %>
+      <%= link_to 'Edit', edit_permit_path(@permit) %>
+    <% end %>
+    <% if @permit.status == "draft" || @permit.status == "rejected" && @permit.author == current_user %>
+      <%= link_to 'Delete permit', permit_path(@permit), method: :delete, data: { confirm: "Deleting permit... Are you sure?" } %>
+    <% end %>
+    <div class="detail-card-permit" style= "height: 100%;">
+      <div class="author-avatar">
+        <img class="avatar" src= <%= @permit.author.avatar %> />
+        <div class="author-name">
+          <p>Author: <%= @permit.author.fullname %></p>
+          <p>Role: <%= @permit.author.role %></p>
+        </div>
+      </div>
+      <hr>
+      <% if @permit.approver.present? %>
+        <div class="approver-avatar">
+          <img class="avatar" src= <%= @permit.approver.avatar %> />
+          <div class="approver-name">
+            <p>Approver: <%= @permit.approver.fullname %></p>
+            <p>Role: <%= @permit.approver.role %></p>
+          </div>
+        </div>
+      <% else %>
+        <div class="approver-avatar">
+          <p>Approver to be confirmed</p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 
-    <h4 id="headers-permit">Section 1 - Permit Details</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <div class="container-permit-details">
   <div class="permit-details-left">
     <p>Project <%= @permit.project_id %></p>
@@ -28,36 +92,12 @@
         <p>Permit Type: <%= @permit.permit_type %></p>
       </div>
 
-    <div class="detail-card-permit" style= "height: 100%;">
-      <div class="author-avatar">
-        <img class="avatar" src= <%= @permit.author.avatar %> />
-        <div class="author-name">
-          <p>Author: <%= @permit.author.fullname %></p>
-          <p>Role: <%= @permit.author.role %></p>
-        </div>
-      </div>
-      <hr>
-      <% if @permit.approver.present? %>
-        <div class="approver-avatar">
-            <img class="avatar" src= <%= @permit.approver.avatar %> />
-          <div class="approver-name">
-            <p>Approver: <%= @permit.approver.fullname %></p>
-            <p>Role: <%= @permit.approver.role %></p>
-          </div>
-        </div>
-      <% else %>
-      <div class="approver-avatar">
-        <p>Approver to be confirmed</p>
-      </div>
-      <% end %>
-    </div>
 
   </div>
 </div>
 
 <hr>
 
-    <h4 id="headers-permit">Section 2 - Excavation dimensions</h4>
 <div class="container">
   <div class="excavation">
     <p>xwidth: <%= @permit.xwidth %>mm</p>
@@ -68,7 +108,6 @@
 
 <hr>
 
-    <h4 id="headers-permit">Section 3 - Services located within the area</h4>
 <div class="container">
   <div class="excavation">
 
@@ -82,7 +121,6 @@
 
 <hr>
 
-    <h4 id="headers-permit">Section 4 - Confirmation</h4>
 <div class="container">
   <div class="excavation">
     <p>Cat Scanner model: <%= @permit.cat_scan_model %> | Serial number: <%= @permit.cat_scanner_serial %></p>
@@ -111,7 +149,6 @@
 </div>
 
 <hr>
-    <h4 id="headers-permit">Section 5 - Mechanical Dig</h4>
 <div class="container">
   <div class="excavation">
 
