@@ -57,10 +57,14 @@
 
     <div class="selected-section" data-id="2">
       <div class="container">
-        <div class="excavation center-detail">
-          <p>xwidth: <%= @permit.xwidth %>mm</p>
-          <p>xdepth: <%= @permit.xdepth %>mm</p>
-          <p>xlength: <%= @permit.xlength %>m</p>
+        <div class="excavation center-detail move">
+          <div class="permit-images">
+            <%= image_tag("dimension.jpg") %>
+            <%= image_tag("dimension2.jpg") %>
+          </div>
+          <p class="width">xwidth: <strong><%= @permit.xwidth %>mm</strong></p>
+          <p class="depth">xdepth: <strong><%= @permit.xdepth %>mm</strong></p>
+          <p class="length">xlength: <strong><%= @permit.xlength %>m</strong></p>
         </div>
       </div>
     </div>
