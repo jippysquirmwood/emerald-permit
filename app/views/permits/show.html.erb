@@ -72,10 +72,10 @@
 
     <div class="selected-section" data-id="3">
       <div class="container">
-        <div class="excavation center-detail">
+        <div class="excavation center-detail mechanical-dig">
           <% @permit.attributes.to_a[(13..24)].each do |ele| %>
             <% if ele[1] == true %>
-              <p><%= ele[0].gsub(/_/, " ").capitalize %></p>
+              <p class="tag"><%= ele[0].gsub(/_/, " ").capitalize %></p>
             <% end %>
           <% end %>
         </div>
@@ -90,7 +90,11 @@
           <p> Serial number: <%= @permit.cat_scanner_serial %></p>
           <p>Genny model: <%= @permit.genny_model %></p>
           <p> Serial number: <%= @permit.genny_serial %></p>
-          <p>Operator: <%= @permit.cat_genny_operator %></p>
+          <% if @permit.cat_genny_operator.nil? %>
+            <p>Operator: TBC</p>
+          <% else %>
+            <p>Operator: <%= @permit.cat_genny_operator %></p>
+          <% end %>
           <p>Calibration expires: <%= @permit.calibration_expires.strftime("%d-%m-%Y") %></p>
           <p>Modes used:</p>
           <ul>
