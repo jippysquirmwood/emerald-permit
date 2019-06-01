@@ -28,20 +28,20 @@
          </tr>
        </thead>
         <tbody>
+        <div class="table-rows-each">
          <% @all_permits[0..4].each do |permit| %>
                <%= link_to permit_path(permit) do %>
-               <div class="table-rows-each">
-                 <td scope="row"> <%= permit.permit_number %></td>
-                 <td> <%= permit.title %> </td>
-                 <td> <%= permit.permit_type %> </td>
-                 <td> <%= permit.start_date %> </td>
-                 <td> <%= permit.end_date %> </td>
-                 <td> <%= permit.author.first_name[0] + " " + permit.author.last_name %> </td>
-                 <td> <%= permit.status %> </td>
-               </div>
+                 <td class="row-text" scope="row"> <%= permit.permit_number %></td>
+                 <td class="row-text"> <%= permit.title %> </td>
+                 <td class="row-text"> <%= permit.permit_type %> </td>
+                 <td> <%= permit.short_date(permit.start_date) %> </td>
+                 <td> <%= permit.short_date(permit.end_date) %> </td>
+                 <td class="row-text"> <%= permit.author.first_name[0] + " " + permit.author.last_name %> </td>
+                 <td class="row-text"> <%= permit.status %> </td>
                <% end %>
              </tr>
          <% end %>
+        </div>
           </div>
        </tbody>
      </table>
