@@ -4,7 +4,11 @@
   padding: 15px;
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+
+.center-detail {
   width: 40vw;
+  margin: 0 auto;
 }
 
 ul {
@@ -12,24 +16,36 @@ ul {
 }
 
 .section-item {
-   border-left: 1px solid $grey-lighter;
-   border-bottom: 1px solid $grey-lighter;
-   height: 15%;
+   border-bottom: 1px solid rgba(98,98,98,0.1);
+   height: 12%;
    background-color: $grey-lightest;
+   padding-top: 8px;
+  span {
+    margin-top: 8px;
+    font-size: 12px;
+  }
+  p {
+    margin-left: 8px;
+  }
+  &:hover {
+    border-left: 2px solid $emerald-bright;
+    background-color: white;
+    cursor: pointer;
+  }
 }
 
 .container-permit-details {
-  border: 1px solid $grey-lighter;
   height: 100vh;
+  border-top: none;
 }
 
 .selected-container {
-  border: 1px solid $grey-lighter;
   width: 60%;
 }
 
 .section-container {
   border: 1px solid $grey-lighter;
+  border-bottom: none;
   width: 20%;
 }
 
@@ -101,5 +117,6 @@ ul {
 }
 
 .section-header-active {
-  border-right: 2px solid $emerald-bright;
+  border-left: 2px solid $emerald-bright;
+  background-color: $grey-lighter;
 }

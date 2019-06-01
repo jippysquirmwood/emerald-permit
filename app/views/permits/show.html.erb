@@ -1,22 +1,21 @@
 <%= render 'shared/status_bar' %>
 
+<div class="container" style="border: 2px solid $grey-lighter; padding: 0px; display: flex; min-height: 100vh; margin-top: 75px;">
 
 <!-- Left side of the show, with the Clickable Sections -->
-
-<div class="container" style="border: 2px solid $grey-lighter; padding: 0px; display: flex; min-height: 100vh;">
   <div class="section-container">
-    <div class="section-item section-header-active" data-id="1">Section 1 - Permit Details</div>
-    <div class="section-item" data-id="2">Section 2 - Excavation dimensions</div>
-    <div class="section-item" data-id="3">Section 3 - Services located within the area</div>
-    <div class="section-item" data-id="4">Section 4 - Confirmation</div>
-    <div class="section-item" data-id="5">Section 5 - Mechanical Dig</div>
+    <div class="section-item section-header-active" data-id="1"><p><span>Section 1</span><br>Permit Details</p></div>
+    <div class="section-item" data-id="2"><p><span>Section 2</span><br>Excavation dimensions</p></div>
+    <div class="section-item" data-id="3"><p><span>Section 3</span><br>Services located in the area</p></div>
+    <div class="section-item" data-id="4"><p><span>Section 4</span><br>Confirmation</p></div>
+    <div class="section-item" data-id="5"><p><span>Section 5</span><br>Mechanical Dig</p></div>
   </div>
 
   <!-- Middle section with the permit info -->
 
   <div class="selected-container">
     <div class="selected-section show-section" data-id="1">
-      <div class="container-permit-details">
+      <div class="container-permit-details center-detail">
         <p>Project <%= @permit.project_id %></p>
         <p>number: <%= @permit.permit_number %></p>
         <p>Start date: <%= @permit.start_date.strftime("%d-%m-%Y") %> at <%= @permit.start_date.strftime("%I:%M%p") %></p>
@@ -44,7 +43,7 @@
 
     <div class="selected-section" data-id="2">
       <div class="container">
-        <div class="excavation">
+        <div class="excavation center-detail">
           <p>xwidth: <%= @permit.xwidth %>mm</p>
           <p>xdepth: <%= @permit.xdepth %>mm</p>
           <p>xlength: <%= @permit.xlength %>m</p>
@@ -55,7 +54,7 @@
 
     <div class="selected-section" data-id="3">
       <div class="container">
-        <div class="excavation">
+        <div class="excavation center-detail">
           <% @permit.attributes.to_a[(13..24)].each do |ele| %>
             <% if ele[1] == true %>
               <p><%= ele[0].gsub(/_/, " ").capitalize %></p>
@@ -68,7 +67,7 @@
 
     <div class="selected-section" data-id="4">
       <div class="container">
-        <div class="excavation">
+        <div class="excavation center-detail">
           <p>Cat Scanner model: <%= @permit.cat_scan_model %></p>
           <p> Serial number: <%= @permit.cat_scanner_serial %></p>
           <p>Genny model: <%= @permit.genny_model %></p>
@@ -100,7 +99,7 @@
 
     <div class="selected-section" data-id="5">
       <div class="container">
-        <div class="mechanical-dig">
+        <div class="mechanical-dig center-detail">
           <% @permit.attributes.to_a[(25..33)].each do |ele| %>
             <% if ele[1] == true %>
               <p class="tag"><%= ele[0].gsub(/_/, " ").capitalize %></p>
