@@ -8,14 +8,19 @@
 .top-index {
   margin-top: 8vh;
   margin-bottom: 2vh;
-
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   border-bottom: 0.5px solid $grey-light;
 }
-// cards div
 
+
+#permit-table {
+  @media only screen and (max-width: 576px) {
+    width: 100px;
+    overflow: auto;
+  }
+}
 
 // cards in div
 .index-cards {
@@ -47,6 +52,10 @@
     opacity: 1;
     color: white;
   }
+}
+
+.table-rows-each :hover {
+    background-color: white;
 }
 
 
