@@ -103,37 +103,20 @@
   <div class="action-btn-container">
     <% if @permit.who_with == @permit.author %>
         <% if @permit.author == current_user %>
-          <%= link_to 'Delete permit', permit_path(@permit), class: "approve-btn reject-btn", method: :delete, data: { confirm: "Deleting permit... Are you sure?" } %>
+          <%= link_to 'Delete permit', permit_path(@permit), method: :delete, data: { confirm: "Deleting permit... Are you sure?" } %>
           <%= link_to 'Edit permit', edit_permit_path(@permit) %>
           <%= link_to 'Submit for Approval', permit_request_approval_path(@permit), method: :get %>
         <% end %>
-        <%= link_to 'Back to Dashboard', permits_path %>
     <% elsif @permit.who_with == @permit.approver %>
       <% if @permit.author == current_user %>
         <%= link_to 'recall approval request', permit_recall_path(@permit), method: :get, data: { confirm: "Are you sure you want to recall?" } %>
+      <% elsif @permit.approver == current_user %>
+        <%= link_to 'Approve permit', permit_approve_path(@permit) %>
+        <%= link_to 'Reject permit', permit_reject_path(@permit)%>
       <% end %>
     <% end %>
+    <%= link_to 'Back to Dashboard', permits_path %>
 
-
-
-
-
-
-    <% if (@permit.status == "pending approval" && @permit.approver == current_user) %>
-      <div class="container-btn-approval">
-        <%= link_to 'Approve permit', permit_approve_path(@permit), class: "approve-btn"%>
-        <%= link_to 'Reject permit', permit_reject_path(@permit), class: "approve-btn reject-btn" %>
-      </div>
-    <% elsif (@permit.status == "rejected" || @permit.status == "draft") && (@permit.approver == current_user || @permit.author == current_user) %>
-      <%= link_to 'Edit permit', edit_permit_path(@permit), class: "approve-btn edit-btn" %>
-    <% end %>
-    <% if @permit.status == "draft" || @permit.status == "rejected" && @permit.author == current_user %>
-      <%= link_to 'Delete permit', permit_path(@permit), class: "approve-btn reject-btn", method: :delete, data: { confirm: "Deleting permit... Are you sure?" } %>
-    <% end %>
-    <% if @permit.who_with == current_user && @permit.author == current_user %>
-      <%= link_to 'Delete draft', permit_path(@permit), method: :delete, data: { confirm: "Deleting permit... Are you sure?" } %>
-        <%= link_to 'Submit for Approval', permit_request_approval_path(@permit), method: :get %>
-    <% end %>
     <div class="detail-card-permit">
       <div class="author-avatar">
         <img class="avatar" src= <%= @permit.author.avatar %> />
