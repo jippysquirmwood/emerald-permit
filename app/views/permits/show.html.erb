@@ -16,10 +16,12 @@
   <div class="selected-container">
     <div class="selected-section show-section" data-id="1">
       <div class="container-permit-details center-detail">
-        <p>Project <%= @permit.project_id %></p>
-        <p>number: <%= @permit.permit_number %></p>
-        <p>Start date: <%= @permit.start_date.strftime("%d-%m-%Y") %> at <%= @permit.start_date.strftime("%I:%M%p") %></p>
-        <p>Expiry date: <%= @permit.end_date.strftime("%d-%m-%Y") %> at <%= @permit.end_date.strftime("%I:%M%p") %></p>
+        <h2 class="center-text"><strong>Project <%= @permit.project_id %></strong></h2>
+        <p class="center-text"><%= @permit.permit_number %></p>
+        <div class="two-grid center-text">
+          <p><strong>Begins:</strong> <span class="begin"><%= @permit.start_date.strftime("%d-%m-%Y") %> <%= @permit.start_date.strftime("%I:%M%P") %></span></p> <p><strong>Expires:</strong> <span class="end"><%= @permit.end_date.strftime("%d-%m-%Y") %> at <%= @permit.end_date.strftime("%I:%M%P") %></span></p>
+        </div>
+          <p class="center-text">Expires in xxx days</p>
         <% if @permit.status == "draft" %>
           <p><i><strong>DRAFT</strong></i></p>
         <% elsif @permit.status == "pending approval" %>
@@ -28,8 +30,8 @@
           <p>Approved by: <%= @approver %></p>
         <% elsif @permit.status == "rejected" %>
           <p>Permit rejected by: <%= @approver %></p>
-        <% elsif @permit.status == "expired" %>
-          <p><strong>Permit expired</strong></p>
+        <%# elsif @permit.status == "expired" %>
+          <!-- <p><strong>Permit expired</strong></p> -->
         <% end %>
 
         <p>Permit title: <%= @permit.title %></p>

@@ -16,10 +16,10 @@ ul {
 }
 
 .section-item {
-   border-bottom: 1px solid rgba(98,98,98,0.1);
-   height: 12%;
-   background-color: $grey-lightest;
-   padding-top: 8px;
+  border-bottom: 1px solid rgba(98,98,98,0.1);
+  height: 12%;
+  background-color: $grey-lightest;
+  padding-top: 8px;
   span {
     margin-top: 8px;
     font-size: 12px;
@@ -35,8 +35,12 @@ ul {
 }
 
 .container-permit-details {
-  height: 100vh;
+  // margin-top: 24px;
+  line-height: 42px;
   border-top: none;
+  h2 {
+    margin-bottom: 16px;
+  }
 }
 
 .selected-container {
@@ -69,7 +73,6 @@ ul {
 
 .detail-card-permit {
   justify-content: center;
-  // padding: 15px 15px;
   align-items: center;
   height: 100%;
   margin-top: 100px;
@@ -119,4 +122,14 @@ ul {
 .section-header-active {
   border-left: 2px solid $emerald-bright;
   background-color: $grey-lighter;
+}
+
+.begin {
+  padding-bottom: 2px;
+  border-bottom: 1px solid $emerald-dark;
+}
+
+.end {
+  padding-bottom: 2px;
+  border-bottom: 1px solid #C52233;
 }
