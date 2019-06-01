@@ -22,24 +22,35 @@
           <p><strong>Begins:</strong> <span class="begin"><%= @permit.start_date.strftime("%d-%m-%Y") %> <%= @permit.start_date.strftime("%I:%M%P") %></span></p> <p><strong>Expires:</strong> <span class="end"><%= @permit.end_date.strftime("%d-%m-%Y") %> at <%= @permit.end_date.strftime("%I:%M%P") %></span></p>
         </div>
         <!-- To be deleted when js logic is made -->
-          <p class="center-text">Expires in xxx days</p>
+        <p class="center-text">Expires in xxx days</p>
         <% if @permit.status == "draft" %>
-          <p><i><strong>DRAFT</strong></i></p>
+          <p class="center-text status-show"><i><strong>DRAFT</strong></i></p>
         <% elsif @permit.status == "pending approval" %>
-          <p>Awaiting approval from <strong><%= @approver %></strong></p>
+          <p class="center-text status-show">Awaiting approval from <strong><%= @approver %></strong></p>
         <% elsif @permit.status == "approved" %>
-          <p>Approved by: <%= @approver %></p>
+          <p class="center-text status-show">Approved by: <strong><%= @approver %></strong></p>
         <% elsif @permit.status == "rejected" %>
-          <p>Permit rejected by: <%= @approver %></p>
+          <p class="center-text status-show">Permit rejected by: <strong><%= @approver %></strong></p>
         <%# elsif @permit.status == "expired" %>
           <!-- <p><strong>Permit expired</strong></p> -->
         <% end %>
 
-        <p>Permit title: <%= @permit.title %></p>
-        <p>Level : <%= @permit.level %></p>
-        <p>Location : <%= @permit.location %> </p>
-        <p>Method Statement: <%= @permit.method_statement %></p>
-        <p>Permit Type: <%= @permit.permit_type %></p>
+        <div class="details">
+          <div>
+            <p><strong>Permit title:</strong></p>
+            <p><strong>Level:</strong></p>
+            <p><strong>Location:</strong></p>
+            <p><strong>Method Statement:</strong></p>
+            <p><strong>Permit Type:</strong></p>
+          </div>
+          <div class="detail-info">
+            <p><%= @permit.title %></p>
+            <p><%= @permit.level %></p>
+            <p><%= @permit.location %></p>
+            <p><%= @permit.method_statement %></p>
+            <p><%= @permit.permit_type %></p>
+          </div>
+        </div>
       </div>
     </div>
 

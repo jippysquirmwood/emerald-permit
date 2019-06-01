@@ -133,3 +133,25 @@ ul {
   padding-bottom: 2px;
   border-bottom: 1px solid #C52233;
 }
+
+.status-show {
+  font-size: larger;
+  strong {
+    padding-bottom: 2px;
+    border-bottom: 1px solid #0099ff;
+  }
+}
+
+.details {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.detail-info {
+  margin-left: 20px;
+  text-align: right;
+}
