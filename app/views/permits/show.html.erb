@@ -85,35 +85,40 @@
 
     <div class="selected-section" data-id="4">
       <div class="container">
-        <div class="excavation center-detail">
-          <p>Cat Scanner model: <%= @permit.cat_scan_model %></p>
-          <p> Serial number: <%= @permit.cat_scanner_serial %></p>
-          <p>Genny model: <%= @permit.genny_model %></p>
-          <p> Serial number: <%= @permit.genny_serial %></p>
-          <% if @permit.cat_genny_operator.nil? %>
-            <p>Operator: TBC</p>
-          <% else %>
-            <p>Operator: <%= @permit.cat_genny_operator %></p>
-          <% end %>
-          <p>Calibration expires: <%= @permit.calibration_expires.strftime("%d-%m-%Y") %></p>
-          <p>Modes used:</p>
-          <ul>
+        <div class="excavation center-detail container-permit-details">
+
+
+          <div class="details">
+            <div>
+              <p><strong>Cat Scanner model:</strong></p>
+              <p><strong>Serial number:</strong></p>
+              <p><strong>Genny model:</strong></p>
+              <p><strong>Serial number:</strong></p>
+              <p><strong>Operator:</strong></p>
+            </div>
+            <div class="detail-info">
+              <p><%= @permit.cat_scan_model %></p>
+              <p><%= @permit.cat_scanner_serial %></p>
+              <p><%= @permit.genny_model %></p>
+              <p><%= @permit.genny_serial %></p>
+              <p><%= @permit.cat_genny_operator %></p>
+            </div>
+          </div>
+
+
+
+          <p class="center-text"><strong>Modes used:</strong></p>
+          <div class="mechanical-dig center-detail">
             <% if @permit.cat_mode_power == true %>
-              <li>Power <i class="far fa-check-circle"></i></li>
-            <% else %>
-              <li>Power <i class="far fa-times-circle"></i></li>
+              <p class="tag">Power</p>
             <% end %>
             <% if @permit.cat_mode_radio == true %>
-              <li>Radio <i class="far fa-check-circle"></i></li>
-            <% else %>
-              <li>Radio <i class="far fa-times-circle"></i></li>
+              <p class="tag">Radio</p>
             <% end %>
             <% if @permit.cat_mode_transmitter == true %>
-              <li>Transmitter <i class="far fa-check-circle"></i></li>
-            <% else %>
-              <li>Transmitter <i class="far fa-times-circle"></i></li>
+              <p class="tag">Transmitter</p>
             <% end %>
-          </ul>
+          </div>
         </div>
       </div>
     </div>
