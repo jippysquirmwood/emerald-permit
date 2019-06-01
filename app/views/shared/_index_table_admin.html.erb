@@ -11,34 +11,36 @@
     </div>
     <button class="btn btn-green2"><%= link_to "my drafts", dashboard_path(status: "draft", author_id: current_user.id) %></button>
   </div>
-  <table class="table table-hover" id="permit-table">
-    <thead>
-      <tr>
-        <th scope="col"># ID</th>
-        <th scope="col">title</th>
-        <th scope="col">type</th>
-        <th scope="col">start-date</th>
-        <th scope="col">exp-date</th>
-        <th scope="col">author</th>
-        <th scope="col">status</th>
-      </tr>
-    </thead>
-      <tbody>
-        <% @all_permits[0..4].each do |permit| %>
-            <tr>
-              <%= link_to permit_path(permit) do %>
-              <th scope="row"> <%= permit.permit_number %></th>
-              <td> <%= permit.title %> </td>
-              <td> <%= permit.permit_type %> </td>
-              <td> <%= permit.start_date %> </td>
-              <td> <%= permit.end_date %> </td>
-              <td> <%= permit.author.first_name[0] + " " + permit.author.last_name %> </td>
-              <td> <%= permit.status %> </td>
-              <% end %>
-            </tr>
-        <% end %>
-      </tbody>
-  </table>
+  <div style="overflow: scroll">
+    <table class="table table-hover" id="permit-table">
+      <thead>
+        <tr>
+          <th scope="col"># ID</th>
+          <th scope="col">title</th>
+          <th scope="col">type</th>
+          <th scope="col">start-date</th>
+          <th scope="col">exp-date</th>
+          <th scope="col">author</th>
+          <th scope="col">status</th>
+        </tr>
+      </thead>
+        <tbody>
+          <% @all_permits[0..4].each do |permit| %>
+              <tr>
+                <%= link_to permit_path(permit) do %>
+                <th scope="row"> <%= permit.permit_number %></th>
+                <td> <%= permit.title %> </td>
+                <td> <%= permit.permit_type %> </td>
+                <td> <%= permit.start_date %> </td>
+                <td> <%= permit.end_date %> </td>
+                <td> <%= permit.author.first_name[0] + " " + permit.author.last_name %> </td>
+                <td> <%= permit.status %> </td>
+                <% end %>
+              </tr>
+          <% end %>
+        </tbody>
+    </table>
+  </div>
   <div class="index-btm">
     <p>show more</p>
 </div>

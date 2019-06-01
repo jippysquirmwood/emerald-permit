@@ -12,4 +12,15 @@
   }
 }
 
+@media only screen and (max-width: 576px) {
+  .footer {
+    padding: 1px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  } .footer-contact {
+    display: none;
+  }
+}
+
 

@@ -1,5 +1,3 @@
-
-
 <div class="container col-11">
   <% if params[:s] %>
     <%= render 'shared/search_results' %>
@@ -26,7 +24,36 @@
   <% end %>
 </div>
 
+<script>
+const permits = document.querySelectorAll('.card-bottom');
+permits.forEach(permit => {
+  const text = permit.innerText.split(" ");
+  const startDate = text[1];
+  const startTime = text[2];
+  const endDate = text[4];
+  const endTime = text[5];
+  const dateMaker = (date, time) => {
+    const dateArr = date.split("-");
+    const hourArr = time.split(":");
+    const dateTime = {
+      day: parseInt(dateArr[0], 10),
+      month: parseInt(dateArr[1], 10) - 1,
+      year: parseInt(dateArr[2], 10),
+      hour: parseInt(hourArr[0], 10),
+      minutes: parseInt(hourArr[1], 10)
+    }
+    return dateTime;
+  }
+  let startDateObj = dateMaker(startDate, startTime);
+  let endDateObj = dateMaker(endDate, endTime);
 
+  // const startDateTime = new Date(startDateObj.year, startDateObj.month [, startDateObj.day [, startDateObj.hours [, startDateObj.minutes [, 0 [, 0]]]]]);
+  // const endDateTime = new Date(endDateObj.year, endDateObj.month [, endDateObj.day [, endDateObj.hours [, endDateObj.minutes [, 0 [, 0]]]]]);
+
+  // console.log(startDateTime);
+
+});
+</script>
 
 
 <!-- <h1>to approve</h1>

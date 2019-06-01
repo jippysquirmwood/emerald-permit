@@ -21,6 +21,7 @@
         <div class="two-grid center-text">
           <p><strong>Begins:</strong> <span class="begin"><%= @permit.start_date.strftime("%d-%m-%Y") %> <%= @permit.start_date.strftime("%I:%M%P") %></span></p> <p><strong>Expires:</strong> <span class="end"><%= @permit.end_date.strftime("%d-%m-%Y") %> at <%= @permit.end_date.strftime("%I:%M%P") %></span></p>
         </div>
+        <!-- To be deleted when js logic is made -->
           <p class="center-text">Expires in xxx days</p>
         <% if @permit.status == "draft" %>
           <p><i><strong>DRAFT</strong></i></p>
