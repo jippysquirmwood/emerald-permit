@@ -27,6 +27,32 @@
 </div>
 
 
+<script>
+const permits = document.querySelectorAll('.card-bottom');
+permits.forEach(permit => {
+  const text = permit.innerText.split(" ");
+  const startDate = text[1];
+  const startTime = text[2];
+  const endDate = text[4];
+  const endTime = text[5];
+  const dateMaker = (date, time) => {
+    const dateArr = date.split("-");
+    const hourArr = time.split(":");
+    const dateTime = {
+      day: parseInt(dateArr[0], 10),
+      month: parseInt(dateArr[1], 10),
+      year: parseInt(dateArr[2], 10),
+      hour: parseInt(hourArr[0], 10),
+      minutes: parseInt(hourArr[1], 10)
+    }
+  }
+  console.log(dateMaker(startDate, startTime));
+  console.log(dateMaker(endDate, endTime));
+
+  // const startDateTime = new Date(year, monthIndex [, day [, hours [, minutes [, seconds [, milliseconds]]]]]);
+
+});
+</script>
 
 
 <!-- <h1>to approve</h1>
