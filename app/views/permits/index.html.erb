@@ -40,16 +40,20 @@ permits.forEach(permit => {
     const hourArr = time.split(":");
     const dateTime = {
       day: parseInt(dateArr[0], 10),
-      month: parseInt(dateArr[1], 10),
+      month: parseInt(dateArr[1], 10) - 1,
       year: parseInt(dateArr[2], 10),
       hour: parseInt(hourArr[0], 10),
       minutes: parseInt(hourArr[1], 10)
     }
+    return dateTime;
   }
-  console.log(dateMaker(startDate, startTime));
-  console.log(dateMaker(endDate, endTime));
+  let startDateObj = dateMaker(startDate, startTime);
+  let endDateObj = dateMaker(endDate, endTime);
 
-  // const startDateTime = new Date(year, monthIndex [, day [, hours [, minutes [, seconds [, milliseconds]]]]]);
+  // const startDateTime = new Date(startDateObj.year, startDateObj.month [, startDateObj.day [, startDateObj.hours [, startDateObj.minutes [, 0 [, 0]]]]]);
+  // const endDateTime = new Date(endDateObj.year, endDateObj.month [, endDateObj.day [, endDateObj.hours [, endDateObj.minutes [, 0 [, 0]]]]]);
+
+  // console.log(startDateTime);
 
 });
 </script>
