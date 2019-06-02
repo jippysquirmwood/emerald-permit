@@ -101,7 +101,7 @@ class Permit < ApplicationRecord
 
   def who_with
     statuses = perm_statuses
-    if status == statuses[0] || status == statuses[2] || status == statuses[3]
+    if [statuses[0], statuses[2], statuses[3]].include?(status)
       with_who = author
     elsif status == statuses[1]
       with_who = approver

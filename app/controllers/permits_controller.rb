@@ -1,7 +1,7 @@
 class PermitsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_permit, only: [:show, :destroy, :approve, :reject, :edit, :update]
-  before_action :set_root_permit, only: [:request_approval, :submit_request]
+  before_action :set_root_permit, only: [:request_approval, :submit_request, :recall]
 
   def index
     @permits = policy_scope(Permit)
@@ -70,13 +70,19 @@ class PermitsController < ApplicationController
       @permit.status = "pending approval"
       @permit.update_attributes(permit_params)
     elsif params[:cancel]
-     @permit.status = "draft"
+      @permit.status = "draft"
     end
     if @permit.save
       redirect_to permit_path(@permit)
     else
       render :request_approval
     end
+  end
+
+  def recall
+    @permit.status = "draft"
+    @permit.save
+    redirect_to dashboard_path
   end
 
   def approve

@@ -1,49 +1,70 @@
-<!-- Left side of the show, with the Clickable Sections -->
+<%= render 'shared/status_bar' %>
 
-<div class="container" style="border: 2px solid $grey-lighter; padding: 0px; display: flex; min-height: 100vh;">
+<div class="container" style="border: 2px solid $grey-lighter; padding: 0px; display: flex; min-height: 100vh; margin-top: 75px;">
+
+<!-- Left side of the show, with the Clickable Sections -->
   <div class="section-container">
-    <div class="section-item section-header-active" data-id="1">Section 1 - Permit Details</div>
-    <div class="section-item" data-id="2">Section 2 - Excavation dimensions</div>
-    <div class="section-item" data-id="3">Section 3 - Services located within the area</div>
-    <div class="section-item" data-id="4">Section 4 - Confirmation</div>
-    <div class="section-item" data-id="5">Section 5 - Mechanical Dig</div>
+    <div class="section-item section-header-active" data-id="1"><p><span>Section 1</span><br>Permit Details</p></div>
+    <div class="section-item" data-id="2"><p><span>Section 2</span><br>Excavation dimensions</p></div>
+    <div class="section-item" data-id="3"><p><span>Section 3</span><br>Services located in the area</p></div>
+    <div class="section-item" data-id="4"><p><span>Section 4</span><br>Confirmation</p></div>
+    <div class="section-item" data-id="5"><p><span>Section 5</span><br>Mechanical Dig</p></div>
   </div>
 
   <!-- Middle section with the permit info -->
 
   <div class="selected-container">
     <div class="selected-section show-section" data-id="1">
-      <div class="container-permit-details">
-        <p>Project <%= @permit.project_id %></p>
-        <p>number: <%= @permit.permit_number %></p>
-        <p>Start date: <%= @permit.start_date.strftime("%d-%m-%Y") %> at <%= @permit.start_date.strftime("%I:%M%p") %></p>
-        <p>Expiry date: <%= @permit.end_date.strftime("%d-%m-%Y") %> at <%= @permit.end_date.strftime("%I:%M%p") %></p>
+      <div class="container-permit-details center-detail">
+        <h2 class="center-text"><strong>Project <%= @permit.project_id %></strong></h2>
+        <p class="center-text"><%= @permit.permit_number %></p>
+        <div class="two-grid center-text">
+          <p><strong>Begins:</strong> <span class="begin"><%= @permit.start_date.strftime("%d-%m-%Y") %> <%= @permit.start_date.strftime("%I:%M%P") %></span></p> <p><strong>Expires:</strong> <span class="end"><%= @permit.end_date.strftime("%d-%m-%Y") %> at <%= @permit.end_date.strftime("%I:%M%P") %></span></p>
+        </div>
+        <!-- To be deleted when js logic is made -->
+        <p class="center-text">Expires in xxx days</p>
         <% if @permit.status == "draft" %>
-          <p><i><strong>DRAFT</strong></i></p>
+          <p class="center-text status-show"><i><strong>DRAFT</strong></i></p>
         <% elsif @permit.status == "pending approval" %>
-          <p>Awaiting approval from <strong><%= @approver %></strong></p>
+          <p class="center-text status-show">Awaiting approval from <strong><%= @approver %></strong></p>
         <% elsif @permit.status == "approved" %>
-          <p>Approved by: <%= @approver %></p>
+          <p class="center-text status-show">Approved by: <strong><%= @approver %></strong></p>
         <% elsif @permit.status == "rejected" %>
-          <p>Permit rejected by: <%= @approver %></p>
-        <% elsif @permit.status == "expired" %>
-          <p><strong>Permit expired</strong></p>
+          <p class="center-text status-show">Permit rejected by: <strong><%= @approver %></strong></p>
+        <%# elsif @permit.status == "expired" %>
+          <!-- <p><strong>Permit expired</strong></p> -->
         <% end %>
-        <p>Permit title: <%= @permit.title %></p>
-        <p>Level : <%= @permit.level %></p>
-        <p>Location : <%= @permit.location %> </p>
-        <p>Method Statement: <%= @permit.method_statement %></p>
-        <p>Permit Type: <%= @permit.permit_type %></p>
+
+        <div class="details">
+          <div>
+            <p><strong>Permit title:</strong></p>
+            <p><strong>Level:</strong></p>
+            <p><strong>Location:</strong></p>
+            <p><strong>Method Statement:</strong></p>
+            <p><strong>Permit Type:</strong></p>
+          </div>
+          <div class="detail-info">
+            <p><%= @permit.title %></p>
+            <p><%= @permit.level %></p>
+            <p><%= @permit.location %></p>
+            <p><%= @permit.method_statement %></p>
+            <p><%= @permit.permit_type %></p>
+          </div>
+        </div>
       </div>
     </div>
 
 
     <div class="selected-section" data-id="2">
       <div class="container">
-        <div class="excavation">
-          <p>xwidth: <%= @permit.xwidth %>mm</p>
-          <p>xdepth: <%= @permit.xdepth %>mm</p>
-          <p>xlength: <%= @permit.xlength %>m</p>
+        <div class="excavation center-detail move">
+          <div class="permit-images">
+            <%= image_tag("dimension.jpg") %>
+            <%= image_tag("dimension2.jpg") %>
+          </div>
+          <p class="width">xwidth: <strong><%= @permit.xwidth %>mm</strong></p>
+          <p class="depth">xdepth: <strong><%= @permit.xdepth %>mm</strong></p>
+          <p class="length">xlength: <strong><%= @permit.xlength %>m</strong></p>
         </div>
       </div>
     </div>
@@ -51,10 +72,10 @@
 
     <div class="selected-section" data-id="3">
       <div class="container">
-        <div class="excavation">
+        <div class="excavation center-detail mechanical-dig">
           <% @permit.attributes.to_a[(13..24)].each do |ele| %>
             <% if ele[1] == true %>
-              <p><%= ele[0].gsub(/_/, " ").capitalize %></p>
+              <p class="tag"><%= ele[0].gsub(/_/, " ").capitalize %></p>
             <% end %>
           <% end %>
         </div>
@@ -64,31 +85,40 @@
 
     <div class="selected-section" data-id="4">
       <div class="container">
-        <div class="excavation">
-          <p>Cat Scanner model: <%= @permit.cat_scan_model %></p>
-          <p> Serial number: <%= @permit.cat_scanner_serial %></p>
-          <p>Genny model: <%= @permit.genny_model %></p>
-          <p> Serial number: <%= @permit.genny_serial %></p>
-          <p>Operator: <%= @permit.cat_genny_operator %></p>
-          <p>Calibration expires: <%= @permit.calibration_expires.strftime("%d-%m-%Y") %></p>
-          <p>Modes used:</p>
-          <ul>
+        <div class="excavation center-detail container-permit-details">
+
+
+          <div class="details">
+            <div>
+              <p><strong>Cat Scanner model:</strong></p>
+              <p><strong>Serial number:</strong></p>
+              <p><strong>Genny model:</strong></p>
+              <p><strong>Serial number:</strong></p>
+              <p><strong>Operator:</strong></p>
+            </div>
+            <div class="detail-info">
+              <p><%= @permit.cat_scan_model %></p>
+              <p><%= @permit.cat_scanner_serial %></p>
+              <p><%= @permit.genny_model %></p>
+              <p><%= @permit.genny_serial %></p>
+              <p><%= @permit.cat_genny_operator %></p>
+            </div>
+          </div>
+
+
+
+          <p class="center-text"><strong>Modes used:</strong></p>
+          <div class="mechanical-dig center-detail">
             <% if @permit.cat_mode_power == true %>
-              <li>Power <i class="far fa-check-circle"></i></li>
-            <% else %>
-              <li>Power <i class="far fa-times-circle"></i></li>
+              <p class="tag">Power</p>
             <% end %>
             <% if @permit.cat_mode_radio == true %>
-              <li>Radio <i class="far fa-check-circle"></i></li>
-            <% else %>
-              <li>Radio <i class="far fa-times-circle"></i></li>
+              <p class="tag">Radio</p>
             <% end %>
             <% if @permit.cat_mode_transmitter == true %>
-              <li>Transmitter <i class="far fa-check-circle"></i></li>
-            <% else %>
-              <li>Transmitter <i class="far fa-times-circle"></i></li>
+              <p class="tag">Transmitter</p>
             <% end %>
-          </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -96,7 +126,7 @@
 
     <div class="selected-section" data-id="5">
       <div class="container">
-        <div class="mechanical-dig">
+        <div class="mechanical-dig center-detail">
           <% @permit.attributes.to_a[(25..33)].each do |ele| %>
             <% if ele[1] == true %>
               <p class="tag"><%= ele[0].gsub(/_/, " ").capitalize %></p>
@@ -153,8 +183,44 @@
 
 
 
-
 <script>
+  progressOne = document.getElementById("progress-one");
+  progressTwo = document.getElementById("progress-two");
+  expired = document.getElementById("expired-banner");
+  statusBar = document.querySelector(".status-container");
+  icons = document.querySelectorAll("i");
+
+  <% if @permit.status == "pending approval" %>
+    progressOne.style.backgroundColor = "#1BAA6F";
+    icons.forEach(function(icon) {
+      icon.style.display = "none";
+    })
+    icons[2].style.display = "block";
+    icons[4].style.display = "block";
+    icons[6].style.display = "block";
+  <% elsif @permit.status == "rejected" %>
+    icons[3].style.color = "#E67E22";
+  <% elsif @permit.status == "approved" %>
+    progressOne.style.backgroundColor = "#1BAA6F";
+    progressTwo.style.backgroundColor = "#1BAA6F";
+    icons.forEach(function(icon) {
+      icon.style.display = "none";
+    })
+    icons[2].style.display = "block";
+    icons[5].style.display = "block";
+    icons[7].style.display = "block";
+  <% elsif @permit.status == "expired" %>
+    icons.forEach(function(icon) {
+      icon.style.color = "#f90606";
+    })
+    icons[1].style.display = "none";
+    icons[0].style.display = "block";
+    progressOne.style.backgroundColor = "#f90606";
+    progressTwo.style.backgroundColor = "#f90606";
+    expired.style.display = "block";
+    statusBar.style.opacity = "0.3";
+  <% end %>
+
   var sectionItems = document.querySelectorAll(".section-item");
   sectionItems.forEach((sectionItem) => {
     sectionItem.addEventListener("click", (event) => {

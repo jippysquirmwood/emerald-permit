@@ -84,3 +84,14 @@ a {
   }
 }
 
+// centering text
+.center-text {
+  text-align: center;
+}
+
+// side by side grid
+.two-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+}

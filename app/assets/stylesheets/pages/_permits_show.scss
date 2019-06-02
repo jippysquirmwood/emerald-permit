@@ -4,7 +4,11 @@
   padding: 15px;
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+
+.center-detail {
   width: 40vw;
+  margin: 0 auto;
 }
 
 ul {
@@ -12,24 +16,41 @@ ul {
 }
 
 .section-item {
-   border-left: 1px solid $grey-lighter;
-   border-bottom: 1px solid $grey-lighter;
-   height: 15%;
-   background-color: $grey-lightest;
+  border-bottom: 1px solid rgba(98,98,98,0.1);
+  height: 12%;
+  background-color: $grey-lightest;
+  padding-top: 8px;
+  transition: 0.3s;
+  span {
+    margin-top: 8px;
+    font-size: 12px;
+  }
+  p {
+    margin-left: 8px;
+  }
+  &:hover {
+    border-left: 2px solid $emerald-bright;
+    background-color: white;
+    cursor: pointer;
+  }
 }
 
 .container-permit-details {
-  border: 1px solid $grey-lighter;
-  height: 100vh;
+  // margin-top: 24px;
+  line-height: 42px;
+  border-top: none;
+  h2 {
+    margin-bottom: 16px;
+  }
 }
 
 .selected-container {
-  border: 1px solid $grey-lighter;
   width: 60%;
 }
 
 .section-container {
   border: 1px solid $grey-lighter;
+  border-bottom: none;
   width: 20%;
 }
 
@@ -53,7 +74,6 @@ ul {
 
 .detail-card-permit {
   justify-content: center;
-  // padding: 15px 15px;
   align-items: center;
   height: 100%;
   margin-top: 100px;
@@ -101,5 +121,65 @@ ul {
 }
 
 .section-header-active {
-  border-right: 2px solid $emerald-bright;
+  border-left: 2px solid $emerald-bright;
+  background-color: $grey-lighter;
+}
+
+.begin {
+  padding-bottom: 2px;
+  border-bottom: 1px solid $emerald-dark;
+}
+
+.end {
+  padding-bottom: 2px;
+  border-bottom: 1px solid #C52233;
+}
+
+.status-show {
+  font-size: larger;
+  strong {
+    padding-bottom: 2px;
+    border-bottom: 1px solid #0099ff;
+  }
+}
+
+.details {
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-between;
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.detail-info {
+  margin-left: 20px;
+  text-align: right;
+}
+
+.permit-images {
+  margin-top: 100px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.move {
+  position: relative;
+  margin-right: 60px;
+  p {
+    position: absolute;
+    font-size: smaller;
+  }
+  .width {
+    top: 16px;
+    left: 60px;
+  }
+  .depth {
+    top: 35px;
+    left: 245px;
+  }
+  .length {
+    top: 70px;
+    right: -15px;
+  }
 }
