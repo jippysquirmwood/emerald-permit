@@ -140,23 +140,23 @@
 <!-- Right side with button and user card -->
 
   <div class="action-btn-container">
-    <%= link_to 'back to dashboard', permits_path %>
+    <%= link_to 'back to dashboard', permits_path, class: "dashboard-btn" %>
     <% if @permit.who_with == @permit.author %>
-        <% if @permit.author == current_user %>
-          <% if @permit.status != "approved"  %>
-            <%= link_to 'submit for approval', permit_request_approval_path(@permit), method: :get %>
+            <% if @permit.author == current_user %>
+              <% if @permit.status != "approved"  %>
+                <%= link_to 'submit for approval', permit_request_approval_path(@permit), method: :get, class: "approve-btn" %>
+              <% end %>
+                <%= link_to 'delete permit', permit_path(@permit), method: :delete, data: { confirm: "deleting permit... are you sure?" }, class: "reject-btn" %>
+                <%= link_to 'edit permit', edit_permit_path(@permit), class: "edit-btn" %>
+            <% end %>
+        <% elsif @permit.who_with == @permit.approver %>
+          <% if @permit.author == current_user %>
+            <%= link_to 'withdraw approval request', permit_recall_path(@permit), method: :get, data: { confirm: "Are you sure you want to recall?" }, class: "reject-btn" %>
+          <% elsif @permit.approver == current_user %>
+            <%= link_to 'approve', permit_approve_path(@permit), class: "approve-btn" %>
+            <%= link_to 'reject', permit_reject_path(@permit), class: "reject-btn" %>
           <% end %>
-            <%= link_to 'delete permit', permit_path(@permit), method: :delete, data: { confirm: "deleting permit... are you sure?" } %>
-            <%= link_to 'edit permit', edit_permit_path(@permit) %>
         <% end %>
-    <% elsif @permit.who_with == @permit.approver %>
-      <% if @permit.author == current_user %>
-        <%= link_to 'withdraw approval request', permit_recall_path(@permit), method: :get, data: { confirm: "Are you sure you want to recall?" } %>
-      <% elsif @permit.approver == current_user %>
-        <%= link_to 'approve', permit_approve_path(@permit) %>
-        <%= link_to 'reject', permit_reject_path(@permit)%>
-      <% end %>
-    <% end %>
 
     <div class="detail-card-permit">
       <div class="author-avatar">

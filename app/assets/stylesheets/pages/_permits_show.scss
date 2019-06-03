@@ -85,30 +85,56 @@ ul {
   background-color: $grey-lightest;
   border: 1px solid $grey-lighter;
   width: 20%;
+  border-bottom: none;
   a {
     display: block;
+    margin-bottom: 5px;
   }
 }
 
 .approve-btn {
-  color: white;
-  background-color: $emerald-dark;
-  height: 30px;
-  float: top-left;
-  padding: 8px;
-  margin-bottom: 10px;
+  color: $emerald-dark;
+  border: 1px solid $emerald-dark;
+  text-align: center;
   &:hover {
     color: $charcoal;
   }
 }
 
 .reject-btn {
-  background-color: $red;
+  background-color: transparent;
+  color: #e41749;
+  border: 1px solid #e41749;
+  text-align: center;
+  &:hover {
+    color: white;
+    background-color: #e41749;
+    transition: 0.2s;
+    text-decoration: none;
+    padding: 8px;
+  }
 }
 
 .edit-btn {
-  background-color: #EAD94C;
+  background-color: transparent;
+  color: #fcd307;
+  border: 1px solid #fcd307;
+  text-align: center;
+  &:hover {
+    color: $charcoal;
+  }
 }
+
+.dashboard-btn {
+  text-align: center;
+  color: white;
+  background-color: $emerald-dark;
+
+  &:hover {
+    color: $charcoal;
+  }
+}
+
 
 // Css for javascript Section
 
