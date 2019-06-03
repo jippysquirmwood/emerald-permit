@@ -73,7 +73,7 @@ Permit.destroy_all
 puts 'Creating first 4 users...'
 users_attributes = [
   {
-    email: "paulo@gmail.com",
+    email: "anthony.wilder@emerald.com",
     first_name: "Paulo",
     last_name: "Di canio",
     password: "123456",
@@ -210,13 +210,13 @@ puts 'Creating permits...'
     }
   )
 
-  dates = [Time.now - 1.day, Time.now + 2.day, Time.now + 1.day, Time.now + 12.hour, Time.now + 2.hour, Time.now + 40.minutes]
+  # dates = [Time.now - 1.day, Time.now + 2.day, Time.now + 1.day, Time.now + 12.hour, Time.now + 2.hour, Time.now + 40.minutes]
 
-  5.times do
-      Permit.create! {
-        status: "draft"
-      }
-  end
+  # 5.times do
+  #     Permit.create! {
+  #       status: "draft"
+  #     }
+  # end
 end
 puts "Permits created"
 puts 'Finished!'
