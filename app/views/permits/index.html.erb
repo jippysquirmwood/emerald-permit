@@ -26,65 +26,7 @@
   <% end %>
 </div>
 
-<script>
-
-const dateMaker = (date, time) => {
-  const dateArr = date.split("-");
-  const hourArr = time.split(":");
-  const d = {
-    day: parseInt(dateArr[0], 10),
-    month: parseInt(dateArr[1], 10) - 1,
-    year: parseInt(dateArr[2], 10) + 2000,
-    hour: parseInt(hourArr[0], 10),
-    minutes: parseInt(hourArr[1], 10)
-  }
-  return new Date(d.year, d.month, d.day, d.hour, d.minutes)
-};
-
-const validity = (startDate, endDate) => {
-  let now = new Date();
-  const diffEnd = endDate - now;
-  const diffStart = 1;
-  const minute = 1000 * 60;
-  const hour = minute * 60;
-  const day = hour * 24;
-  const diff_mins = Math.floor(diffEnd / minute);
-  const diff_hrs = Math.floor(diffEnd / hour);
-  const diff_days = Math.floor(diffEnd / day);
-  if (now > endDate) {
-    console.log("expired");
-  }
-  else if (now >= startDate) {
-    if (diff > day){
-      console.log(`valid, expires in ${diff_days}d ${diff_hrs - diff_days * 24}h`);
-    }
-    else if (diff > hour) {
-      console.log(`valid, expires in ${diff_hrs}h ${diff_mins - diff_hrs * 60}m`);
-    }
-    else {
-      console.log(`valid, expires in ${diff_mins}m`);
-    }
-  }
-  else {
-    console.log("not yet valid", now - endDate)
-  }
-};
-
-setInterval(function(){
-  const permits = document.querySelectorAll('.card-bottom');
-  permits.forEach(permit => {
-    const text = permit.innerText.split(" ");
-    const startDate = text[1];
-    const startTime = text[2];
-    const endDate = text[4];
-    const endTime = text[5];
-    const start = dateMaker(startDate, startTime);
-    const end = dateMaker(endDate, endTime);
-    validity(start, new Date(2019, 5, 1, 16, 0, 0, 0));
-  });
-  }, 3000);
-
-</script>
+<%= javascript_pack_tag "validity" %>
 
 
 <!-- <h1>to approve</h1>

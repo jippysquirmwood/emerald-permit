@@ -73,7 +73,7 @@ Permit.destroy_all
 puts 'Creating first 4 users...'
 users_attributes = [
   {
-    email: "paulo@gmail.com",
+    email: "anthony.wilder@emerald.com",
     first_name: "Paulo",
     last_name: "Di canio",
     password: "123456",
@@ -176,8 +176,8 @@ puts 'Creating permits...'
       permit_number: project_id + "-CIV-PERM-00" + permit_numbers.sample.to_s + rand(9).to_s,
       method_statement: project_id + "-WPP-CS-000462/493",
       xwidth: (0..10000).step(25).to_a.sample,
-      xlength: (0.5..50.0).step(0.1).to_a.sample,
-      xdepth: (0..10000).step(25).to_a.sample,
+      xlength: (0.5..50.0).step(0.1).to_a.sample.to_i,
+      xdepth: (0..10000).step(25).to_a.sample.to_i,
       gas: booleans.sample,
       fibre_optic: booleans.sample,
       water: booleans.sample,
@@ -209,6 +209,14 @@ puts 'Creating permits...'
       title: titles.sample
     }
   )
+
+  # dates = [Time.now - 1.day, Time.now + 2.day, Time.now + 1.day, Time.now + 12.hour, Time.now + 2.hour, Time.now + 40.minutes]
+
+  # 5.times do
+  #     Permit.create! {
+  #       status: "draft"
+  #     }
+  # end
 end
 puts "Permits created"
 puts 'Finished!'
