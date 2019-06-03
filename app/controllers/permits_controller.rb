@@ -1,7 +1,7 @@
 class PermitsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_permit, only: [:show, :destroy, :approve, :reject, :edit, :update]
-  before_action :set_root_permit, only: [:request_approval, :submit_request, :recall]
+  before_action :set_permit, only: [:show, :destroy, :edit, :update]
+  before_action :set_root_permit, only: [:request_approval, :submit_request, :recall, :approve, :reject]
 
   def index
     @permits = policy_scope(Permit)

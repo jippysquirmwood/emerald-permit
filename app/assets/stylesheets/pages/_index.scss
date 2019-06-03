@@ -2,6 +2,7 @@
 @import "home";
 @import "permits_show";
 @import "user-show";
+@import "session";
 
 
 // top header and add new permit
@@ -16,6 +17,7 @@
 
 
 #permit-table {
+  text-size: 5px;
   @media only screen and (max-width: 576px) {
     width: 100px;
     overflow: auto;
@@ -56,11 +58,16 @@
 
 .table-rows-each :hover {
     background-color: white;
+    text-size: 5px;
+}
+
+.row-text {
+  text-size: 5px;
 }
 
 
 .btn-green2 {
-  background-color: $grey-lighter;
+  // background-color: $grey-lighter;
   border-bottom: 2px solid rgba(27, 170, 111, .2);
   color: $charcoal;
   &:hover {
@@ -95,3 +102,27 @@ a {
   grid-template-columns: 1fr 1fr;
   width: 100%;
 }
+#results-back a {
+text-decoration:none;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> master

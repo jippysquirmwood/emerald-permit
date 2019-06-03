@@ -31,8 +31,8 @@
                 <th scope="row"> <%= permit.permit_number %></th>
                 <td> <%= permit.title %> </td>
                 <td> <%= permit.permit_type %> </td>
-                <td> <%= permit.start_date %> </td>
-                <td> <%= permit.end_date %> </td>
+                <td> <%= permit.short_date(permit.start_date) %> </td>
+                <td> <%= permit.short_date(permit.end_date) %> </td>
                 <td> <%= permit.author.first_name[0] + " " + permit.author.last_name %> </td>
                 <td> <%= permit.status %> </td>
                 <% end %>
