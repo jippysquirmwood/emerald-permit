@@ -26,6 +26,12 @@
 
 <script>
 
+const minute = 1000 * 60;
+const hour = minute * 60;
+const day = hour * 24;
+
+const permits = document.querySelectorAll('.permit-card');
+
 const dateMaker = (date, time) => {
   const dateArr = date.split("-");
   const hourArr = time.split(":");
@@ -39,47 +45,78 @@ const dateMaker = (date, time) => {
   return new Date(d.year, d.month, d.day, d.hour, d.minutes)
 };
 
-const validity = (startDate, endDate) => {
+const validity = (startDate, endDate, status) => {
   let now = new Date();
+  const approved = ["approved"].includes(status);
   const diffEnd = endDate - now;
-  const diffStart = 1;
-  const minute = 1000 * 60;
-  const hour = minute * 60;
-  const day = hour * 24;
-  const diff_mins = Math.floor(diffEnd / minute);
-  const diff_hrs = Math.floor(diffEnd / hour);
-  const diff_days = Math.floor(diffEnd / day);
+  const diffStart = startDate - now;
+  const diffStart_mins = Math.floor(diffStart / minute);
+  const diffStart_hrs = Math.floor(diffStart / hour);
+  const diffStart_days = Math.floor(diffStart / day);
+  const diffEnd_mins = Math.floor(diffEnd / minute);
+  const diffEnd_hrs = Math.floor(diffEnd / hour);
+  const diffEnd_days = Math.floor(diffEnd / day);
+  const messages = [
+    `expires in ${diffEnd_days}d ${diffEnd_hrs - diffEnd_days * 24}h`,
+    `expires in ${diffEnd_hrs}h ${diffEnd_mins - diffEnd_hrs * 60}m`,
+    `expires in ${diffEnd_mins}m`,
+    `not yet valid! starts in ${diffStart_days}d ${diffStart_hrs - diffStart_days * 24}h`,
+    `not yet valid! starts in ${diffStart_hrs}h ${diffStart_mins - diffStart_hrs * 60}m`,
+    `not yet valid! starts in ${diffStart_mins}m`,
+    `requires approval in ${diffStart_days}d ${diffStart_hrs - diffStart_days * 24}h`,
+    `requires approval in ${diffStart_hrs}h ${diffStart_mins - diffStart_hrs * 60}m`,
+    `requires approval in ${diffStart_mins}m`,
+    "start date elapsed",
+    "expiry date elapsed"
+  ];
+  const rag = ["red", "amber", "green"];
+
   if (now > endDate) {
-    console.log("expired");
+    return approved ? ["expired", rag[0]] : [messages[10], false];
   }
   else if (now >= startDate) {
-    if (diff > day){
-      console.log(`valid, expires in ${diff_days}d ${diff_hrs - diff_days * 24}h`);
+    if (diffEnd > day){
+      return approved ? [messages[0], rag[1]] : [messages[9], false];
     }
-    else if (diff > hour) {
-      console.log(`valid, expires in ${diff_hrs}h ${diff_mins - diff_hrs * 60}m`);
+    else if (diffEnd > hour) {
+      return approved ? [messages[1], rag[1]] : [messages[9], false];
     }
     else {
-      console.log(`valid, expires in ${diff_mins}m`);
+      return approved ? [messages[2], rag[0]] : [messages[9], false];
     }
   }
   else {
-    console.log("not yet valid", now - endDate)
+    if (diffStart > day){
+      return [approved ? messages[3] : messages[6], false];
+    }
+    else if (diffEnd > hour) {
+      return [approved ? messages[4] : messages[7], false];
+    }
+    else {
+      return [approved ? messages[5] : messages[8], false];
+    }
   }
 };
 
-setInterval(function(){
-  const permits = document.querySelectorAll('.card-bottom');
+const validityShow = () => {
   permits.forEach(permit => {
-    const text = permit.innerText.split(" ");
-    const startDate = text[1];
-    const startTime = text[2];
-    const endDate = text[4];
-    const endTime = text[5];
-    const start = dateMaker(startDate, startTime);
-    const end = dateMaker(endDate, endTime);
-    validity(start, new Date(2019, 5, 1, 16, 0, 0, 0));
-  });
+      const status = permit.getElementsByClassName('text-status')[0].innerText;
+      const text = permit.getElementsByClassName('card-bottom')[0].innerText.split(" ");
+      const validityTag = permit.getElementsByClassName('validity')[0];
+      const startDate = text[1];
+      const startTime = text[2];
+      const endDate = text[4];
+      const endTime = text[5];
+      const start = dateMaker(startDate, startTime);
+      const end = dateMaker(endDate, endTime);
+      validityTag.innerText =  validity(start, end, status)[0];
+      validity(start, end, status)[1] ?  validityTag.classList.add(validity(start, end, status)[1]) : null;
+    });
+  };
+
+validityShow();
+setInterval(() => {
+  validityShow();
   }, 3000);
 
 </script>
