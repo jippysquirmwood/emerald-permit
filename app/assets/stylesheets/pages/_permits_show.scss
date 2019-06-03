@@ -183,3 +183,13 @@ ul {
     right: -15px;
   }
 }
+
+.section {
+  margin-top: 5vh;
+  background-color: $charcoal;
+  color: $emerald-bright;
+  padding: 0 5px;
+  border-radius: 3px;
+  font-size: small;
+  width: fit-content;
+}

@@ -1,10 +1,10 @@
 <div class="selected-section" data-id="6" style="overflow-y: scroll; height: -webkit-fill-available;">
 
   <div class="show-section">
+    <p class="section" style="margin-top:0;">Section 1: Permit details</p>
     <div class="container-permit-details center-detail">
-      <p><i>Section 1: Permit details</i></p>
-      <h2 class="center-text"><strong>Project <%= @permit.project_id %></strong></h2>
-      <p class="center-text"><%= @permit.permit_number %></p>
+      <p class="center-text">Permit reference: <%= @permit.permit_number %></p>
+      <h2 class="center-text"><%= @permit.title %></h2>
       <div class="two-grid center-text">
         <p><strong>Begins:</strong> <span class="begin"><%= @permit.start_date.strftime("%d-%m-%Y") %> <%= @permit.start_date.strftime("%I:%M%P") %></span></p> <p><strong>Expires:</strong> <span class="end"><%= @permit.end_date.strftime("%d-%m-%Y") %> at <%= @permit.end_date.strftime("%I:%M%P") %></span></p>
       </div>
@@ -24,14 +24,14 @@
 
       <div class="details">
         <div>
-          <p><strong>Permit title:</strong></p>
+          <p><strong>Project ID:</strong></p>
           <p><strong>Level:</strong></p>
           <p><strong>Location:</strong></p>
           <p><strong>Method Statement:</strong></p>
           <p><strong>Permit Type:</strong></p>
         </div>
         <div class="detail-info">
-          <p><%= @permit.title %></p>
+          <p><%= @permit.project_id %></p>
           <p><%= @permit.level %></p>
           <p><%= @permit.location %></p>
           <p><%= @permit.method_statement %></p>
@@ -42,9 +42,9 @@
   </div>
 
     <div class="container">
-      <p><i>Section 2: Excavation dimensions</i></p>
+      <p class="section">Section 2: Excavation dimensions</p>
       <div class="excavation center-detail move">
-        <div class="permit-images">
+        <div class="permit-images" style="margin-top: 5vh; margin-bottom:10vh;">
           <%= image_tag("dimension.jpg") %>
           <%= image_tag("dimension2.jpg") %>
         </div>
@@ -55,7 +55,7 @@
     </div>
 
     <div class="container">
-    <p><i>Section 3: Services located in the area</i></p>
+    <p class="section">Section 3: Services located in the area</i></p>
     <div class="excavation center-detail mechanical-dig">
 
       <% @permit.attributes.to_a[(13..24)].each do |ele| %>
@@ -67,7 +67,7 @@
   </div>
 
   <div class="container">
-    <p><i>Section 4: Confirmation</i></p>
+    <p class="section">Section 4: Confirmation</p>
     <div class="excavation center-detail container-permit-details">
 
       <div class="details">
@@ -103,7 +103,7 @@
   </div>
 
   <div class="container">
-    <p><i>Section 5: Mechanical dig</i></p>
+    <p class="section">Section 5: Mechanical dig</p>
     <div class="mechanical-dig center-detail">
       <% @permit.attributes.to_a[(25..33)].each do |ele| %>
         <% if ele[1] == true %>
