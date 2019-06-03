@@ -31,7 +31,7 @@
         <div class="table-rows-each">
          <% @all_permits[0..4].each do |permit| %>
                <%= link_to permit_path(permit) do %>
-                 <td class="row-text" scope="row"> <%= permit.permit_number %></td>
+                 <td class="row-text" scope="row"> <%= link_to permit.permit_number, permit_path(permit) %></td>
                  <td class="row-text"> <%= permit.title %> </td>
                  <td class="row-text"> <%= permit.permit_type %> </td>
                  <td> <%= permit.short_date(permit.start_date) %> </td>
