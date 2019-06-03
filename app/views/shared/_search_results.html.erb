@@ -1,5 +1,5 @@
 <%= link_to permits_path do %>
-  <h2><i class="fas fa-arrow-left"></i> Search Results</h2>
+  <h2 id="results-back"><i class="fas fa-arrow-left" id="results-back"></i> Search Results</h2>
 <% end %>
 
   <h4>permits (<%= @search_permits.size %>) found</h4>
@@ -37,15 +37,26 @@
 
   <h4>people (<%= @search_users.size %>) found</h4>
   <div class="my-perm-index">
-      <div class="index-cards">
-        <% @search_users.each do |user| %>
-          <%= link_to user_path(user) do %>
+      <div class="index-cards" id="person-cards">
             <div class="user-card">
               <%= image_tag user.avatar, class: "avatar-large" %>
               <p><%= user.first_name %> <%= user.last_name %></p>
               <p><%= user.role %></p>
+               <% @search_users.each do |user| %>
+                  <%= link_to user_path(user) do %>
+                    <div class=left-card">
+                      <img class="card-pic" style="background-image: url(<%= user.avatar %>);" alt="">
+                    </div>
+                    <div class="right-card">
+                      <%= user.first_name %> <%= user.last_name %>
+                      <hr>
+                      <%= user.role %>
+                    </div>
+                  <% end %>
+                <div class="card-email">
+                  <%= link_to user.email %>
+                </div>
             </div>
           <% end %>
-        <% end %>
     </div>
   </div>
