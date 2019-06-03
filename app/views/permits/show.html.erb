@@ -14,127 +14,13 @@
   <!-- Middle section with the permit info -->
 
   <div class="selected-container">
-    <div class="selected-section show-section" data-id="1">
-      <div class="container-permit-details center-detail">
-        <h2 class="center-text"><strong>Project <%= @permit.project_id %></strong></h2>
-        <p class="center-text"><%= @permit.permit_number %></p>
-        <div class="two-grid center-text">
-          <p><strong>Begins:</strong> <span class="begin"><%= @permit.start_date.strftime("%d-%m-%Y") %> <%= @permit.start_date.strftime("%I:%M%P") %></span></p> <p><strong>Expires:</strong> <span class="end"><%= @permit.end_date.strftime("%d-%m-%Y") %> at <%= @permit.end_date.strftime("%I:%M%P") %></span></p>
-        </div>
-        <!-- To be deleted when js logic is made -->
-        <p class="center-text">Expires in xxx days</p>
-        <% if @permit.status == "draft" %>
-          <p class="center-text status-show"><i><strong>DRAFT</strong></i></p>
-        <% elsif @permit.status == "pending approval" %>
-          <p class="center-text status-show">Awaiting approval from <strong><%= @approver %></strong></p>
-        <% elsif @permit.status == "approved" %>
-          <p class="center-text status-show">Approved by: <strong><%= @approver %></strong></p>
-        <% elsif @permit.status == "rejected" %>
-          <p class="center-text status-show">Permit rejected by: <strong><%= @approver %></strong></p>
-        <%# elsif @permit.status == "expired" %>
-          <!-- <p><strong>Permit expired</strong></p> -->
-        <% end %>
 
-        <div class="details">
-          <div>
-            <p><strong>Permit title:</strong></p>
-            <p><strong>Level:</strong></p>
-            <p><strong>Location:</strong></p>
-            <p><strong>Method Statement:</strong></p>
-            <p><strong>Permit Type:</strong></p>
-          </div>
-          <div class="detail-info">
-            <p><%= @permit.title %></p>
-            <p><%= @permit.level %></p>
-            <p><%= @permit.location %></p>
-            <p><%= @permit.method_statement %></p>
-            <p><%= @permit.permit_type %></p>
-          </div>
-        </div>
-      </div>
-    </div>
+    <%= render "shared/permit_details" %>
+    <%= render "shared/excavation_dimensions" %>
+    <%= render "shared/services_area" %>
+    <%= render "shared/confirmation" %>
+    <%= render "shared/mechanical_dig" %>
 
-
-    <div class="selected-section" data-id="2">
-      <div class="container">
-        <div class="excavation center-detail move">
-          <div class="permit-images">
-            <%= image_tag("dimension.jpg") %>
-            <%= image_tag("dimension2.jpg") %>
-          </div>
-          <p class="width">xwidth: <strong><%= @permit.xwidth %>mm</strong></p>
-          <p class="depth">xdepth: <strong><%= @permit.xdepth %>mm</strong></p>
-          <p class="length">xlength: <strong><%= @permit.xlength %>m</strong></p>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="selected-section" data-id="3">
-      <div class="container">
-        <div class="excavation center-detail mechanical-dig">
-          <% @permit.attributes.to_a[(13..24)].each do |ele| %>
-            <% if ele[1] == true %>
-              <p class="tag"><%= ele[0].gsub(/_/, " ").capitalize %></p>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="selected-section" data-id="4">
-      <div class="container">
-        <div class="excavation center-detail container-permit-details">
-
-
-          <div class="details">
-            <div>
-              <p><strong>Cat Scanner model:</strong></p>
-              <p><strong>Serial number:</strong></p>
-              <p><strong>Genny model:</strong></p>
-              <p><strong>Serial number:</strong></p>
-              <p><strong>Operator:</strong></p>
-            </div>
-            <div class="detail-info">
-              <p><%= @permit.cat_scan_model %></p>
-              <p><%= @permit.cat_scanner_serial %></p>
-              <p><%= @permit.genny_model %></p>
-              <p><%= @permit.genny_serial %></p>
-              <p><%= @permit.cat_genny_operator %></p>
-            </div>
-          </div>
-
-
-
-          <p class="center-text"><strong>Modes used:</strong></p>
-          <div class="mechanical-dig center-detail">
-            <% if @permit.cat_mode_power == true %>
-              <p class="tag">Power</p>
-            <% end %>
-            <% if @permit.cat_mode_radio == true %>
-              <p class="tag">Radio</p>
-            <% end %>
-            <% if @permit.cat_mode_transmitter == true %>
-              <p class="tag">Transmitter</p>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="selected-section" data-id="5">
-      <div class="container">
-        <div class="mechanical-dig center-detail">
-          <% @permit.attributes.to_a[(25..33)].each do |ele| %>
-            <% if ele[1] == true %>
-              <p class="tag"><%= ele[0].gsub(/_/, " ").capitalize %></p>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-    </div>
   </div>
 
 <!-- Right side with button and user card -->
