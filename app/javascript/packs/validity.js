@@ -110,4 +110,4 @@ const validityShow = () => {
 validityShow();
 setInterval(() => {
   validityShow();
-  }, 3000);
+  }, 60*1000);
