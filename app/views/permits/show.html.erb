@@ -32,13 +32,11 @@
     <% if @permit.who_with == @permit.author %>
       <% if @permit.author == current_user %>
         <% if @permit.status != "approved"  %>
-          <%= link_to 'submit for approval', permit_request_approval_path(@permit), method: :get, class: "submit-btn" %>
+          <%= link_to 'submit for approval', permit_request_approval_path(@permit), method: :get, class: "btn-green submit-btn" %>
         <% end %>
-        <div class="side-buttons">
-          <%= link_to 'Edit', edit_permit_path(@permit), class: "edit-btn" %>
-          <%= link_to 'Delete', permit_path(@permit), method: :delete, data: { confirm: "deleting permit... are you sure?" }, class: "reject-btn" %>
+          <%= link_to 'edit', edit_permit_path(@permit), class: "btn-green2 edit-btn" %>
+          <%= link_to 'delete', permit_path(@permit), method: :delete, data: { confirm: "deleting permit... are you sure?" }, class: "btn-green2 reject-btn" %>
       <% end %>
-      </div>
     <% elsif @permit.who_with == @permit.approver %>
       <% if @permit.author == current_user %>
         <%= link_to 'withdraw approval request', permit_recall_path(@permit), method: :get, data: { confirm: "Are you sure you want to recall?" }, class: "reject-btn" %>

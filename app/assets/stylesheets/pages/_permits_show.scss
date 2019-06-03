@@ -88,7 +88,7 @@ ul {
   border-bottom: none;
   a {
     display: block;
-    margin-bottom: 5px;
+    // margin-bottom: 5px;
   }
 }
 
@@ -98,48 +98,40 @@ ul {
   text-align: center;
   padding: 15px;
   border: 1px solid $emerald-dark;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.edit-btn {
+  width: 50px;
+  margin: 10px auto;
+  margin-bottom: 15px;
+  color: #3F464A;
+  text-align: center;
+  padding-bottom: 5px;
   transition: 0.3s;
   &:hover {
-    border-color: $charcoal;
-    color: $charcoal;
     transition: 0.3s;
     text-decoration: none;
   }
 }
 
 .reject-btn {
+  width: 50px;
+  padding-bottom: 5px;
   margin: 0 auto;
-  width: 55px;
-  background-color: #e41749;
-    color: white;
-  border: 1px solid rgba(63, 70, 74, 0.5);
   text-align: center;
-  padding: 5px;
-  font-size: smaller;
+  transition: 0.3s;
+  border-bottom: 2px solid rgba(249,6,6, 0.2)!important;
   &:hover {
-  color: #3F464A;
-    background-color: rgb(249,6,6);
     transition: 0.3s;
     text-decoration: none;
+    border-bottom: 2px solid rgb(249,6,6)!important;
   }
 }
 
-.edit-btn {
-  margin: 0 auto;
-  width: 55px;
-  background-color: #E6E6E6;
-  color: #3F464A;
-  border: 1px solid rgba(63, 70, 74, 0.5);
-  text-align: center;
-  padding: 5px;
-  font-size: smaller;
-  &:hover {
-    background-color: $grey-lighter;
-    border: 1px solid rgba(63,70,74,1);
-    color: $charcoal;
-    text-decoration: none;
-  }
-}
+
 
 .dashboard-btn {
   text-align: center;
@@ -234,11 +226,4 @@ ul {
   border-radius: 3px;
   font-size: small;
   width: fit-content;
-}
-
-.side-buttons {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 5px;
-  margin: 0 auto;
 }
