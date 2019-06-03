@@ -1,0 +1,11 @@
+<div class="selected-section" data-id="3">
+  <div class="container">
+    <div class="excavation center-detail mechanical-dig">
+      <% @permit.attributes.to_a[(13..24)].each do |ele| %>
+        <% if ele[1] == true %>
+          <p class="tag"><%= ele[0].gsub(/_/, " ").capitalize %></p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

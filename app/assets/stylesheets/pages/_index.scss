@@ -94,6 +94,17 @@ a {
   }
 }
 
+// centering text
+.center-text {
+  text-align: center;
+}
+
+// side by side grid
+.two-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+}
 #results-back a {
 text-decoration:none;
   &:hover {
@@ -106,8 +117,6 @@ text-decoration:none;
   height: 300px;
   width: 250px;
   padding: 15px;
-  // padding-top: 25px;
-  // display: flex;
   text-align: center;
   justify-content: center;
   margin-bottom: 10px;
@@ -124,21 +133,3 @@ text-decoration:none;
   padding-bottom: 20px;
   border-bottom: 1px solid $emerald-bright;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

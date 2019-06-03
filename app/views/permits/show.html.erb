@@ -1,139 +1,66 @@
+<%= render 'shared/status_bar' %>
+
+<div class="container body-show" style="border: 2px solid $grey-lighter; padding: 0px; display: flex; min-height: 100vh; margin-top: 75px;">
+
 <!-- Left side of the show, with the Clickable Sections -->
-<div class="container" style="border: 2px solid $grey-lighter; padding: 0px; display: flex; min-height: 100vh;">
   <div class="section-container">
-    <div class="section-item" data-id="1">Section 1 - Permit Details</div>
-    <div class="section-item" data-id="2">Section 2 - Excavation dimensions</div>
-    <div class="section-item" data-id="3">Section 3 - Services located within the area</div>
-    <div class="section-item" data-id="4">Section 4 - Confirmation</div>
-    <div class="section-item" data-id="5">Section 5 - Mechanical Dig</div>
+    <div class="section-item section-header-active" data-id="1"><p><span>Section 1</span><br>Permit Details</p></div>
+    <div class="section-item" data-id="2"><p><span>Section 2</span><br>Excavation dimensions</p></div>
+    <div class="section-item" data-id="3"><p><span>Section 3</span><br>Services located in the area</p></div>
+    <div class="section-item" data-id="4"><p><span>Section 4</span><br>Confirmation</p></div>
+    <div class="section-item" data-id="5"><p><span>Section 5</span><br>Mechanical Dig</p></div>
+    <div class="section-item" data-id="6"><p>Show all sections</p></div>
   </div>
+
   <!-- Middle section with the permit info -->
+
   <div class="selected-container">
-    <div class="selected-section show-section" data-id="1">
-      <div class="container-permit-details">
-        <p>Project <%= @permit.project_id %></p>
-        <p>number: <%= @permit.permit_number %></p>
-        <p>Start date: <%= @permit.start_date.strftime("%d-%m-%Y") %> at <%= @permit.start_date.strftime("%I:%M%p") %></p>
-        <p>Expiry date: <%= @permit.end_date.strftime("%d-%m-%Y") %> at <%= @permit.end_date.strftime("%I:%M%p") %></p>
-        <% if @permit.status == "draft" %>
-          <p><i><strong>DRAFT</strong></i></p>
-        <% elsif @permit.status == "pending approval" %>
-          <p>Awaiting approval from <strong><%= @approver %></strong></p>
-        <% elsif @permit.status == "approved" %>
-          <p>Approved by: <%= @approver %></p>
-        <% elsif @permit.status == "rejected" %>
-          <p>Permit rejected by: <%= @approver %></p>
-        <% elsif @permit.status == "expired" %>
-          <p><strong>Permit expired</strong></p>
-        <% end %>
-        <p>Permit title: <%= @permit.title %></p>
-        <p>Level : <%= @permit.level %></p>
-        <p>Location : <%= @permit.location %> </p>
-        <p>Method Statement: <%= @permit.method_statement %></p>
-        <p>Permit Type: <%= @permit.permit_type %></p>
-      </div>
-    </div>
 
-    <div class="selected-section" data-id="2">
-      <div class="container">
-        <div class="excavation">
-          <p>xwidth: <%= @permit.xwidth %>mm</p>
-          <p>xdepth: <%= @permit.xdepth %>mm</p>
-          <p>xlength: <%= @permit.xlength %>m</p>
-        </div>
-      </div>
-    </div>
+    <%= render "shared/permit_details" %>
+    <%= render "shared/excavation_dimensions" %>
+    <%= render "shared/services_area" %>
+    <%= render "shared/confirmation" %>
+    <%= render "shared/mechanical_dig" %>
+    <%= render "shared/all" %>
 
-    <div class="selected-section" data-id="3">
-      <div class="container">
-        <div class="excavation">
-          <% @permit.attributes.to_a[(13..24)].each do |ele| %>
-            <% if ele[1] == true %>
-              <p><%= ele[0].gsub(/_/, " ").capitalize %></p>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-    </div>
-
-    <div class="selected-section" data-id="4">
-      <div class="container">
-        <div class="excavation">
-          <p>Cat Scanner model: <%= @permit.cat_scan_model %></p>
-          <p> Serial number: <%= @permit.cat_scanner_serial %></p>
-          <p>Genny model: <%= @permit.genny_model %></p>
-          <p> Serial number: <%= @permit.genny_serial %></p>
-          <p>Operator: <%= @permit.cat_genny_operator %></p>
-          <p>Calibration expires: <%= @permit.calibration_expires.strftime("%d-%m-%Y") %></p>
-          <p>Modes used:</p>
-          <ul>
-            <% if @permit.cat_mode_power == true %>
-              <li>Power <i class="far fa-check-circle"></i></li>
-            <% else %>
-              <li>Power <i class="far fa-times-circle"></i></li>
-            <% end %>
-            <% if @permit.cat_mode_radio == true %>
-              <li>Radio <i class="far fa-check-circle"></i></li>
-            <% else %>
-              <li>Radio <i class="far fa-times-circle"></i></li>
-            <% end %>
-            <% if @permit.cat_mode_transmitter == true %>
-              <li>Transmitter <i class="far fa-check-circle"></i></li>
-            <% else %>
-              <li>Transmitter <i class="far fa-times-circle"></i></li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="selected-section" data-id="5">
-      <div class="container">
-        <div class="mechanical-dig">
-          <% @permit.attributes.to_a[(25..33)].each do |ele| %>
-            <% if ele[1] == true %>
-              <p class="tag"><%= ele[0].gsub(/_/, " ").capitalize %></p>
-            <% end %>
-          <% end %>
-        </div>
-      </div>
-    </div>
   </div>
+
 <!-- Right side with button and user card -->
+
   <div class="action-btn-container">
-    <%= link_to 'back to dashboard', permits_path %>
+    <%#= link_to 'back to dashboard', permits_path, class: "dashboard-btn" %>
     <% if @permit.who_with == @permit.author %>
-        <% if @permit.author == current_user %>
-          <% if @permit.status != "approved"  %>
-            <%= link_to 'submit for approval', permit_request_approval_path(@permit), method: :get %>
-          <% end %>
-            <%= link_to 'delete permit', permit_path(@permit), method: :delete, data: { confirm: "deleting permit... are you sure?" } %>
-            <%= link_to 'edit permit', edit_permit_path(@permit) %>
+      <% if @permit.author == current_user %>
+        <% if @permit.status != "approved"  %>
+          <%= link_to 'submit for approval', permit_request_approval_path(@permit), method: :get, class: "btn-green submit-btn" %>
         <% end %>
+          <%= link_to 'edit', edit_permit_path(@permit), class: "btn-green2 edit-btn" %>
+          <%= link_to 'delete', permit_path(@permit), method: :delete, data: { confirm: "deleting permit... are you sure?" }, class: "btn-green2 reject-btn" %>
+      <% end %>
     <% elsif @permit.who_with == @permit.approver %>
       <% if @permit.author == current_user %>
-        <%= link_to 'withdraw approval request', permit_recall_path(@permit), method: :get, data: { confirm: "Are you sure you want to recall?" } %>
+        <%= link_to 'withdraw request', permit_recall_path(@permit), method: :get, data: { confirm: "Are you sure you want to recall?" }, class: "reject-btn withdraw" %>
       <% elsif @permit.approver == current_user %>
-        <%= link_to 'approve', permit_approve_path(@permit) %>
-        <%= link_to 'reject', permit_reject_path(@permit)%>
+        <%= link_to 'approve', permit_approve_path(@permit), class: "submit-btn btn-green" %>
+        <%= link_to 'reject', permit_reject_path(@permit), class: "reject-btn rejected" %>
       <% end %>
     <% end %>
 
     <div class="detail-card-permit">
       <div class="author-avatar">
-        <img class="avatar" src= <%= @permit.author.avatar %> />
+        <img class="avatar permit-show" src= <%= @permit.author.avatar %> />
         <div class="author-name">
-          <p>Author: <%= @permit.author.fullname %></p>
-          <p>Role: <%= @permit.author.role %></p>
+          <p>Author: <%= @permit.author.short_first_name %></p>
+          <p><%= @permit.author.role %></p>
         </div>
       </div>
       <hr>
       <% if @permit.approver.present? %>
         <div class="approver-avatar">
-          <img class="avatar" src= <%= @permit.approver.avatar %> />
+          <img class="avatar permit-show" src= <%= @permit.approver.avatar %> />
           <div class="approver-name">
-            <p>Approver: <%= @permit.approver.fullname %></p>
-            <p>Role: <%= @permit.approver.role %></p>
+            <p>Approver: <%= @permit.approver.short_first_name %></p>
+            <p><%= @permit.approver.role %></p>
           </div>
         </div>
       <% else %>
@@ -145,10 +72,53 @@
   </div>
 </div>
 
+
+
 <script>
+  progressOne = document.getElementById("progress-one");
+  progressTwo = document.getElementById("progress-two");
+  expired = document.getElementById("expired-banner");
+  statusBar = document.querySelector(".status-container");
+  icons = document.querySelectorAll("i");
+
+  <% if @permit.status == "pending approval" %>
+    progressOne.style.backgroundColor = "#1BAA6F";
+    icons.forEach(function(icon) {
+      icon.style.display = "none";
+    })
+    icons[2].style.display = "block";
+    icons[4].style.display = "block";
+    icons[6].style.display = "block";
+  <% elsif @permit.status == "rejected" %>
+    icons[3].style.color = "#E67E22";
+  <% elsif @permit.status == "approved" %>
+    progressOne.style.backgroundColor = "#1BAA6F";
+    progressTwo.style.backgroundColor = "#1BAA6F";
+    icons.forEach(function(icon) {
+      icon.style.display = "none";
+    })
+    icons[2].style.display = "block";
+    icons[5].style.display = "block";
+    icons[7].style.display = "block";
+  <% elsif @permit.status == "expired" %>
+    icons.forEach(function(icon) {
+      icon.style.color = "#f90606";
+    })
+    icons[1].style.display = "none";
+    icons[0].style.display = "block";
+    progressOne.style.backgroundColor = "#f90606";
+    progressTwo.style.backgroundColor = "#f90606";
+    expired.style.display = "block";
+    statusBar.style.opacity = "0.3";
+  <% end %>
+
   var sectionItems = document.querySelectorAll(".section-item");
   sectionItems.forEach((sectionItem) => {
     sectionItem.addEventListener("click", (event) => {
+      var deselectedSectionHeader = document.querySelector(".section-header-active");
+      var selectedSectionHeader = event.currentTarget;
+      deselectedSectionHeader.classList.remove("section-header-active");
+      selectedSectionHeader.classList.add("section-header-active");
       var sectionId = event.currentTarget.dataset.id
       var selectedSections = document.querySelectorAll(`div.selected-section`);
       var selectedSection;
@@ -163,7 +133,7 @@
       });
       if (selectedSection != deselectedSection) {
         selectedSection.classList.add("show-section");
-        deselectedSectiongi.classList.remove("show-section");
+        deselectedSection.classList.remove("show-section");
       }
     });
   });

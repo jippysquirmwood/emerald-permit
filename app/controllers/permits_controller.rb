@@ -104,6 +104,7 @@ class PermitsController < ApplicationController
 
   def update
     @permit.update_attributes(permit_params)
+    @permit.status = "draft"
     @permit.save
     redirect_to dashboard_path
   end
