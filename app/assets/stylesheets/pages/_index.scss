@@ -75,6 +75,9 @@
     color: $charcoal;
     border-bottom: 2px solid $emerald-bright;
   }
+  &:active {
+      border-bottom: 2px solid $emerald-bright;
+  }
 }
 
 .btn-green2 a {
@@ -121,6 +124,8 @@ text-decoration:none;
   padding-bottom: 20px;
   border-bottom: 1px solid $emerald-bright;
 }
+
+
 
 
 

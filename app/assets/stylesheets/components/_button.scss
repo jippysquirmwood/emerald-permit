@@ -4,6 +4,14 @@
   height: 35px;
   display: flex;
   align-items: center;
+  opacity: 0.85;
+  border: none;
+  padding-left: 15px;
+  padding-right: 15px;
+  &:hover {
+    color: white;
+    opacity: 1;
+  }
 }
 
 .btn-emerald-top {
