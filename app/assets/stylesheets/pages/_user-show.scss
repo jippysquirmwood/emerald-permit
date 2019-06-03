@@ -1,5 +1,17 @@
-.user-page {
-  margin: 10vh auto 0 auto;
+@media only screen and (max-width: 576px) {
+  .return {
+    display: flex;
+    flex-direction: column;
+  }
+  .user-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .user-btn {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
 }
 
 .user-info {
