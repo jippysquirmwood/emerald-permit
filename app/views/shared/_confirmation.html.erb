@@ -1,0 +1,37 @@
+<div class="selected-section" data-id="4">
+  <div class="container">
+    <div class="excavation center-detail container-permit-details">
+
+      <div class="details">
+        <div>
+          <p><strong>Cat Scanner model:</strong></p>
+          <p><strong>Serial number:</strong></p>
+          <p><strong>Genny model:</strong></p>
+          <p><strong>Serial number:</strong></p>
+          <p><strong>Operator:</strong></p>
+        </div>
+        <div class="detail-info">
+          <p><%= @permit.cat_scan_model %></p>
+          <p><%= @permit.cat_scanner_serial %></p>
+          <p><%= @permit.genny_model %></p>
+          <p><%= @permit.genny_serial %></p>
+          <p><%= @permit.cat_genny_operator %></p>
+        </div>
+      </div>
+
+      <p class="center-text"><strong>Modes used:</strong></p>
+      <div class="mechanical-dig center-detail">
+        <% if @permit.cat_mode_power == true %>
+          <p class="tag">Power</p>
+          <% else %>
+        <% end %>
+        <% if @permit.cat_mode_radio == true %>
+          <p class="tag">Radio</p>
+        <% end %>
+        <% if @permit.cat_mode_transmitter == true %>
+          <p class="tag">Transmitter</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
