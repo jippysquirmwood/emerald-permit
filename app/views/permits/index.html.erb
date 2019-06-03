@@ -17,8 +17,10 @@
   <!-- table -->
   <% if current_user.admin %>
     <%= render 'shared/index_table_admin' %>
-  <% elsif current_user.author || current_user.approver %>
-    <%= render 'shared/index_table_auth_app.html.erb' %>
+  <% elsif current_user.author %>
+    <%= render 'shared/index_table_auth.html.erb' %>
+  <% elsif current_user.approver %>
+    <%= render 'shared/index_table_app.html.erb' %>
   <% else %>
     <%= render 'shared/index_table_worker.html.erb' %>
   <% end %>

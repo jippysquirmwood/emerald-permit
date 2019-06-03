@@ -73,7 +73,7 @@
   &:hover {
     // background-color: $emerald-dark;
     color: $charcoal;
-    border-bottom: 2px solid $emerald-dark;
+    border-bottom: 2px solid $emerald-bright;
   }
 }
 
@@ -98,6 +98,29 @@ text-decoration:none;
   }
 }
 
+.nothing-card {
+  background-color: white;
+  height: 300px;
+  width: 250px;
+  padding: 15px;
+  // padding-top: 25px;
+  // display: flex;
+  text-align: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.fa-clipboard-check {
+  font-size: 180px;
+  color: $emerald-dark;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: white;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid $emerald-bright;
+}
 
 
 
