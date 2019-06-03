@@ -28,7 +28,7 @@
           <% @all_permits[0..4].each do |permit| %>
               <tr>
                 <%= link_to permit_path(permit) do %>
-                <th scope="row"> <%= permit.permit_number %></th>
+                <th scope="row"> <%= link_to permit.permit_number, permit_path(permit) %></th>
                 <td> <%= permit.title %> </td>
                 <td> <%= permit.permit_type %> </td>
                 <td> <%= permit.short_date(permit.start_date) %> </td>
