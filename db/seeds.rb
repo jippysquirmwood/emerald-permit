@@ -209,6 +209,14 @@ puts 'Creating permits...'
       title: titles.sample
     }
   )
+
+  dates = [Time.now - 1.day, Time.now + 2.day, Time.now + 1.day, Time.now + 12.hour, Time.now + 2.hour, Time.now + 40.minutes]
+
+  5.times do
+      Permit.create! {
+        status: "draft"
+      }
+  end
 end
 puts "Permits created"
 puts 'Finished!'
