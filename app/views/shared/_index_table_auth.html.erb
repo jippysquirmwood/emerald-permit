@@ -9,10 +9,10 @@
          <li><%= link_to "drafts", dashboard_path(status:  "draft") %></li>
        </ul>
      </div>
-     <button class="btn btn-green2"><%= link_to "my approved", dashboard_path(status:  "approved", author_id: current_user.id) %></button>
-     <button class="btn btn-green2"><%= link_to "to be approved", dashboard_path(status:  "pending approval", author_id: current_user.id) %></button>
-     <button class="btn btn-green2"><%= link_to "my rejections", dashboard_path(status:  "rejected", author_id: current_user.id) %></button>
-     <button class="btn btn-green2"><%= link_to "my drafts", dashboard_path(status: "draft", author_id: current_user.id) %></button>
+     <button class="btn btn-green2" id="selecta"><%= link_to "my approved", dashboard_path(status:  "approved", author_id: current_user.id) %></button>
+     <button class="btn btn-green2" id="selecta"><%= link_to "to be approved", dashboard_path(status:  "pending approval", author_id: current_user.id) %></button>
+     <button class="btn btn-green2" id="selecta"><%= link_to "my rejections", dashboard_path(status:  "rejected", author_id: current_user.id) %></button>
+     <button class="btn btn-green2" id="selecta"><%= link_to "my drafts", dashboard_path(status: "draft", author_id: current_user.id) %></button>
  </div>
   <div style="overflow: scroll">
      <table class="table table-hover" id="permit-table">
@@ -49,3 +49,5 @@
    <div class="index-btm">
      <p>show more</p>
  </div>
+
+
