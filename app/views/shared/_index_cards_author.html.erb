@@ -15,7 +15,7 @@
                 </div>
               </div>
               <div class="icons-container">
-                <span class="charcoal"><%= permit.status %></span>
+                <span class="charcoal text-status"><%= permit.status %></span>
                 <i class="icon-status <%= permit.status_icon %>"></i>
                 <div class="img-tooltip">
                   <% if permit.approver.present? %>
@@ -26,13 +26,18 @@
               </div>
               <div class="card-bottom">
                 <p class="grey-light"><span class="charcoal">Valid:</span>  <%= permit.date_time(permit.start_date) %> <span class="charcoal">to</span> <%= permit.date_time(permit.end_date) %></p>
+                <p class="validity"></p>
               </div>
             </div>
           </div>
         <% end %>
       <% end %>
     <% else %>
-      <h3>Nothing to see here!</h3>
+      <div class="nothing-card">
+        <h5>Nothing requires attention!</h5>
+        <hr>
+        <i class="fas fa-clipboard-check"></i>
+      </div>
     <% end %>
   </div>
 </div>

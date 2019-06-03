@@ -7,6 +7,8 @@ class PermitsController < ApplicationController
     @permits = policy_scope(Permit)
     if params[:status].present? && params[:author_id].present?
       @all_permits = Permit.where(status: params[:status]).where(author: current_user)
+    elsif params[:status].present? && params[:approver_id].present?
+      @all_permits = Permit.where(status: params[:status]).where(approver: current_user)
     elsif params[:status].present?
       @all_permits = Permit.where(status: params[:status])
     else
@@ -102,6 +104,7 @@ class PermitsController < ApplicationController
 
   def update
     @permit.update_attributes(permit_params)
+    @permit.status = "draft"
     @permit.save
     redirect_to dashboard_path
   end
