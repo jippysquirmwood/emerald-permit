@@ -20,7 +20,7 @@
                 <div class="img-tooltip">
                   <% if permit.approver.present? %>
                     <%= image_tag((permit.approver.avatar), class: "avatar-sml avatar-card-permit")%>
-                    <span class="tooltip-text">approver <%= permit.approver.short_last_name %></span>
+                    <span class="tooltip-text">Approver: <%= permit.approver.short_last_name %></span>
                   <% end %>
                 </div>
               </div>
