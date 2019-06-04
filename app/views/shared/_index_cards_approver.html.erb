@@ -1,5 +1,5 @@
 <div class="my-perm-index">
-  <div class="index-cards" style="overflow-x: scroll;">
+  <div class="index-cards">
     <% if @pending_permits.present? %>
       <% @pending_permits.each do |permit| %>
         <%= link_to permit_path(permit) do %>
@@ -27,7 +27,6 @@
                   <p class="validity"></p>
                 </div>
                 <div>
-                <%= link_to 'Archive', permit_path(permit[:id]), method: :delete, data: { confirm: "Archive permit... are you sure?" }, class: "btn-green archive-btn" %>
                 </div>
               </div>
             </div>
@@ -43,3 +42,10 @@
     <% end %>
   </div>
 </div>
+
+<style>
+  .my-perm-index {
+    display: flex;
+    overflow: auto;
+  }
+</style>
