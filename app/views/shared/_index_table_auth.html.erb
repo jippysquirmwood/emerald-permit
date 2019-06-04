@@ -33,11 +33,11 @@
                <%= link_to permit_path(permit) do %>
                  <td class="row-text" scope="row"> <%= link_to permit.permit_number, permit_path(permit) %></td>
                  <td class="row-text"> <%= permit.title %> </td>
-                 <td class="row-text"> <%= permit.permit_type %> </td>
+                 <td class="row-text"> <%= permit.permit_type.capitalize %> </td>
                  <td> <%= permit.short_date(permit.start_date) %> </td>
                  <td> <%= permit.short_date(permit.end_date) %> </td>
                  <td class="row-text"> <%= permit.author.first_name[0] + " " + permit.author.last_name %> </td>
-                 <td class="row-text"> <%= permit.status %> </td>
+                 <td class="row-text"> <%= permit.status.capitalize %> </td>
                <% end %>
              </tr>
          <% end %>
