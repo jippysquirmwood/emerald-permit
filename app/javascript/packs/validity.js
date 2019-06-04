@@ -17,7 +17,7 @@ const dateMaker = (date, time) => {
 const validity = (startDate, endDate, statusTag) => {
   let statusIcon = statusTag.getElementsByTagName('i')[0];
   let status = statusTag.getElementsByClassName('text-status')[0].innerText;
-  const approved = ["approved", "expired"].includes(status);
+  const approved = ["Approved", "Expired"].includes(status);
   let now = new Date();
   const diffEnd = endDate - now;
   const diffStart = startDate - now;
@@ -43,7 +43,7 @@ const validity = (startDate, endDate, statusTag) => {
   const rag = ["red", "amber", "green"];
   if (now > endDate) {
     if (approved) {
-      status = "expired";
+      status = "Expired";
       return ["Expired", rag[0], status];
     } else {
       return [messages[10], false];
@@ -91,6 +91,7 @@ const validityShow = () => {
 
       if (validCall[2]) {
         statusTag.getElementsByClassName('text-status')[0].innerText = validCall[2];
+        document.getElementsByClassName('archive-btn')[0].classList.add('show');
       }
     });
   };
