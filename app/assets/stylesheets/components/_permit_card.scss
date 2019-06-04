@@ -50,6 +50,7 @@
       margin-left: 0px;
       display: flex;
       justify-content: space-between;
+      align-items: center;
     }
 
     .charcoal {
@@ -154,14 +155,15 @@
 }
 
 .archive-btn {
-  padding: 2px 5px 2px 5px;
-  // position: relative;
-  left: 179px;
-  bottom: 29px;
+  padding: 5px 8px;
   font-size: 10px;
   color: $charcoal!important;
   display: none;
-
+  background-color: $emerald-dark;
+  opacity: 0.85;
+  &:hover {
+    opacity: 1;
+  }
 }
 
 .text-status {
