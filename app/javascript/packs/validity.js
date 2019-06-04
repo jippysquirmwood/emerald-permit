@@ -43,12 +43,8 @@ const validity = (startDate, endDate, statusTag) => {
   const rag = ["red", "amber", "green"];
   if (now > endDate) {
     if (approved) {
-      statusIcon.className = "icon-status";
-      statusIcon.classList.add("fas");
-      statusIcon.classList.add("fa-exclamation");
-      statusIcon.classList.add("status-expired");
       status = "expired";
-      return ["expired", rag[0], statusIcon, status];
+      return ["expired", rag[0], status];
     } else {
       return [messages[10], false];
     }
@@ -87,11 +83,6 @@ const validityShow = () => {
       const endTime = text[5];
       const start = dateMaker(startDate, startTime);
       const end = dateMaker(endDate, endTime);
-      // validityTag.innerText =  validity(start, end, statusTag)[0].innerText;
-      // validity(start, end, status, statusTag, statusIcon)[1] ?  validityTag.classList.add(validity(start, end, status, statusTag, statusIcon)[1]) : null;
-      // validity(start, end, status, statusTag, statusIcon)[2];
-      // validity(start, end, statusTag, statusIcon)[3];
-      // console.log(validity(start, end, statusTag));
       validCall = validity(start, end, statusTag);
       validityTag.innerText = validCall[0];
       if (validCall[1]) {
@@ -99,11 +90,7 @@ const validityShow = () => {
       }
 
       if (validCall[2]) {
-        console.log(validCall[2]);
-      }
-
-      if (validCall[3]) {
-        statusTag.getElementsByClassName('text-status')[0].innerText = validCall[3];
+        statusTag.getElementsByClassName('text-status')[0].innerText = validCall[2];
       }
     });
   };
