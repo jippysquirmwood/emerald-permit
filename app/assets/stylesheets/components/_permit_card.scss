@@ -1,7 +1,8 @@
 .permit-card {
-  height: 300px;
+  height: 220px;
   display: flex;
   align-items: space-around;
+  box-shadow: 1px 1px 1px rgba(222, 222, 222, 0.5);
 
   .permit-sections {
     display: flex;
@@ -11,13 +12,13 @@
     width: 100%;
 
     .card-top {
-    border-bottom: 0.5px solid $grey-light;
+    border-bottom: 0.5px solid #dedede;
     padding-bottom: 8px;
     }
 
   .card-mid {
-    height: 100%;
-    border-bottom: 0.5px solid $grey-light;
+    height: 110%;
+    border-bottom: 0.5px solid #dedede;
     display: flex;
     justify-content: space-around;
 
@@ -27,15 +28,20 @@
       justify-content: center;
 
       .permit-type-img {
-        width: 100px;
-        height: 100px;
+        width: 80px;
+        height: 80px;
         opacity: 0.1;
+        position: relative;
+        top: 4px;
+        right: 69px;
       }
     }
   }
 
     .card-bottom {
-      padding-top: 8px;
+      padding-top: 6px;
+      margin-top: 50px;
+      padding-left: 6px;
     }
 
     .charcoal {
@@ -79,6 +85,11 @@
   margin-right: 4px;
   margin-top: 9px;
   }
+
+.avatar-card-permit{
+  position: relative;
+  bottom: -6px;
+}
 
   .img-tooltip {
     // position: absolute;
@@ -132,3 +143,17 @@
   color: $emerald-dark;
 }
 
+.archive-btn {
+  padding: 2px 5px 2px 5px;
+  position: relative;
+  left: 179px;
+  bottom: 29px;
+  font-size: 10px;
+  color: $charcoal!important;
+
+}
+
+.text-status {
+  position: relative;
+  bottom: -4px;
+}
