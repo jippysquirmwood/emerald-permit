@@ -52,8 +52,9 @@ ul {
   border: 1px solid $grey-lighter;
   border-bottom: none;
   width: 20%;
+  position: -webkit-sticky !important;
   position: sticky;
-  top: 0;
+  top: 55px;
 }
 
 
@@ -245,4 +246,5 @@ ul {
   font-size: small;
   width: fit-content;
 }
+
 
