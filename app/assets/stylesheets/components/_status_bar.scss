@@ -18,7 +18,7 @@
   }
   .fa-dot-circle {
     font-size: 25px;
-    color: $status-draft;
+    color: $emerald-dark;
     text-align: center;
   }
   .fa-bullseye {
@@ -30,6 +30,13 @@
     font-size: 25px;
     color: $grey-light;
     text-align: center;
+    opacity: 0.2;
+  }
+  .fa-times-circle {
+    font-size: 25px;
+    color: $emerald-dark;
+    text-align: center;
+    display: none;
   }
   p {
     margin-bottom: 8px;
