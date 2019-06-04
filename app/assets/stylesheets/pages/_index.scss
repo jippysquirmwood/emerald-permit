@@ -38,8 +38,8 @@
   align-items: flex-end;
   position: relative;
   margin-bottom: 15px;
-  overflow-x: scroll;
-  width: 100%;
+  // overflow-x: scroll;
+  // width: 100%;
   a {
     text-decoration: none !important;
   }
@@ -144,3 +144,10 @@ text-decoration:none;
   background-color: white;
   border-bottom: 1px solid $emerald-bright;
 }
+
+.show {
+  display: block;
+}
+
+
+
