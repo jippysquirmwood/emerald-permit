@@ -17,7 +17,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border-bottom: 0.5px solid $grey-lighter;
+  border-bottom: 0.5px solid $grey-light;
 }
 
 
@@ -33,18 +33,19 @@
 .index-cards {
   padding-bottom: 16px;
   display: flex;
-  // justify-content: space-between;
+  justify-content: space-between;
   flex: wrap;
   align-items: flex-end;
   position: relative;
   margin-bottom: 15px;
+  overflow-x: scroll;
+  width: 100%;
   a {
     text-decoration: none !important;
   }
-  overflow: scroll;
 }
 
-// individual cards
+individual cards
 .permit-card {
   background-color: white;
   padding: 10px;
