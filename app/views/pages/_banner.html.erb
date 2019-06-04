@@ -5,9 +5,9 @@
       <p id="banner-p">Create, monitor and manage your permits to reduce risks to worker safety, delays and to save money across all of your projects.</p>
     </div>
     <% if current_user %>
-      <%= link_to 'Dashboard', dashboard_path, class: "approve-btn"%>
+      <%= link_to 'Dashboard', dashboard_path, class: "btn btn-green"%>
     <% else %>
-      <%= link_to 'Sign up', new_user_registration_path, class: "approve-btn"%>
+      <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-green"%>
     <% end %>
   </div>
 </div>

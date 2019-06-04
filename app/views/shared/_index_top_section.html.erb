@@ -1,12 +1,16 @@
 <div class="top-index">
     <% if current_user.approver %>
       <h2>Awaiting my approval (<%= @pending_permits.size %>)</h2>
+      <hr style="opacity: 0.2">
     <% elsif current_user.admin %>
       <h2>Admin</h2>
+      <hr style="opacity: 0.2">
     <% elsif current_user.author %>
       <h2>My permits (<%= @permits.size %>)</h2>
+      <hr style="opacity: 0.2">
     <% else %>
       <h2>Permits to be breifed</h2>
+      <hr style="opacity: 0.2">
     <% end %>
     <% if current_user.admin || current_user.author || current_user.approver %>
       <%= link_to new_permit_path do %>
