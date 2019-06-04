@@ -1,13 +1,19 @@
 <div class="banner">
-  <div class="banner-text">
-    <h1 id="banner-head">Build Safer</h1>
-    <div class="p-container">
-      <p id="banner-p">Create, monitor and manage your permits to reduce risks to worker safety, delays and to save money across all of your projects.</p>
-    </div>
-    <% if current_user %>
-      <%= link_to 'Dashboard', dashboard_path, class: "btn btn-green"%>
-    <% else %>
-      <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-green"%>
-    <% end %>
+       <div class="banner-logo">
+          <%= link_to dashboard_path do %>
+          <%= image_tag(("logo-emerald-lrg-bright.png"), class: "emerald-logo homepage-logo") %>
+          <% end %>
+         <%= link_to "Log in", new_user_session_path, class: "btn btn-login-home" %>
+        </div>
+    <div class="banner-text">
+        <h1 id="banner-head">Build Safer with emerald.</h1>
+        <div class="p-container">
+          <p id="banner-p">Create, monitor and manage your permits to reduce risks to worker safety, delays and to save money across all of your projects.</p>
+        </div>
+        <% if current_user %>
+          <%= link_to 'Dashboard', dashboard_path, class: "banner-btn"%>
+        <% else %>
+          <%= link_to 'Sign up', new_user_registration_path, class: "btn-green banner-btn"%>
+        <% end %>
   </div>
 </div>
