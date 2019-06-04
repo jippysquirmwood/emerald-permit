@@ -28,23 +28,23 @@ const validity = (startDate, endDate, statusTag) => {
   const diffEnd_hrs = Math.floor(diffEnd / hour);
   const diffEnd_days = Math.floor(diffEnd / day);
   const messages = [
-    `expires in ${diffEnd_days}d ${diffEnd_hrs - diffEnd_days * 24}h`,
-    `expires in ${diffEnd_hrs}h ${diffEnd_mins - diffEnd_hrs * 60}m`,
-    `expires in ${diffEnd_mins}m`,
-    `not yet valid! starts in ${diffStart_days}d ${diffStart_hrs - diffStart_days * 24}h`,
-    `not yet valid! starts in ${diffStart_hrs}h ${diffStart_mins - diffStart_hrs * 60}m`,
-    `not yet valid! starts in ${diffStart_mins}m`,
-    `requires approval in ${diffStart_days}d ${diffStart_hrs - diffStart_days * 24}h`,
-    `requires approval in ${diffStart_hrs}h ${diffStart_mins - diffStart_hrs * 60}m`,
-    `requires approval in ${diffStart_mins}m`,
-    "start date elapsed",
-    "expiry date elapsed"
+    `Expires in ${diffEnd_days}d ${diffEnd_hrs - diffEnd_days * 24}h`,
+    `Expires in ${diffEnd_hrs}h ${diffEnd_mins - diffEnd_hrs * 60}m`,
+    `Expires in ${diffEnd_mins}m`,
+    `Not yet valid! starts in ${diffStart_days}d ${diffStart_hrs - diffStart_days * 24}h`,
+    `Not yet valid! starts in ${diffStart_hrs}h ${diffStart_mins - diffStart_hrs * 60}m`,
+    `Not yet valid! starts in ${diffStart_mins}m`,
+    `Requires approval in ${diffStart_days}d ${diffStart_hrs - diffStart_days * 24}h`,
+    `Requires approval in ${diffStart_hrs}h ${diffStart_mins - diffStart_hrs * 60}m`,
+    `Requires approval in ${diffStart_mins}m`,
+    "Start date elapsed",
+    "Expiry date elapsed"
   ];
   const rag = ["red", "amber", "green"];
   if (now > endDate) {
     if (approved) {
       status = "expired";
-      return ["expired", rag[0], status];
+      return ["Expired", rag[0], status];
     } else {
       return [messages[10], false];
     }
