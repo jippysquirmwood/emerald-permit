@@ -48,5 +48,6 @@
   <%= f.input :works_description %>
   <%= f.input :approver_id, collection: User.where(approver: true), label_method: :fullname %>
   <%= f.button :submit, value: "Save & Exit" %>
+  <%= link_to "Exit without saving", dashboard_path %>
 <% end %>
 
