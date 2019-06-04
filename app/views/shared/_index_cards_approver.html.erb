@@ -11,12 +11,11 @@
               </div>
               <div class="card-mid">
                 <div class="permit-type-container">
-                <%= image_tag (permit.permit_type_img), class: "permit-type-img" %>
+                  <%= image_tag (permit.permit_type_img), class: "permit-type-img" %>
                 </div>
               </div>
               <div class="icons-container">
-                <span class="charcoal text-status"><%= permit.status %></span>
-                <!-- <i class="icon-status <%= permit.status_icon %>"></i> -->
+                <span class="charcoal text-status"><%= permit.status.capitalize %></span><!-- <i class="icon-status <%= permit.status_icon %>"></i> -->
                 <div class="img-tooltip">
                   <%= image_tag((permit.author.avatar), class: "avatar-sml avatar-card-permit")%>
                   <span class="tooltip-text">author <%= permit.author.short_last_name %></span>
