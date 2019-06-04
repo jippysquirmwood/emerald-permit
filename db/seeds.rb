@@ -73,9 +73,9 @@ Permit.destroy_all
 puts 'Creating first 4 users...'
 users_attributes = [
   {
-    email: "anthony.wilder@emerald.com",
-    first_name: "Paulo",
-    last_name: "Di canio",
+    email: "anthony.wildman@emerald.com",
+    first_name: "anthony",
+    last_name: "wildman",
     password: "123456",
     password_confirmation: "123456",
     role: "Project Manager",
@@ -83,12 +83,12 @@ users_attributes = [
     approver: true,
     author: false,
     admin: false,
-    avatar: "https://gq-images.condecdn.net/image/BXglzJm1l7p/crop/1020/f/Paolo-Di-Canio-West-Ham-GQ-16Sep16_pa_b.jpg"
+    avatar: "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/mpxp9qgpasl5r2drm9vy.jpg"
   },
   {
-    email: "julian@gmail.com",
-    first_name: "Julian",
-    last_name: "Dicks",
+    email: "jonathan.reid@emerald.com",
+    first_name: "jonathan",
+    last_name: "reid",
     password: "123456",
     password_confirmation: "123456",
     role: "Site Engineer",
@@ -96,25 +96,25 @@ users_attributes = [
     approver: false,
     author: true,
     admin: false,
-    avatar: "https://premierleague-static-files.s3.amazonaws.com/premierleague/photos/players/250x250/p16129.png"
+    avatar: "https://laminarprojects.com/wp-content/uploads/2019/03/Jonathan-Reid-1200x1094.jpg"
   },
   {
-    email: "mark@gmail.com",
+    email: "zac.hobbs@emerald.com",
     first_name: "Mark",
     last_name: "Noble",
     password: "123456",
     password_confirmation: "123456",
-    role: "Site Administrator",
+    role: "Site Personnel",
     phone: "07785423661",
     approver: false,
     author: false,
     admin: true,
-    avatar: "https://www.telegraph.co.uk/content/dam/football/2016/09/25/109565018_noble_sport_trans_NvBQzQNjv4Bq90JsMauqkzRhOnTEP_rlOlOLxaasDc9KXcXbtqPGl_Y.jpg?imwidth=450"
+    avatar: "https://avatars2.githubusercontent.com/u/45005021?v=4"
   },
   {
-    email: "bobby@gmail.com",
-    first_name: "Bobby",
-    last_name: "Zamora",
+    email: "fred.jonquiers@emerald.com",
+    first_name: "fred",
+    last_name: "jonquiers",
     password: "123456",
     password_confirmation: "123456",
     role: "Site Personnel",
@@ -122,7 +122,72 @@ users_attributes = [
     approver: false,
     author: false,
     admin: false,
-    avatar: "https://cdn.hitc-s.com/i/473/reuters_picture_supplied_by_action_images_local_caption_rbborh20_349963.jpg"
+    avatar: "https://avatars2.githubusercontent.com/u/47979498?v=4"
+  },
+  {
+    email: "rod.davis@emerald.com",
+    first_name: "rod",
+    last_name: "davis",
+    password: "123456",
+    password_confirmation: "123456",
+    role: "Site Supervisor",
+    phone: "07981673400",
+    approver: false,
+    author: false,
+    admin: false,
+    avatar: "https://laminarprojects.com/wp-content/uploads/2019/03/Jonathan-Reid-1200x1094.jpg"
+  },
+  {
+    email: "david.nash@emerald.com",
+    first_name: "david",
+    last_name: "nash",
+    password: "123456",
+    password_confirmation: "123456",
+    role: "Site Personnel",
+    phone: "07981673400",
+    approver: false,
+    author: false,
+    admin: false,
+    avatar: "https://laminarprojects.com/wp-content/uploads/2019/03/David-Nash-1200x1094.jpg"
+  },
+  {
+    email: "javier.zamorano@emerald.com",
+    first_name: "javier",
+    last_name: "zamorano",
+    password: "123456",
+    password_confirmation: "123456",
+    role: "Site Personnel",
+    phone: "07981673400",
+    approver: false,
+    author: false,
+    admin: false,
+    avatar: "https://laminarprojects.com/wp-content/uploads/2019/04/Javier-Zamorano.jpg"
+  },
+  {
+    email: "mathew.briggs@emerald.com",
+    first_name: "mathew",
+    last_name: "briggs",
+    password: "123456",
+    password_confirmation: "123456",
+    role: "Site Personnel",
+    phone: "07981673400",
+    approver: false,
+    author: false,
+    admin: false,
+    avatar: "https://laminarprojects.com/wp-content/uploads/2019/03/Mat-Briggs-1200x1201.jpg"
+  },
+  {
+    email: "jim.ramirez@emerald.com",
+    first_name: "jim",
+    last_name: "ramirez",
+    password: "123456",
+    password_confirmation: "123456",
+    role: "Site Personnel",
+    phone: "07981673400",
+    approver: false,
+    author: false,
+    admin: false,
+    avatar: "https://laminarprojects.com/wp-content/uploads/2019/03/Pablo-Arguelles-1200x1094.jpg"
   }
 ]
 
@@ -162,13 +227,13 @@ cat_models = ["C.A.T4", "C.A.T4+", "eC.A.T4", "eC.A.T4+", "gC.A.T4", "gC.A.T4+",
 genny_models = ["Genny4", nil]
 titles = ["Trench for culvert 12B", "Drill out column footings", "Northern Abutment batter trim", "Southern Abutment batter trim", "Trial Dig", "SIGI sitewide", "Topsoil Strip", "Cut to fill from Borrow Pit C", "Rock breaking in Cut A"]
 
-puts 'Creating permits...'
+puts 'Creating Random permits...'
 100.times do
   Permit.create!(
     {
       status: statuses.sample,
-      start_date: Time.now() + rand(10).day,
-      end_date: Time.now() + (10 + rand(5)).day,
+      start_date: (Time.now().beginning_of_day + rand(10).day + 9.hours).to_datetime,
+      end_date: (Time.now().beginning_of_day + (10 + rand(5)).day + 18.hours).to_datetime,
       permit_type: permit_types.sample,
       level: rand < 0.5 ? levels[2] : levels.sample,
       location: locations.sample,
@@ -204,19 +269,61 @@ puts 'Creating permits...'
       calibration_expires: Time.now() + 180.day,
       cat_scanner_serial: "AR003BYARDFD-D93485839394",
       genny_serial: "FD-D93AR003BYARD485839394",
-      author_id: User.where(author: true).sample.id,
-      approver_id: User.where(approver: true).sample.id,
+      author_id: User.where(author: true).where.not(email: "jonathan.reid@emerald.com").sample.id,
+      approver_id: User.where(approver: true).where.not(email: "anthony.wildman@emerald.com").sample.id,
       title: titles.sample
     }
   )
-
-  # dates = [Time.now - 1.day, Time.now + 2.day, Time.now + 1.day, Time.now + 12.hour, Time.now + 2.hour, Time.now + 40.minutes]
-
-  # 5.times do
-  #     Permit.create! {
-  #       status: "draft"
-  #     }
-  # end
 end
-puts "Permits created"
+puts "Random Permits created"
+
+puts "Creating Jono's permits"
+
+Permit.create!(
+    {
+      status: "expired",
+      start_date: Date.new(2019, 6, 1) + 8.hours,
+      end_date: Date.new(2019, 6, 2) + 17.hours,
+      permit_type: "permit to dig",
+      level: "G01 - Ground",
+      location: "Grid 2, Culvert 2C",
+      project_id: project_id,
+      permit_number: project_id + "-CIV-PERM-00" + permit_numbers.sample.to_s + rand(9).to_s,
+      method_statement: project_id + "-WPP-CS-000462/493",
+      xwidth: 600,
+      xlength: 12,
+      xdepth: 1500,
+      gas: true,
+      fibre_optic: false,
+      water: false,
+      unknown: false,
+      hv_electricity: true,
+      bt: true,
+      traffic_signal: false,
+      signal_cable: false,
+      lv_electricity: false,
+      drains: false,
+      street_lighting: true,
+      no_services: false,
+      hand_digging: true,
+      confirm_work_package_plan: true,
+      confirm_machine_operator: false,
+      services_protected: true,
+      exlusion_zone: true,
+      buried_cables_identified: true,
+      drawing_updated: true,
+      physical_barrier_available: false,
+      excavation_undermining_foundations: false,
+      cat_scan_model: cat_models.sample,
+      genny_model: genny_models.sample,
+      calibration_expires: Time.now() + 180.day,
+      cat_scanner_serial: "AR003BYARDFD-D93485839394",
+      genny_serial: "FD-D93AR003BYARD485839394",
+      cat_genny_operator: User.where(email: "rod.davis@emerald.com")[0].fullname,
+      author_id: User.where(email: "jonathan.reid@emerald.com")[0].id,
+      approver_id: User.where(email: "anthony.wildman@emerald.com")[0].id,
+      title: "Trial holes for culvert 2C"
+    }
+  )
+
 puts 'Finished!'
