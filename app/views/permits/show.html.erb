@@ -1,5 +1,4 @@
 <div class="body-container">
-<%= render 'shared/status_bar' %>
 
 <div style="border: 2px solid $grey-lighter; padding: 0px; display: flex; min-height: 100vh; margin-top: 75px;">
 
@@ -16,7 +15,7 @@
   <!-- Middle section with the permit info -->
 
   <div class="selected-container">
-
+    <%= render 'shared/status_bar' %>
     <%= render "shared/permit_details" %>
     <%= render "shared/excavation_dimensions" %>
     <%= render "shared/services_area" %>
@@ -76,14 +75,11 @@
 
 
 <script>
-  progressOne = document.getElementById("progress-one");
-  progressTwo = document.getElementById("progress-two");
   expired = document.getElementById("expired-banner");
   statusBar = document.querySelector(".status-container");
   icons = document.querySelectorAll("i");
 
   <% if @permit.status == "pending approval" %>
-    progressOne.style.backgroundColor = "#1BAA6F";
     icons.forEach(function(icon) {
       icon.style.display = "none";
     })
@@ -93,8 +89,6 @@
   <% elsif @permit.status == "rejected" %>
     icons[3].style.color = "#E67E22";
   <% elsif @permit.status == "approved" %>
-    progressOne.style.backgroundColor = "#1BAA6F";
-    progressTwo.style.backgroundColor = "#1BAA6F";
     icons.forEach(function(icon) {
       icon.style.display = "none";
     })
@@ -107,8 +101,6 @@
     })
     icons[1].style.display = "none";
     icons[0].style.display = "block";
-    progressOne.style.backgroundColor = "#f90606";
-    progressTwo.style.backgroundColor = "#f90606";
     expired.style.display = "block";
     statusBar.style.opacity = "0.3";
   <% end %>
