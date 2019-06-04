@@ -1,13 +1,13 @@
 <div class="banner">
-  <div>
-    <h1 id="banner-head">build safer</h1>
+  <div class="banner-text">
+    <h1 id="banner-head">Build Safer</h1>
     <div class="p-container">
       <p id="banner-p">Create, monitor and manage your permits to reduce risks to worker safety, delays and to save money across all of your projects.</p>
     </div>
     <% if current_user %>
-      <%= link_to 'dashboard', dashboard_path, class: "btn banner-btn"%>
+      <%= link_to 'Dashboard', dashboard_path, class: "approve-btn"%>
     <% else %>
-      <%= link_to 'sign up', new_user_registration_path, class: "btn banner-btn"%>
+      <%= link_to 'Sign up', new_user_registration_path, class: "approve-btn"%>
     <% end %>
   </div>
 </div>

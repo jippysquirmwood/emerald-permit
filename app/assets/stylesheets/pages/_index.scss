@@ -5,9 +5,14 @@
 @import "session";
 
 
+//container for main-body
+.body-container {
+  padding: 0 110px;
+}
+
 // top header and add new permit
 .top-index {
-  margin-top: 8vh;
+  margin-top: 5vh;
   margin-bottom: 2vh;
   display: flex;
   flex-direction: row;
