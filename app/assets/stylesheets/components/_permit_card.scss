@@ -41,7 +41,11 @@
     .card-bottom {
       padding-top: 6px;
       margin-top: 50px;
-      padding-left: 6px;
+      padding-left: 0px;
+      margin-left: 0px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
     }
 
     .charcoal {
@@ -50,6 +54,7 @@
 
     .grey-light {
       color: $grey-light;
+      // padding-left: 0;
     }
 
     * {
@@ -145,7 +150,7 @@
 
 .archive-btn {
   padding: 2px 5px 2px 5px;
-  position: relative;
+  // position: relative;
   left: 179px;
   bottom: 29px;
   font-size: 10px;
