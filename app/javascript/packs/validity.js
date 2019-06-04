@@ -91,7 +91,7 @@ const validityShow = () => {
 
       if (validCall[2]) {
         statusTag.getElementsByClassName('text-status')[0].innerText = validCall[2];
-        document.getElementsByClassName('archive-btn')[0].classList.add('show');
+        permit.getElementsByClassName('archive-btn')[0].classList.add('show');
       }
     });
   };
