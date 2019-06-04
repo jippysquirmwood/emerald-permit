@@ -16,10 +16,10 @@
               </div>
               <div class="icons-container">
                 <span class="charcoal text-status"><%= permit.status %></span>
-                <i class="icon-status <%= permit.status_icon %>"></i>
+                <!-- <i class="icon-status <%= permit.status_icon %>"></i> -->
                 <div class="img-tooltip">
                   <% if permit.approver.present? %>
-                    <%= image_tag((permit.approver.avatar), class: "avatar-sml")%>
+                    <%= image_tag((permit.approver.avatar), class: "avatar-sml avatar-card-permit")%>
                     <span class="tooltip-text">approver <%= permit.approver.short_last_name %></span>
                   <% end %>
                 </div>
@@ -27,6 +27,7 @@
               <div class="card-bottom">
                 <p class="grey-light"><span class="charcoal">Valid:</span>  <%= permit.date_time(permit.start_date) %> <span class="charcoal">to</span> <%= permit.date_time(permit.end_date) %></p>
                 <p class="validity"></p>
+                <%= link_to 'Archive', permit_path(permit[:id]), method: :delete, data: { confirm: "Archive permit... are you sure?" }, class: "btn-green archive-btn" %>
               </div>
             </div>
           </div>
@@ -34,7 +35,7 @@
       <% end %>
     <% else %>
       <div class="nothing-card">
-        <h5>Nothing requires attention!</h5>
+        <h5>No actions</h5>
         <hr>
         <i class="fas fa-clipboard-check"></i>
       </div>

@@ -1,7 +1,7 @@
 .banner {
   background-image: url(banner.jpeg);
   width: 100%;
-  height: 65vh;
+  height: 95vh;
   background-size: cover;
   background-position: center;
   display: flex;
@@ -12,7 +12,22 @@
   @media only screen and (max-width: 576px) {
     padding-left: 20px;
   }
+}
 
+.banner-btn {
+  color: white;
+  background-color: $emerald-dark;
+  height: 35px;
+  // display: flex;
+  align-items: center;
+  opacity: 0.85;
+  border: none;
+  padding-left: 15px;
+  padding-right: 15px;
+  &:hover {
+    color: white;
+    opacity: 1;
+  }
 }
 
 // @media only screen and (max-width: 600px) {

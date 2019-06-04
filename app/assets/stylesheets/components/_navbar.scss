@@ -11,6 +11,7 @@
   height: 55px;
 }
 
+
 .navbar {
   @media only screen and (max-width: 576px) {
     flex-wrap: none !important;
@@ -96,6 +97,7 @@
   display: flex;
   align-items: center;
   height:40px;
+  padding-left: 94px;
 }
 .notice {
   position: absolute;
@@ -116,6 +118,7 @@
   background-color: $charcoal;
   color: white;
   outline: none;
+  padding-right: 94px;
   &:hover {
     color: #c4c4c4;
     outline: none;
@@ -123,6 +126,7 @@
 }
 
 .badge {
+  padding-right: 94px;
   position: relative;
 }
 

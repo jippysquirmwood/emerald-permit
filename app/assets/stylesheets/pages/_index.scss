@@ -5,9 +5,14 @@
 @import "session";
 
 
+//container for main-body
+.body-container {
+  padding: 0 110px;
+}
+
 // top header and add new permit
 .top-index {
-  margin-top: 8vh;
+  margin-top: 5vh;
   margin-bottom: 2vh;
   display: flex;
   flex-direction: row;
@@ -32,6 +37,7 @@
   flex: wrap;
   align-items: flex-end;
   position: relative;
+  margin-bottom: 15px;
   a {
     text-decoration: none !important;
   }
@@ -68,7 +74,7 @@
 
 .btn-green2 {
   // background-color: $grey-lighter;
-  border-bottom: 2px solid rgba(27, 170, 111, .2);
+  border-bottom: 2px solid rgba(153, 221, 204, .2);
   color: $charcoal;
   &:hover {
     // background-color: $emerald-dark;
@@ -125,11 +131,15 @@ text-decoration:none;
 .fa-clipboard-check {
   font-size: 180px;
   color: $emerald-dark;
+  opacity: 0.08;
+}
+
+.table-hover tbody tr td th {
+  background-color: white;
+  border-bottom: none;
 }
 
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
   background-color: white;
-  padding-top: 20px;
-  padding-bottom: 20px;
   border-bottom: 1px solid $emerald-bright;
 }
