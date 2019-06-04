@@ -30,11 +30,11 @@
                 <%= link_to permit_path(permit) do %>
                 <th scope="row"> <%= link_to permit.permit_number, permit_path(permit) %></th>
                 <td> <%= permit.title %> </td>
-                <td> <%= permit.permit_type %> </td>
+                <td> <%= permit.permit_type.capitalize %> </td>
                 <td> <%= permit.short_date(permit.start_date) %> </td>
                 <td> <%= permit.short_date(permit.end_date) %> </td>
                 <td> <%= permit.author.first_name[0] + " " + permit.author.last_name %> </td>
-                <td> <%= permit.status %> </td>
+                <td> <%= permit.status.capitalize %> </td>
                 <% end %>
               </tr>
           <% end %>
@@ -42,5 +42,5 @@
     </table>
   </div>
   <div class="index-btm">
-    <p>show more</p>
+    <p>Show more</p>
 </div>

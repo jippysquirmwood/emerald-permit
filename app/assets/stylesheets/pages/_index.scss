@@ -143,3 +143,13 @@ text-decoration:none;
   background-color: white;
   border-bottom: 1px solid $emerald-bright;
 }
+
+.next-btns {
+  margin-left: 15px;
+}
+
+.remove-decor {
+  &:hover {
+    text-decoration: none;
+  }
+}
