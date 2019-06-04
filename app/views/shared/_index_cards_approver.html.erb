@@ -1,5 +1,5 @@
 <div class="my-perm-index">
-  <div class="index-cards">
+  <div class="index-cards" style="overflow-x: scroll;">
     <% if @pending_permits.present? %>
       <% @pending_permits.each do |permit| %>
         <%= link_to permit_path(permit) do %>
@@ -18,13 +18,17 @@
                 <span class="charcoal text-status"><%= permit.status.capitalize %></span><!-- <i class="icon-status <%= permit.status_icon %>"></i> -->
                 <div class="img-tooltip">
                   <%= image_tag((permit.author.avatar), class: "avatar-sml avatar-card-permit")%>
-                  <span class="tooltip-text">Author: <%= permit.author.short_last_name %></span>
+                  <span class="tooltip-text">author <%= permit.author.short_last_name %></span>
                 </div>
               </div>
               <div class="card-bottom">
-                <p class="grey-light"><span class="charcoal">Valid:</span>  <%= permit.date_time(permit.start_date) %> <span class="charcoal">to</span> <%= permit.date_time(permit.end_date) %></p>
-                <p class="validity"></p>
+                <div>
+                  <p class="grey-light"><span class="charcoal">Valid:</span>  <%= permit.date_time(permit.start_date) %> <span class="charcoal">to</span> <%= permit.date_time(permit.end_date) %></p>
+                  <p class="validity"></p>
+                </div>
+                <div>
                 <%= link_to 'Archive', permit_path(permit[:id]), method: :delete, data: { confirm: "Archive permit... are you sure?" }, class: "btn-green archive-btn" %>
+                </div>
               </div>
             </div>
           </div>
