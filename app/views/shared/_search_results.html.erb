@@ -2,7 +2,8 @@
   <h2 id="results-back"><i class="fas fa-arrow-left" id="results-back"></i> Search Results</h2>
 <% end %>
 
-  <h4>permits (<%= @search_permits.size %>) found</h4>
+  <h4>Permits (<%= @search_permits.size %>) found</h4>
+  <hr style="color: $grey-lighter">
   <div class="my-perm-index">
       <div class="index-cards">
         <% @search_permits.each do |permit| %>
@@ -35,16 +36,14 @@
     </div>
   </div>
 
-  <h4>people (<%= @search_users.size %>) found</h4>
+  <h4>People (<%= @search_users.size %>) found</h4>
+  <hr style="color: $grey-lighter">
   <div class="my-perm-index">
       <div class="index-cards" id="person-cards">
             <div class="user-card">
-              <%= image_tag user.avatar, class: "avatar-large" %>
-              <p><%= user.first_name %> <%= user.last_name %></p>
-              <p><%= user.role %></p>
-               <% @search_users.each do |user| %>
+               <% @search_users.each do |user| %></%>
                   <%= link_to user_path(user) do %>
-                    <div class=left-card">
+                    <div class="left-card">
                       <img class="card-pic" style="background-image: url(<%= user.avatar %>);" alt="">
                     </div>
                     <div class="right-card">

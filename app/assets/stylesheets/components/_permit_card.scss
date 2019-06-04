@@ -102,14 +102,15 @@
       &:hover .tooltip-text{
         position: absolute;
         display: inline-block;
+        white-space: nowrap;
       }
     .tooltip-text {
       display: none;
       background-color: $emerald-dark;
-      color: #fff;
+      color: $charcoal;
       font-size: 10px;
       text-align: center;
-      // padding: 2px 4px;
+      padding: 2px 4px 2px 4px;
       z-index: 1;
     }
   }
