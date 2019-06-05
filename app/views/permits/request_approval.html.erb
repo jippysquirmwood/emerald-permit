@@ -3,7 +3,7 @@
     <%= f.input :approver_id, collection: User.where(approver: true), label_method: :fullname, default: @permit.approver %>
     <div class="confirm-cancel" style="text-align:right;">
       <%= f.button :submit, value: "Cancel", name: "cancel", class: "reject-btn", style: "width:inherit;" %>
-      <%= f.button :submit, value: "Confirm & Submit", name: "submit", class:"btn-green2" %>
+      <%= f.button :submit, value: "Confirm & Submit", name: "submit", class:"btn-green2", data: {disable_with: "submitting bro"} %>
     </div>
   <% end %>
 </div>
