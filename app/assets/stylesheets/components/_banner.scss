@@ -54,6 +54,32 @@
   align-items: center;
 }
 
+@media(max-width:400px) {
+  .banner {
+    padding: 0;
+  }
+  .banner-logo, .banner-text {
+    margin: 0 auto;
+  }
+
+  .banner-text {
+    width: 38vh;
+    height: 80vh;
+    margin-top: 90px;
+  }
+
+  #banner-head, #banner-p {
+    margin: 0;
+    width: initial;
+    margin-bottom: 20px;
+  }
+
+  .p-container {
+    width: 80vw;
+  }
+
+}
+
 .btn-login-home {
   opacity: 0.8;
   background-color: $charcoal;
