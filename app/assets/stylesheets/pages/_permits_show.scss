@@ -1,250 +1,130 @@
-// Css for main section (Middle one) Section Show
-
-.mechanical-dig {
-  padding: 15px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-.center-detail {
-  width: 40vw;
-  margin: 0 auto;
-}
-
-ul {
-  list-style-type: none;
-}
-
-.section-item {
-  border-bottom: 1px solid rgba(98,98,98,0.1);
-  height: 12%;
-  background-color: $grey-lightest;
-  padding-top: 8px;
-  transition: 0.3s;
-  span {
-    margin-top: 8px;
-    font-size: 12px;
-  }
-  p {
-    margin-left: 8px;
-  }
-  &:hover {
-    border-left: 2px solid $emerald-bright;
-    background-color: white;
-    cursor: pointer;
-  }
-}
-
-.container-permit-details {
-  // margin-top: 24px;
-  line-height: 42px;
-  border-top: none;
-  h2 {
-    margin-bottom: 16px;
-  }
-}
-
-.selected-container {
-  width: 60%;
-}
-
-.section-container {
-  border: 1px solid $grey-lighter;
-  border-bottom: none;
-  width: 20%;
-  position: -webkit-sticky !important;
-  position: sticky;
-  top: 55px;
-}
 
 
-// Css for User card Approver and author
-
-.author-avatar, .approver-avatar {
+.top-three-sections {
   display: flex;
-  align-items: center;
-  margin: 0 auto;
-  width: 180px;
-  p {
-    margin-bottom: 0;
-    font-size: 12px
-  }
+  flex-direction: row;
+  height: 62vh;
+  margin-bottom: 0px;
+  margin-top: 20px;
 }
 
-.permit-show {
-  margin-right: 4%;
+.important-details {
+  width: 50vw;
+  display: flex;
+  flex-direction: row;
 }
 
-.detail-card-permit {
-  justify-content: center;
-  align-items: center;
-  height: 80vh;
-  margin-top: 30px;
+.title-section {
+  width: 25vw;
+  padding-left: 10px;
+  overflow: scroll;
+  // align-items: center;
 }
 
-// Css for BTN
+.status-section {
+  width: 25vw;
+  margin-left: 15px;
+  overflow: scroll;
+  // vertical-align: center;
+}
 
-.action-btn-container {
-  background-color: $grey-lightest;
-  width: 20%;
-  a {
-    display: block;
-  }
+
+.main-content {
+  width: 50vw;
+  height: 62vh;
+  margin-left: 15px;
+  overflow: scroll;
+}
+
+.bottom-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.show-buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.people-show {
+  display: flex;
 }
 
 .submit-btn {
   color: $charcoal;
   background-color: $emerald-dark;
   text-align: center;
-  padding: 15px;
-  border: 1px solid $emerald-dark;
-  &:hover {
-    text-decoration: none;
-  }
+}
+.comment-section {
 }
 
-.edit-btn {
-  width: 50px;
-  margin: 10px auto;
-  margin-bottom: 15px;
-  color: #3F464A;
-  text-align: center;
-  padding-bottom: 5px;
-  transition: 0.3s;
-  &:hover {
-    transition: 0.3s;
-    text-decoration: none;
-  }
-}
-
-.reject-btn {
-  width: 50px;
-  padding-bottom: 5px;
-  margin: 0 auto;
-  text-align: center;
-  transition: 0.3s;
-  border-bottom: 2px solid rgba(249,6,6, 0.2)!important;
-  &:hover {
-    transition: 0.3s;
-    text-decoration: none;
-    border-bottom: 2px solid rgb(249,6,6)!important;
-  }
-}
-
-.withdraw {
-  width: 150px;
-  color: $charcoal;
-  transition: 0.3s;
-  &:hover {
-  color: $charcoal;
-  transition: 0.3s;
-  }
-}
-
-.rejected {
-  color: $charcoal;
-  transition: 0.3s;
-  margin-top: 10px;
-  &:hover {
-    color: $charcoal;
-    transition: 0.3s;
-  }
-}
-
-
-
-.dashboard-btn {
-  text-align: center;
-  color: white;
-  background-color: $emerald-dark;
-  &:hover {
-    color: $charcoal;
-  }
-}
-
-
-// Css for javascript Section
-
-.selected-section {
-  display: none;
-}
-
-.show-section {
-  display: block !important;
-}
-
-.section-header-active {
-  border-left: 2px solid $emerald-bright;
-  background-color: $grey-lighter;
-}
-
-.begin {
-  padding-bottom: 2px;
-  border-bottom: 1px solid $emerald-dark;
-}
-
-.end {
-  padding-bottom: 2px;
-  border-bottom: 1px solid rgb(249,6,6);
-}
-
-.status-show {
-  font-size: larger;
-  strong {
-    padding-bottom: 2px;
-    border-bottom: 1px solid #0099ff;
-  }
-}
-
-.details {
-  margin-top: 50px;
-  display: flex;
-  justify-content: space-between;
+.show-cont {
+  background-color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  margin-top: 20px;
   p {
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  .light {
+    color: $grey-light;
+    font-size: 12px;
     margin-bottom: 0;
   }
-}
-
-.detail-info {
-  margin-left: 20px;
-  text-align: right;
-}
-
-.permit-images {
-  margin-top: 100px;
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.move {
-  position: relative;
-  margin-right: 60px;
-  p {
-    position: absolute;
-    font-size: smaller;
-  }
-  .width {
-    top: 16px;
-    left: 60px;
-  }
-  .depth {
-    top: 35px;
-    left: 245px;
-  }
-  .length {
-    top: 70px;
-    right: -15px;
+  .btn-show {
+    text-align: left;
+    padding-left: 0;
+    font-size: 14px;
+    border-bottom: 2px solid rgba(153, 221, 204, 0.65);
+    &:hover {
+    border-bottom: 2px solid $emerald-dark;
+    }
   }
 }
 
-.section {
-  margin-top: 5vh;
-  background-color: $charcoal;
-  color: $emerald-bright;
-  padding: 0 5px;
-  border-radius: 3px;
-  font-size: small;
-  width: fit-content;
+h3 {
+  font-size: 24px;
 }
+
+h5 {
+  font-size: 20px;
+}
+
+.perm-av {
+  margin-right: 10px;
+}
+
+.i-green {
+  color: green;
+}
+
+.i-yellow {
+  color: $red;
+}
+
+.i-red {
+  color: red;
+}
+
+.i-grey {
+  color: $grey-light;
+}
+
+.i-trans {
+  opacity: 0.2;
+}
+
+
+
+
+
+
+
+
 
 

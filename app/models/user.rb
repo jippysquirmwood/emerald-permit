@@ -14,18 +14,18 @@ class User < ApplicationRecord
   multisearchable against: [:email, :first_name, :last_name, :role]
 
   def fullname
-    first_name + " " + last_name
+    first_name.capitalize + " " + last_name.capitalize
   end
 
   def short_first_name
-    "#{first_name[0].capitalize}. #{last_name}"
+    "#{first_name[0].capitalize}. #{last_name.capitalize}"
   end
 
   def short_last_name
-    "#{first_name.capitalize} #{last_name[0]}"
+    "#{first_name.capitalize} #{last_name[0].capitalize}"
   end
 
   def initials
-    "#{first_name[0].capitalize}#{last_name[0]}"
+    "#{first_name[0].capitalize}#{last_name[0].capitalize}"
   end
 end

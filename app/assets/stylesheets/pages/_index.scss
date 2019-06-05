@@ -151,3 +151,10 @@ text-decoration:none;
   }
 }
 
+td.row-text a {
+  color: $emerald-dark;
+  &:hover {
+    text-decoration: none;
+  }
+}
+

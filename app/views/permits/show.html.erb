@@ -1,137 +1,109 @@
 <div class="body-container">
+  <div class="show-cont">
+  <div class="top-three-sections">
+    <div class="important-details">
+      <div class="title-section">
+        <h3><%= @permit.permit_type.capitalize %></h3>
+        <h5><%= @permit.title %></h5>
+        <p class="light">Description of Work</p>
+        <p><%= @permit.works_description %></p>
+        <p class="light">Level</p>
+        <p><%= @permit.level %></p>
+        <p class="light">Location</p>
+        <p><%= @permit.location %></p>
+        <p class="light">Permit Number</p>
+        <p><%= @permit.permit_number %></p>
+        <p class="light">Method Statement Reference</p>
+        <p><%= @permit.method_statement %></p>
 
-<div style="border: 2px solid $grey-lighter; padding: 0px; display: flex; min-height: 100vh; margin-top: 75px;">
-
-<!-- Left side of the show, with the Clickable Sections -->
-  <div class="section-container">
-    <div class="section-item section-header-active" data-id="1"><p><span>Section 1</span><br>Permit Details</p></div>
-    <div class="section-item" data-id="2"><p><span>Section 2</span><br>Excavation dimensions</p></div>
-    <div class="section-item" data-id="3"><p><span>Section 3</span><br>Services located in the area</p></div>
-    <div class="section-item" data-id="4"><p><span>Section 4</span><br>Confirmation</p></div>
-    <div class="section-item" data-id="5"><p><span>Section 5</span><br>Mechanical Dig</p></div>
-    <div class="section-item" data-id="6"><p>Show all sections</p></div>
-  </div>
-
-  <!-- Middle section with the permit info -->
-
-  <div class="selected-container">
-    <%= render 'shared/status_bar' %>
-    <%= render "shared/permit_details" %>
-    <%= render "shared/excavation_dimensions" %>
-    <%= render "shared/services_area" %>
-    <%= render "shared/confirmation" %>
-    <%= render "shared/mechanical_dig" %>
-    <%= render "shared/all" %>
-
-  </div>
-
-<!-- Right side with button and user card -->
-
-  <div class="action-btn-container">
-    <%#= link_to 'back to dashboard', permits_path, class: "dashboard-btn" %>
-    <% if @permit.who_with == @permit.author %>
-      <% if @permit.author == current_user %>
-        <% if @permit.status != "approved"  %>
-          <%= link_to 'submit for approval', permit_request_approval_path(@permit), method: :get, class: "btn-green submit-btn" %>
+        <hr style="margin: 8px 0;">
+        <div class="show-buttons">
+        <% if @permit.who_with == @permit.author %>
+          <% if @permit.author == current_user %>
+            <% if @permit.status != "approved"  %>
+              <div><%= link_to "Submit for Approval", permit_submit_request_path(@permit), class: "btn btn-show show-green" %></div>
+            <% end %>
+              <div><%= link_to "Edit", edit_permit_path(@permit), class: "btn btn-show show-" %></div>
+              <div><%= link_to 'Archive', permit_path(@permit), method: :delete, data: { confirm: "Archiving permit... are you sure?" }, class: "btn btn-show show-red " %></div>
+          <% end %>
+        <% elsif @permit.who_with == @permit.approver %>
+          <% if @permit.author == current_user %>
+            <div><%= link_to 'withdraw request', permit_recall_path(@permit), method: :get, data: { confirm: "Are you sure you want to recall?" }, class: "btn btn-show" %></div>
+          <% elsif @permit.approver == current_user %>
+            <div><%= link_to 'approve', permit_approve_path(@permit), class: "btn btn-show" %></div>
+            <div><%= link_to 'reject', permit_reject_path(@permit), class: "btn btn-show" %></div>
+          <% end %>
         <% end %>
-          <%= link_to 'edit', edit_permit_path(@permit), class: "btn-green2 edit-btn" %>
-          <%= link_to 'delete', permit_path(@permit), method: :delete, data: { confirm: "deleting permit... are you sure?" }, class: "btn-green2 reject-btn" %>
-      <% end %>
-    <% elsif @permit.who_with == @permit.approver %>
-      <% if @permit.author == current_user %>
-        <%= link_to 'withdraw request', permit_recall_path(@permit), method: :get, data: { confirm: "Are you sure you want to recall?" }, class: "reject-btn withdraw" %>
-      <% elsif @permit.approver == current_user %>
-        <%= link_to 'approve', permit_approve_path(@permit), class: "submit-btn btn-green" %>
-        <%= link_to 'reject', permit_reject_path(@permit), class: "reject-btn rejected" %>
-      <% end %>
-    <% end %>
+        </div>
 
-    <div class="detail-card-permit">
-      <div class="author-avatar">
-        <img class="avatar permit-show" src= <%= @permit.author.avatar %> />
-        <div class="author-name">
-          <p>Author: <%= @permit.author.short_first_name %></p>
-          <p><%= @permit.author.role %></p>
+
+        <%#= link_to 'back to dashboard', permits_path, class: "dashboard-btn" %>
+
+
+
+      </div>
+
+      <div class="status-section">
+        <h5>Document Status</h5>
+        <p class="light">Status</p>
+        <p id="permit-status"><%= @permit.status.capitalize %></p>
+        <p class="light">Workflow</p>
+        <i id="icon1" class="fas fa-circle i-grey i-trans"></i>
+        <i id="icon2" class="fas fa-circle i-grey i-trans"></i>
+        <i id="icon3" class="fas fa-circle i-grey i-trans"></i>
+        <i id="icon4" class="fas fa-circle i-grey i-trans"></i>
+        <hr style="margin: 8px 0;">
+        <h5>Document Validity</h5>
+        <p class="light">Start Date</p>
+        <p id="start-date"><%= @permit.date_time(@permit.start_date) %> hrs</p>
+        <p class="light">Expiry Date</p>
+        <p id="end-date"><%= @permit.date_time(@permit.end_date) %> hrs</p>
+        <p class="light">Validity</p>
+        <p id="validity"></p>
+      </div>
+    </div>
+
+
+    <div class="main-content">
+      <div id="section-1">
+        <%= render "shared/all" %>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="bottom-bar">
+    <div class="workers">
+      <div class="people-show">
+        <img class="avatar perm-av" src="<%= @permit.author.avatar %>" alt="">
+        <div>
+          <p class="light">Author</p>
+          <p><%= @permit.author.fullname %></p>
         </div>
       </div>
-      <hr>
-      <% if @permit.approver.present? %>
-        <div class="approver-avatar">
-          <img class="avatar permit-show" src= <%= @permit.approver.avatar %> />
-          <div class="approver-name">
-            <p>Approver: <%= @permit.approver.short_first_name %></p>
-            <p><%= @permit.approver.role %></p>
-          </div>
+      <hr style="margin: 8px 0;">
+      <div class="people-show">
+        <img class="avatar perm-av" src="<%= @permit.approver.avatar %>" alt="">
+        <div>
+          <p class="light">Approver</p>
+          <p><%= @permit.approver.fullname %></p>
         </div>
-      <% else %>
-        <div class="approver-avatar">
-          <p>Approver to be confirmed</p>
-        </div>
-      <% end %>
+      </div>
+    </div>
+    <div class="comment-section">
+      <p>Add a comment</p>
+      <p>comments box</p>
+    </div>
+    <div>
+      <p>something else</p>
     </div>
   </div>
 </div>
+
+<div>
+
 </div>
 
-
-<script>
-  statusBar = document.querySelector(".status-container");
-  icons = document.querySelectorAll("i");
-
-  <% if @permit.status == "pending approval" %>
-    icons.forEach(function(icon) {
-      icon.style.display = "none";
-    })
-    icons[2].style.display = "block";
-    icons[4].style.display = "block";
-    icons[7].style.display = "block";
-  <% elsif @permit.status == "rejected" %>
-    icons.forEach(function(icon) {
-      icon.style.display = "none";
-    })
-    icons[2].style.display = "block";
-    icons[6].style.display = "block";
-    icons[7].style.display = "block";
-    icons[3].style.color = "#E67E22";
-  <% elsif @permit.status == "approved" %>
-    icons.forEach(function(icon) {
-      icon.style.display = "none";
-    })
-    icons[2].style.display = "block";
-    icons[5].style.display = "block";
-    icons[8].style.display = "block";
-  <% elsif @permit.status == "expired" %>
-    icons.forEach(function(icon) {
-      icon.style.color = "#f90606";
-    })
-    icons[1].style.display = "none";
-    icons[0].style.display = "block";
-  <% end %>
-
-  var sectionItems = document.querySelectorAll(".section-item");
-  sectionItems.forEach((sectionItem) => {
-    sectionItem.addEventListener("click", (event) => {
-      var deselectedSectionHeader = document.querySelector(".section-header-active");
-      var selectedSectionHeader = event.currentTarget;
-      deselectedSectionHeader.classList.remove("section-header-active");
-      selectedSectionHeader.classList.add("section-header-active");
-      var sectionId = event.currentTarget.dataset.id
-      var selectedSections = document.querySelectorAll(`div.selected-section`);
-      var selectedSection;
-      var deselectedSection;
-      selectedSections.forEach((element) => {
-        if(element.dataset.id == sectionId) {
-          selectedSection = element;
-        }
-        if(element.className == "selected-section show-section") {
-          deselectedSection = element;
-        }
-      });
-      if (selectedSection != deselectedSection) {
-        selectedSection.classList.add("show-section");
-        deselectedSection.classList.remove("show-section");
-      }
-    });
-  });
-</script>
+<%= javascript_pack_tag "workflow" %>
 
