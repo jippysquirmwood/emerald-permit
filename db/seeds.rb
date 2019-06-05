@@ -278,8 +278,8 @@ end
 puts "Random Permits created"
 
 puts "Creating Jono's permits"
-# presentation_time = Date.new(2019, 6, 5) + 8.hours
-presentation_time = Time.now.to_datetime + 1.hours
+presentation_time = Date.new(2019, 6, 5) + 10.hours + 0.minutes
+# presentation_time = Time.now.to_datetime + 1.hours
 Permit.create!(
   {
     status: "expired",
@@ -324,7 +324,8 @@ Permit.create!(
     author_id: User.where(email: "jonathan.reid@emerald.com")[0].id,
     approver_id: User.where(email: "anthony.wildman@emerald.com")[0].id,
     title: "Trial holes for culvert 2C",
-    works_description: "4 holes at 3m spacing as marked by surveyor"
+    works_description: "4 holes at 3m spacing as marked by surveyor",
+    hand_diggin_text: "no machine digging within 500mm of electrical services"
   }
 )
 
@@ -372,7 +373,8 @@ Permit.create!(
     author_id: User.where(email: "jonathan.reid@emerald.com")[0].id,
     approver_id: User.where(email: "anthony.wildman@emerald.com")[0].id,
     title: "Excavate Manhole MH-2",
-    works_description: "Excavate with CAT 320 Excavator within sheet pile protected excavation. propping as per Temporary Works Design"
+    works_description: "Excavate with CAT 320 Excavator within sheet pile protected excavation. propping as per Temporary Works Design",
+    hand_diggin_text: "only hand digging is permitted within 500mm of electrical services"
   }
 )
 
@@ -420,7 +422,8 @@ Permit.create!(
     author_id: User.where(email: "jonathan.reid@emerald.com")[0].id,
     approver_id: User.where(email: "anthony.wildman@emerald.com")[0].id,
     title: "Excavate trench for Culvert 2C - Box culvert drain",
-    works_description: "Excavate to underside of bedding level. Excavation to be benched above 1.2m"
+    works_description: "Excavate to underside of bedding level. Excavation to be benched above 1.2m",
+    hand_diggin_text: "no machine digging within 500mm of electrical services"
   }
 )
 
@@ -468,7 +471,8 @@ Permit.create!(
     author_id: User.where(email: "jonathan.reid@emerald.com")[0].id,
     approver_id: User.where(email: "anthony.wildman@emerald.com")[0].id,
     title: "Excavate Manhole MH-1",
-    works_description: "Excavate with CAT 320 Excavator within sheet pile protected excavation. propping as per Temporary Works Design"
+    works_description: "Excavate with CAT 320 Excavator within sheet pile protected excavation. propping as per Temporary Works Design",
+    hand_diggin_text: "no machine digging within 500mm of electrical services"
   }
 )
 
