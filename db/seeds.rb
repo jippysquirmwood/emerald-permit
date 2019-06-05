@@ -374,7 +374,8 @@ Permit.create!(
     approver_id: User.where(email: "anthony.wildman@emerald.com")[0].id,
     title: "Excavate Manhole MH-2",
     works_description: "Excavate with CAT 320 Excavator within sheet pile protected excavation. propping as per Temporary Works Design",
-    hand_diggin_text: "only hand digging is permitted within 500mm of electrical services"
+    hand_diggin_text: "only hand digging is permitted within 500mm of electrical services",
+    site_layout_img: "site_layout_mh2.svg"
   }
 )
 
@@ -423,7 +424,8 @@ Permit.create!(
     approver_id: User.where(email: "anthony.wildman@emerald.com")[0].id,
     title: "Excavate trench for Culvert 2C - Box culvert drain",
     works_description: "Excavate to underside of bedding level. Excavation to be benched above 1.2m",
-    hand_diggin_text: "no machine digging within 500mm of electrical services"
+    hand_diggin_text: "no machine digging within 500mm of electrical services",
+    site_layout_img: "site_layout_culvert_16c.svg"
   }
 )
 
@@ -472,7 +474,8 @@ Permit.create!(
     approver_id: User.where(email: "anthony.wildman@emerald.com")[0].id,
     title: "Excavate Manhole MH-1",
     works_description: "Excavate with CAT 320 Excavator within sheet pile protected excavation. propping as per Temporary Works Design",
-    hand_diggin_text: "no machine digging within 500mm of electrical services"
+    hand_diggin_text: "no machine digging within 500mm of electrical services",
+    site_layout_img: "site_layout_mh1.svg"
   }
 )
 
