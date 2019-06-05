@@ -52,8 +52,12 @@
   display: flex;
 }
 
-.comment-section {
+.submit-btn {
+  color: $charcoal;
+  background-color: $emerald-dark;
   text-align: center;
+}
+.comment-section {
 }
 
 .show-cont {
