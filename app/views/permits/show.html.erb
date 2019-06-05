@@ -3,37 +3,63 @@
   <div class="top-three-sections">
     <div class="important-details">
       <div class="title-section">
+        <h3><%= @permit.permit_type.capitalize %></h3>
         <h5><%= @permit.title %></h5>
-        <h3><%= @permit.permit_type %></h3>
+        <p class="light">Description of Work</p>
         <p><%= @permit.works_description %></p>
-        <p>Level: <%= @permit.level %></p>
-        <p>Location: <%= @permit.location %></p>
-        <p>No: <%= @permit.permit_number %></p>
-        <p>MS: <%= @permit.method_statement %></p>
+        <p class="light">Level</p>
+        <p><%= @permit.level %></p>
+        <p class="light">Location</p>
+        <p><%= @permit.location %></p>
+        <p class="light">Permit Number</p>
+        <p><%= @permit.permit_number %></p>
+        <p class="light">Method Statement Reference</p>
+        <p><%= @permit.method_statement %></p>
 
-
+        <hr style="margin: 8px 0;">
         <div class="show-buttons">
-          <button class="btn btn-green">Submit for approval</button>
-          <!-- <div class="ed-del-buttons"> -->
-            <button class="btn btn-green">Edit</button>
-            <button class="btn btn-green">Delete</button>
-          <!-- </div> -->
+        <% if @permit.who_with == @permit.author %>
+          <% if @permit.author == current_user %>
+            <% if @permit.status != "approved"  %>
+              <div><%= link_to "Submit for Approval", permit_submit_request_path(@permit), class: "btn btn-show show-green" %></div>
+            <% end %>
+              <div><%= link_to "Edit", edit_permit_path(@permit), class: "btn btn-show show-" %></div>
+              <div><%= link_to 'Archive', permit_path(@permit), method: :delete, data: { confirm: "Archiving permit... are you sure?" }, class: "btn btn-show show-red " %></div>
+          <% end %>
+        <% elsif @permit.who_with == @permit.approver %>
+          <% if @permit.author == current_user %>
+            <div><%= link_to 'withdraw request', permit_recall_path(@permit), method: :get, data: { confirm: "Are you sure you want to recall?" }, class: "btn btn-show" %></div>
+          <% elsif @permit.approver == current_user %>
+            <div><%= link_to 'approve', permit_approve_path(@permit), class: "btn btn-show" %></div>
+            <div><%= link_to 'reject', permit_reject_path(@permit), class: "btn btn-show" %></div>
+          <% end %>
+        <% end %>
         </div>
+
+
+        <%#= link_to 'back to dashboard', permits_path, class: "dashboard-btn" %>
 
 
 
       </div>
 
       <div class="status-section">
-        <h3>Status</h3>
-        TODO - DOTS
-        <%= @permit.status %>
-
-        <h3>Validity</h3>
-        <%= @permit.start_date %>
-        <%= @permit.end_date %>
-        <p id="permit-validity"></p>
-        <p id="permit-expires-in"></p>
+        <h5>Document Status</h5>
+        <p class="light">Status</p>
+        <p id="permit-status"><%= @permit.status.capitalize %></p>
+        <p class="light">Workflow</p>
+        <i id="icon1" class="fas fa-circle i-grey i-trans"></i>
+        <i id="icon2" class="fas fa-circle i-grey i-trans"></i>
+        <i id="icon3" class="fas fa-circle i-grey i-trans"></i>
+        <i id="icon4" class="fas fa-circle i-grey i-trans"></i>
+        <hr style="margin: 8px 0;">
+        <h5>Document Validity</h5>
+        <p class="light">Start Date</p>
+        <p id="start-date"><%= @permit.date_time(@permit.start_date) %> hrs</p>
+        <p class="light">Expiry Date</p>
+        <p id="end-date"><%= @permit.date_time(@permit.end_date) %> hrs</p>
+        <p class="light">Validity</p>
+        <p id="validity"></p>
       </div>
     </div>
 
@@ -50,17 +76,17 @@
   <div class="bottom-bar">
     <div class="workers">
       <div class="people-show">
-        <img class="avatar" src="<%= @permit.author.avatar %>" alt="">
+        <img class="avatar perm-av" src="<%= @permit.author.avatar %>" alt="">
         <div>
-          <p>Author:</p>
+          <p class="light">Author</p>
           <p><%= @permit.author.fullname %></p>
         </div>
       </div>
-      <hr>
+      <hr style="margin: 8px 0;">
       <div class="people-show">
-        <img class="avatar" src="<%= @permit.approver.avatar %>" alt="">
+        <img class="avatar perm-av" src="<%= @permit.approver.avatar %>" alt="">
         <div>
-          <p>Approver:</p>
+          <p class="light">Approver</p>
           <p><%= @permit.approver.fullname %></p>
         </div>
       </div>
@@ -74,4 +100,10 @@
     </div>
   </div>
 </div>
+
+<div>
+
+</div>
+
+<%= javascript_pack_tag "workflow" %>
 

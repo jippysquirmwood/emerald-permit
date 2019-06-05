@@ -1,9 +1,10 @@
+
+
 .top-three-sections {
   display: flex;
   flex-direction: row;
-  height: 65vh;
-  margin-bottom: 20px;
-  align-items: center;
+  height: 62vh;
+  margin-bottom: 0px;
   margin-top: 20px;
 }
 
@@ -16,19 +17,21 @@
 .title-section {
   width: 25vw;
   padding-left: 10px;
-  align-items: center;
+  overflow: scroll;
+  // align-items: center;
 }
 
 .status-section {
   width: 25vw;
   margin-left: 15px;
-  vertical-align: center;
+  overflow: scroll;
+  // vertical-align: center;
 }
 
 
 .main-content {
   width: 50vw;
-  height: 65vh;
+  height: 62vh;
   margin-left: 15px;
   overflow: scroll;
 }
@@ -55,8 +58,64 @@
 
 .show-cont {
   background-color: white;
-  padding: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  margin-top: 20px;
+  p {
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+  .light {
+    color: $grey-light;
+    font-size: 12px;
+    margin-bottom: 0;
+  }
+  .btn-show {
+    text-align: left;
+    padding-left: 0;
+    font-size: 14px;
+    border-bottom: 2px solid rgba(153, 221, 204, 0.65);
+    &:hover {
+    border-bottom: 2px solid $emerald-dark;
+    }
+  }
 }
+
+h3 {
+  font-size: 24px;
+}
+
+h5 {
+  font-size: 20px;
+}
+
+.perm-av {
+  margin-right: 10px;
+}
+
+.i-green {
+  color: green;
+}
+
+.i-yellow {
+  color: $red;
+}
+
+.i-red {
+  color: red;
+}
+
+.i-grey {
+  color: $grey-light;
+}
+
+.i-trans {
+  opacity: 0.2;
+}
+
+
 
 
 
