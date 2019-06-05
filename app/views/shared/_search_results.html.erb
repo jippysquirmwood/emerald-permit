@@ -1,42 +1,51 @@
 <%= link_to permits_path do %>
   <h2 id="results-back"><i class="fas fa-arrow-left" id="results-back"></i> Search Results</h2>
 <% end %>
-
-  <h4>Permits (<%= @search_permits.size %>) found</h4>
+<% if @search_permits.size.positive? %>
+  <h4>Permits found (<%= @search_permits.size %>)</h4>
   <hr style="color: $grey-lighter">
   <div class="my-perm-index">
       <div class="index-cards">
         <% @search_permits.each do |permit| %>
           <%= link_to permit_path(permit) do %>
             <div class="permit-card">
-              <div class="permit-sections">
-                <div class="card-top">
-                <p class="charcoal"><%= permit.permit_number %></p>
-                <h2 class="charcoal"><%= permit.title %></h2>
-                </div>
-                <div class="card-mid">
-                  <div class="permit-type-container">
+            <div class="permit-sections">
+              <div class="card-top">
+              <p class="charcoal"><%= permit.permit_number %></p>
+              <h2 class="charcoal"><%= permit.title %></h2>
+              </div>
+              <div class="card-mid">
+                <div class="permit-type-container">
                   <%= image_tag (permit.permit_type_img), class: "permit-type-img" %>
-                  </div>
                 </div>
-                <div class="icons-container">
-                  <i class="icon-status <%= permit.status_icon %>"></i>
-                  <div class="img-tooltip">
-                    <%= image_tag((permit.author.avatar), class: "avatar-sml")%>
-                    <span class="tooltip-text"><%= permit.author.short_last_name %></span>
-                  </div>
+              </div>
+              <div class="icons-container">
+                <span class="charcoal text-status"><%= permit.status.capitalize %></span>
+                <!-- <i class="icon-status <%= permit.status_icon %>"></i> -->
+                <div class="img-tooltip">
+                  <%= image_tag((permit.author.avatar), class: "avatar-sml avatar-card-permit")%>
+                  <span class="tooltip-text">author <%= permit.author.short_last_name %></span>
                 </div>
-                <div class="card-bottom">
+              </div>
+              <div class="card-bottom">
+                <div>
                   <p class="grey-light"><span class="charcoal">Valid:</span>  <%= permit.date_time(permit.start_date) %> <span class="charcoal">to</span> <%= permit.date_time(permit.end_date) %></p>
+                  <p class="validity"></p>
                 </div>
               </div>
             </div>
+          </div>
           <% end %>
         <% end %>
     </div>
   </div>
+<% else %>
+<h4>Nothing found!</h4>
+<p>Please re-do search or click "Search Results" to go back</p>
+<% end %>
 
-  <h4>People (<%= @search_users.size %>) found</h4>
+<% if @search_users.size.positive? %>
+  <h4>People found (<%= @search_users.size %>)</h4>
   <hr style="color: $grey-lighter">
   <div class="my-perm-index">
       <div class="index-cards" id="person-cards">
@@ -59,3 +68,5 @@
           <% end %>
     </div>
   </div>
+<% end %>
+
