@@ -278,12 +278,13 @@ end
 puts "Random Permits created"
 
 puts "Creating Jono's permits"
-
+# presentation_time = Date.new(2019, 6, 5) + 8.hours
+presentation_time = Time.now.to_datetime + 1.hours
 Permit.create!(
   {
     status: "expired",
-    start_date: Date.new(2019, 6, 1) + 8.hours,
-    end_date: Date.new(2019, 6, 2) + 17.hours,
+    start_date: presentation_time - 3.day,
+    end_date: presentation_time - 1.day + 11.hours,
     permit_type: "permit to dig",
     level: "G01 - Ground",
     location: "Grid 2, Culvert 2C",
@@ -330,8 +331,8 @@ Permit.create!(
 Permit.create!(
   {
     status: "approved",
-    start_date: Date.new(2019, 6, 4) + 8.hours,
-    end_date: Date.new(2019, 6, 4) + 17.hours,
+    start_date: presentation_time - 1.day,
+    end_date: presentation_time + 30.minutes,
     permit_type: "permit to dig",
     level: "G01 - Ground",
     location: "Grid 4, manhole MH-2",
@@ -378,8 +379,8 @@ Permit.create!(
 Permit.create!(
   {
     status: "draft",
-    start_date: Date.new(2019, 6, 4) + 18.hours,
-    end_date: Date.new(2019, 6, 5) + 18.hours,
+    start_date: presentation_time + 2.hours,
+    end_date: presentation_time + 24.hours,
     permit_type: "permit to dig",
     level: "G01 - Ground",
     location: "Grid 2, Culvert 2C",
@@ -426,8 +427,8 @@ Permit.create!(
 Permit.create!(
   {
     status: "draft",
-    start_date: Date.new(2019, 6, 10) + 8.hours,
-    end_date: Date.new(2019, 6, 15) + 17.hours,
+    start_date: presentation_time + 3.day,
+    end_date: presentation_time + 8.day,
     permit_type: "permit to dig",
     level: "G01 - Ground",
     location: "Grid 17, manhole MH-1",
