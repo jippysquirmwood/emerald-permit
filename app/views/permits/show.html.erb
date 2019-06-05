@@ -93,10 +93,14 @@
     </div>
     <div class="comment-section">
       <p>Add a comment</p>
-      <p>comments box</p>
+      <form action="">
+        <input id="comments" type="text">
+        <input id="comment-btn" type="submit" value="Submit">
+      </form>
     </div>
     <div>
-      <p>something else</p>
+      <p>Comments</p>
+      <p id="posted"></p>
     </div>
   </div>
 </div>
@@ -106,4 +110,18 @@
 </div>
 
 <%= javascript_pack_tag "workflow" %>
+
+<script>
+  const comment = document.getElementById('comments');
+  const submit = document.getElementById('comment-btn');
+  const posted = document.getElementById('posted');
+
+  submit.addEventListener('click', (event) => {
+    event.preventDefault();
+    posted.insertAdjacentHTML("beforeend", `${comment.value}<br>`);
+    comment.value = "";
+  });
+
+
+</script>
 
