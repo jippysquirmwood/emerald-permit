@@ -135,7 +135,7 @@ users_attributes = [
     approver: false,
     author: false,
     admin: false,
-    avatar: "https://laminarprojects.com/wp-content/uploads/2019/03/Jonathan-Reid-1200x1094.jpg"
+    avatar: "https://laminarprojects.com/wp-content/uploads/2019/03/David-Nash-1200x1094.jpg"
   },
   {
     email: "david.nash@emerald.com",
