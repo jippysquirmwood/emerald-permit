@@ -1,5 +1,5 @@
 .permit-card {
-  height: 220px;
+  height: 250px;
   display: flex;
   align-items: space-between;
   box-shadow: 1px 1px 1px rgba(222, 222, 222, 0.5);
@@ -18,11 +18,11 @@
     .card-top {
     border-bottom: 0.5px solid #dedede;
     padding-bottom: 8px;
+    height:48px;
     }
 
   .card-mid {
     height: 110%;
-    border-bottom: 0.5px solid #dedede;
     display: flex;
     justify-content: space-around;
 
@@ -43,12 +43,14 @@
   }
 
     .card-bottom {
+      border-top: 0.5px solid #dedede;
       padding-top: 6px;
       margin-top: 50px;
       padding-left: 0px;
       margin-left: 0px;
       display: flex;
       justify-content: space-between;
+      align-items: center;
     }
 
     .charcoal {
@@ -153,13 +155,15 @@
 }
 
 .archive-btn {
-  padding: 2px 5px 2px 5px;
-  // position: relative;
-  left: 179px;
-  bottom: 29px;
+  padding: 5px 8px;
   font-size: 10px;
   color: $charcoal!important;
   display: none;
+  background-color: $emerald-dark;
+  opacity: 0.85;
+  &:hover {
+    opacity: 1;
+  }
 }
 
 .text-status {

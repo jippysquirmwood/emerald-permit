@@ -278,12 +278,13 @@ end
 puts "Random Permits created"
 
 puts "Creating Jono's permits"
-
+presentation_time = Date.new(2019, 6, 5) + 10.hours + 0.minutes
+# presentation_time = Time.now.to_datetime + 1.hours
 Permit.create!(
   {
     status: "expired",
-    start_date: Date.new(2019, 6, 1) + 8.hours,
-    end_date: Date.new(2019, 6, 2) + 17.hours,
+    start_date: presentation_time - 3.day,
+    end_date: presentation_time - 1.day + 11.hours,
     permit_type: "permit to dig",
     level: "G01 - Ground",
     location: "Grid 2, Culvert 2C",
@@ -323,15 +324,16 @@ Permit.create!(
     author_id: User.where(email: "jonathan.reid@emerald.com")[0].id,
     approver_id: User.where(email: "anthony.wildman@emerald.com")[0].id,
     title: "Trial holes for culvert 2C",
-    works_description: "4 holes at 3m spacing as marked by surveyor"
+    works_description: "4 holes at 3m spacing as marked by surveyor",
+    hand_diggin_text: "no machine digging within 500mm of electrical services"
   }
 )
 
 Permit.create!(
   {
     status: "approved",
-    start_date: Date.new(2019, 6, 4) + 8.hours,
-    end_date: Date.new(2019, 6, 4) + 17.hours,
+    start_date: presentation_time - 1.day,
+    end_date: presentation_time + 30.minutes,
     permit_type: "permit to dig",
     level: "G01 - Ground",
     location: "Grid 4, manhole MH-2",
@@ -371,15 +373,16 @@ Permit.create!(
     author_id: User.where(email: "jonathan.reid@emerald.com")[0].id,
     approver_id: User.where(email: "anthony.wildman@emerald.com")[0].id,
     title: "Excavate Manhole MH-2",
-    works_description: "Excavate with CAT 320 Excavator within sheet pile protected excavation. propping as per Temporary Works Design"
+    works_description: "Excavate with CAT 320 Excavator within sheet pile protected excavation. propping as per Temporary Works Design",
+    hand_diggin_text: "only hand digging is permitted within 500mm of electrical services"
   }
 )
 
 Permit.create!(
   {
     status: "draft",
-    start_date: Date.new(2019, 6, 4) + 18.hours,
-    end_date: Date.new(2019, 6, 5) + 18.hours,
+    start_date: presentation_time + 2.hours,
+    end_date: presentation_time + 24.hours,
     permit_type: "permit to dig",
     level: "G01 - Ground",
     location: "Grid 2, Culvert 2C",
@@ -419,15 +422,16 @@ Permit.create!(
     author_id: User.where(email: "jonathan.reid@emerald.com")[0].id,
     approver_id: User.where(email: "anthony.wildman@emerald.com")[0].id,
     title: "Excavate trench for Culvert 2C - Box culvert drain",
-    works_description: "Excavate to underside of bedding level. Excavation to be benched above 1.2m"
+    works_description: "Excavate to underside of bedding level. Excavation to be benched above 1.2m",
+    hand_diggin_text: "no machine digging within 500mm of electrical services"
   }
 )
 
 Permit.create!(
   {
     status: "draft",
-    start_date: Date.new(2019, 6, 10) + 8.hours,
-    end_date: Date.new(2019, 6, 15) + 17.hours,
+    start_date: presentation_time + 3.day,
+    end_date: presentation_time + 8.day,
     permit_type: "permit to dig",
     level: "G01 - Ground",
     location: "Grid 17, manhole MH-1",
@@ -467,7 +471,8 @@ Permit.create!(
     author_id: User.where(email: "jonathan.reid@emerald.com")[0].id,
     approver_id: User.where(email: "anthony.wildman@emerald.com")[0].id,
     title: "Excavate Manhole MH-1",
-    works_description: "Excavate with CAT 320 Excavator within sheet pile protected excavation. propping as per Temporary Works Design"
+    works_description: "Excavate with CAT 320 Excavator within sheet pile protected excavation. propping as per Temporary Works Design",
+    hand_diggin_text: "no machine digging within 500mm of electrical services"
   }
 )
 
