@@ -81,9 +81,13 @@
 }
 
 .btn-login-home {
-  opacity: 0.8;
+  opacity: 0.75;
   background-color: $charcoal;
-  color: white
+  color: white;
+  &:hover {
+    opacity: 1;
+    color: white;
+  }
 }
 
 #name {

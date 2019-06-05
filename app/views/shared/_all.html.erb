@@ -1,5 +1,5 @@
 <div class="">
-  <h4 class="section">Services located in the area:</i></h4>
+  <h5 class="section">Services located in the area:</i></h5>
   <div class="excavation center-detail mechanical-dig">
 
     <% @permit.attributes.to_a[(13..24)].each do |ele| %>
@@ -11,7 +11,7 @@
 </div>
 <br>
 <div class="">
-  <h4 class="section">Mechanical dig:</h4>
+  <h5 class="section">Mechanical dig:</h5>
   <div class="mechanical-dig center-detail">
     <% @permit.attributes.to_a[(25..33)].each do |ele| %>
       <% if ele[1] == true %>
@@ -22,7 +22,7 @@
 </div>
 <br>
 <div class="">
-  <h4 class="section">Excavation dimensions:</h4>
+  <h5 class="section">Excavation dimensions:</h5>
   <div class="excavation center-detail move">
     <div class="permit-images" style="margin-top: 5vh; margin-bottom:10vh;">
       <%= image_tag("dimension.jpg") %>
@@ -35,7 +35,7 @@
 </div>
 <br>
   <div class="">
-    <h4 class="section">Confirmation:</h4>
+    <h5 class="section">Confirmation:</h5>
     <div class="excavation center-detail container-permit-details">
 
       <div class="details">
