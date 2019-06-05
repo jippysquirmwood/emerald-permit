@@ -22,5 +22,15 @@
   display: flex;
 }
 
+.btn-green {
+  background-color: $emerald-dark;
+  opacity: 0.85;
+  color: $charcoal;
+  &:hover {
+    opacity: 1;
+    color: white;
+  }
+}
+
 
 

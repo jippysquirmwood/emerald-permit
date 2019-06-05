@@ -11,17 +11,6 @@
   }
 }
 
-.banner-btn {
-  color: $charcoal!important;
-  background-color: $emerald-dark;
-  padding: 4px;
-  margin-top: 20px;
-  &:hover {
-    color: white;
-    opacity: 1;
-  }
-}
-
 .banner-text {
   // display: flex;
   flex-direction: column;
@@ -43,7 +32,7 @@
   color: white;
   width: 40vw;
   font-size: 18px;
-  margin: 0;
+  margin-bottom: 20px;
 }
 .p-container {
   width: 400px;
