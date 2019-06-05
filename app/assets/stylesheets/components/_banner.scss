@@ -57,7 +57,10 @@
 .btn-login-home {
   opacity: 0.8;
   background-color: $charcoal;
-  color: white
+  color: white;
+  &:hover {
+  color: $emerald-dark;
+  }
 }
 
 // @media only screen and (max-width: 600px) {
