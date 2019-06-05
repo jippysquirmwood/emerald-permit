@@ -75,7 +75,7 @@ class PermitsController < ApplicationController
       @permit.status = "draft"
     end
     if @permit.save
-      redirect_to permit_path(@permit)
+      redirect_to permits_path(@permits)
     else
       render :request_approval
     end
