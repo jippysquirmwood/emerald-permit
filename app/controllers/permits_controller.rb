@@ -75,7 +75,7 @@ class PermitsController < ApplicationController
       @permit.status = "draft"
     end
     if @permit.save
-      redirect_to permits_path(@permits)
+      redirect_to permit_path(@permit)
     else
       render :request_approval
     end
@@ -90,13 +90,13 @@ class PermitsController < ApplicationController
   def approve
     @permit.status = "approved"
     @permit.save
-    redirect_to dashboard_path
+    redirect_to permit_path(@permit)
   end
 
   def reject
     @permit.status = "rejected"
     @permit.save
-    redirect_to dashboard_path
+    redirect_to permit_path(@permit)
   end
 
   def edit
