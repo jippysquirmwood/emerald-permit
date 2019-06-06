@@ -119,7 +119,7 @@
   const posted = document.getElementById('posted');
 
   <% if @permit.status == 'rejected' %>
-    posted.insertAdjacentHTML("beforeend", `<p id="my-text">Water in area?</p>`);
+    posted.insertAdjacentHTML("beforeend", `<p id="my-text">Please confirm water in area</p>`);
   <% end %>
 
   submit.addEventListener('click', (event) => {
@@ -135,7 +135,7 @@
   });
 
   const typing = () => {
-    posted.insertAdjacentHTML("beforeend", "<p id='response'>Yep, all done here Jonno!</p>");
+    posted.insertAdjacentHTML("beforeend", "<p id='response'>Yes, men and equipment are off site</p>");
   };
 </script>
 
