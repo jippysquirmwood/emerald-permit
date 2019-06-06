@@ -158,7 +158,7 @@ td.row-text a {
   }
 }
 
-#status-list li a{
+#status-list li a {
   text-decoration: none;
   color: $charcoal;
 }
@@ -168,9 +168,17 @@ td.row-text a {
   text-decoration: none;
 }
 
-h4 #results-back a {
+#results-back {
   text-decoration: none !important;
   color: $charcoal !important;
+  margin: 10px 0px;
+  &:hover {
+    text-decoration: none;
+  } a h4 :hover {
+    text-decoration: none;
+  }
 }
+
+
 
 
