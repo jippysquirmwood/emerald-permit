@@ -118,6 +118,10 @@
   const submit = document.getElementById('comment-btn');
   const posted = document.getElementById('posted');
 
+  <% if @permit.status == 'rejected' %>
+    posted.insertAdjacentHTML("beforeend", `<p id="my-text">Water in area?</p>`);
+  <% end %>
+
   submit.addEventListener('click', (event) => {
     event.preventDefault();
     <% if current_user.author %>
