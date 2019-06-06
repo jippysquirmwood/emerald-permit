@@ -3,7 +3,11 @@
           <%= link_to dashboard_path do %>
           <%= image_tag(("logo-emerald-lrg-bright.png"), class: "emerald-logo homepage-logo") %>
           <% end %>
-         <%= link_to "Log in", new_user_session_path, class: "btn btn-login-home" %>
+          <% if current_user %>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "btn btn-login-home" %>
+          <% else %>
+            <%= link_to "Log in", new_user_session_path, class: "btn btn-login-home" %>
+          <% end %>
         </div>
     <div class="banner-text">
         <h1 id="banner-head">Build safer with <span id="name">Emerald</span></h1>
