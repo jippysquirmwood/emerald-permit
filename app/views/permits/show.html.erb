@@ -94,7 +94,7 @@
       </form>
     </div>
     <div>
-      <p><strong>Comments</strong></p>
+      <p id="post-head"><strong>Comments</strong></p>
       <p id="posted"></p>
     </div>
   </div>
@@ -120,9 +120,16 @@
 
   submit.addEventListener('click', (event) => {
     event.preventDefault();
-    posted.insertAdjacentHTML("beforeend", `${comment.value}<br>`);
+    posted.insertAdjacentHTML("beforeend", `${comment.value} - JR<br>`);
     comment.value = "";
+    <% if current_user.author %>
+      setTimeout(typing, 4500);
+    <% end %>
   });
+
+  const typing = () => {
+    posted.insertAdjacentHTML("beforeend", "<p>Yep, all done here Jonno! - ZH</p>");
+  };
 
 
 </script>
