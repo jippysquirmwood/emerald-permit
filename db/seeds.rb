@@ -278,7 +278,7 @@ end
 puts "Random Permits created"
 
 puts "Creating Jono's permits"
-presentation_time = Date.new(2019, 6, 6) + 16.hours
+presentation_time = Date.new(2019, 6, 7) + 18.hours
 # presentation_time = Time.now.to_datetime + 1.hours
 Permit.create!(
   {
