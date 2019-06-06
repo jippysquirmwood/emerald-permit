@@ -73,7 +73,7 @@ Permit.destroy_all
 puts 'Creating first 4 users...'
 users_attributes = [
   {
-    email: "anthony.wildman@emerald.com",
+    email: "anthony.wildman@laminar.com",
     first_name: "anthony",
     last_name: "wildman",
     password: "123456",
@@ -86,7 +86,7 @@ users_attributes = [
     avatar: "https://pbs.twimg.com/media/D8X-XY5XoAEe1Fv.jpg:large"
   },
   {
-    email: "jonathan.reid@emerald.com",
+    email: "jonathan.reid@laminar.com",
     first_name: "jonathan",
     last_name: "reid",
     password: "123456",
@@ -99,7 +99,7 @@ users_attributes = [
     avatar: "https://laminarprojects.com/wp-content/uploads/2019/03/Jonathan-Reid-1200x1094.jpg"
   },
   {
-    email: "zac.hobbs@emerald.com",
+    email: "zac.hobbs@laminar.com",
     first_name: "Mark",
     last_name: "Noble",
     password: "123456",
@@ -112,7 +112,7 @@ users_attributes = [
     avatar: "https://avatars2.githubusercontent.com/u/45005021?v=4"
   },
   {
-    email: "fred.jonquiers@emerald.com",
+    email: "fred.jonquiers@laminar.com",
     first_name: "fred",
     last_name: "jonquiers",
     password: "123456",
@@ -125,7 +125,7 @@ users_attributes = [
     avatar: "https://avatars2.githubusercontent.com/u/47979498?v=4"
   },
   {
-    email: "rod.davis@emerald.com",
+    email: "rod.davis@laminar.com",
     first_name: "rod",
     last_name: "davis",
     password: "123456",
@@ -138,7 +138,7 @@ users_attributes = [
     avatar: "https://laminarprojects.com/wp-content/uploads/2019/03/David-Nash-1200x1094.jpg"
   },
   {
-    email: "david.nash@emerald.com",
+    email: "david.nash@laminar.com",
     first_name: "david",
     last_name: "nash",
     password: "123456",
@@ -151,7 +151,7 @@ users_attributes = [
     avatar: "https://laminarprojects.com/wp-content/uploads/2019/03/David-Nash-1200x1094.jpg"
   },
   {
-    email: "javier.zamorano@emerald.com",
+    email: "javier.zamorano@laminar.com",
     first_name: "javier",
     last_name: "zamorano",
     password: "123456",
@@ -164,7 +164,7 @@ users_attributes = [
     avatar: "https://laminarprojects.com/wp-content/uploads/2019/04/Javier-Zamorano.jpg"
   },
   {
-    email: "mathew.briggs@emerald.com",
+    email: "mathew.briggs@laminar.com",
     first_name: "mathew",
     last_name: "briggs",
     password: "123456",
@@ -177,7 +177,7 @@ users_attributes = [
     avatar: "https://laminarprojects.com/wp-content/uploads/2019/03/Mat-Briggs-1200x1201.jpg"
   },
   {
-    email: "jim.ramirez@emerald.com",
+    email: "jim.ramirez@laminar.com",
     first_name: "jim",
     last_name: "ramirez",
     password: "123456",
@@ -269,8 +269,8 @@ puts 'Creating Random permits...'
       calibration_expires: Time.now().beginning_of_day + 180.day,
       cat_scanner_serial: "AR003BYARDFD-D93485839394",
       genny_serial: "FD-D93AR003BYARD485839394",
-      author_id: User.where(author: true).where.not(email: "jonathan.reid@emerald.com").sample.id,
-      approver_id: User.where(approver: true).where.not(email: "anthony.wildman@emerald.com").sample.id,
+      author_id: User.where(author: true).where.not(email: "jonathan.reid@laminar.com").sample.id,
+      approver_id: User.where(approver: true).where.not(email: "anthony.wildman@laminar.com").sample.id,
       title: titles.sample
     }
   )
@@ -278,7 +278,7 @@ end
 puts "Random Permits created"
 
 puts "Creating Jono's permits"
-presentation_time = Date.new(2019, 6, 6) + 16.hours
+presentation_time = Date.new(2019, 6, 7) + 18.hours
 # presentation_time = Time.now.to_datetime + 1.hours
 Permit.create!(
   {
@@ -320,9 +320,9 @@ Permit.create!(
     calibration_expires: Time.now().beginning_of_day + 180.day,
     cat_scanner_serial: "AR003BYARDFD-D93485839394",
     genny_serial: "FD-D93AR003BYARD485839394",
-    cat_genny_operator: User.where(email: "rod.davis@emerald.com")[0].fullname,
-    author_id: User.where(email: "jonathan.reid@emerald.com")[0].id,
-    approver_id: User.where(email: "anthony.wildman@emerald.com")[0].id,
+    cat_genny_operator: User.where(email: "rod.davis@laminar.com")[0].fullname,
+    author_id: User.where(email: "jonathan.reid@laminar.com")[0].id,
+    approver_id: User.where(email: "anthony.wildman@laminar.com")[0].id,
     title: "Trial holes for culvert 2C",
     works_description: "4 holes at 3m spacing as marked by surveyor",
     hand_diggin_text: "no machine digging within 500mm of electrical services"
@@ -369,9 +369,9 @@ Permit.create!(
     calibration_expires: Time.now.beginning_of_day + 180.day,
     cat_scanner_serial: "AR003BYARDFD-D93485839394",
     genny_serial: "FD-D93AR003BYARD485839394",
-    cat_genny_operator: User.where(email: "rod.davis@emerald.com")[0].fullname,
-    author_id: User.where(email: "jonathan.reid@emerald.com")[0].id,
-    approver_id: User.where(email: "anthony.wildman@emerald.com")[0].id,
+    cat_genny_operator: User.where(email: "rod.davis@laminar.com")[0].fullname,
+    author_id: User.where(email: "jonathan.reid@laminar.com")[0].id,
+    approver_id: User.where(email: "anthony.wildman@laminar.com")[0].id,
     title: "Excavate Manhole MH-2",
     works_description: "Excavate with CAT 320 Excavator within sheet pile protected excavation. propping as per Temporary Works Design",
     hand_diggin_text: "only hand digging is permitted within 500mm of electrical services",
@@ -419,9 +419,9 @@ Permit.create!(
     calibration_expires: Time.now().beginning_of_day + 180.day,
     cat_scanner_serial: "AR003BYARDFD-D93485839394",
     genny_serial: "FD-D93AR003BYARD485839394",
-    cat_genny_operator: User.where(email: "rod.davis@emerald.com")[0].fullname,
-    author_id: User.where(email: "jonathan.reid@emerald.com")[0].id,
-    approver_id: User.where(email: "anthony.wildman@emerald.com")[0].id,
+    cat_genny_operator: User.where(email: "rod.davis@laminar.com")[0].fullname,
+    author_id: User.where(email: "jonathan.reid@laminar.com")[0].id,
+    approver_id: User.where(email: "anthony.wildman@laminar.com")[0].id,
     title: "Excavate trench for Culvert 2C - Box culvert drain",
     works_description: "Excavate to underside of bedding level. Excavation to be benched above 1.2m",
     hand_diggin_text: "no machine digging within 500mm of electrical services",
@@ -469,9 +469,9 @@ Permit.create!(
     calibration_expires: Time.now().beginning_of_day + 180.day,
     cat_scanner_serial: "AR003BYARDFD-D93485839394",
     genny_serial: "FD-D93AR003BYARD485839394",
-    cat_genny_operator: User.where(email: "rod.davis@emerald.com")[0].fullname,
-    author_id: User.where(email: "jonathan.reid@emerald.com")[0].id,
-    approver_id: User.where(email: "anthony.wildman@emerald.com")[0].id,
+    cat_genny_operator: User.where(email: "rod.davis@laminar.com")[0].fullname,
+    author_id: User.where(email: "jonathan.reid@laminar.com")[0].id,
+    approver_id: User.where(email: "anthony.wildman@laminar.com")[0].id,
     title: "Excavate Manhole MH-1",
     works_description: "Excavate with CAT 320 Excavator within sheet pile protected excavation. propping as per Temporary Works Design",
     hand_diggin_text: "no machine digging within 500mm of electrical services",
