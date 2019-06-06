@@ -1,6 +1,7 @@
 const statusTag = document.getElementById('permit-status');
 let permitStatus = statusTag.innerText.toLowerCase();
 
+
 const icons = {
   draft: document.getElementById('icon1'),
   pendRej: document.getElementById('icon2'),
@@ -146,8 +147,9 @@ const validityShow = () => {
     icons.approved.classList = `${iconClasses.tick} ${iconClasses.red}`;
     icons.expired.classList = `${iconClasses.tick} ${iconClasses.red}`;
     statusTag.classList.add(`${iconClasses.red}`);
+    validityTag.classList.remove(`${iconClasses.red}`)
   }
-  };
+};
 
 validityShow();
 setInterval(() => {
