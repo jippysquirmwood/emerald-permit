@@ -135,7 +135,7 @@ users_attributes = [
     approver: false,
     author: false,
     admin: false,
-    avatar: "https://laminarprojects.com/wp-content/uploads/2019/03/Jonathan-Reid-1200x1094.jpg"
+    avatar: "https://laminarprojects.com/wp-content/uploads/2019/03/David-Nash-1200x1094.jpg"
   },
   {
     email: "david.nash@emerald.com",
@@ -278,7 +278,7 @@ end
 puts "Random Permits created"
 
 puts "Creating Jono's permits"
-presentation_time = Date.new(2019, 6, 5) + 10.hours + 0.minutes
+presentation_time = Date.new(2019, 6, 6) + 10.hours + 0.minutes
 # presentation_time = Time.now.to_datetime + 1.hours
 Permit.create!(
   {

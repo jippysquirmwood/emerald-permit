@@ -3,7 +3,7 @@ class Permit < ApplicationRecord
   belongs_to :approver, class_name: "User", optional: true
 
   include PgSearch
-  multisearchable against: [:location, :level, :permit_number, :method_statement, :title, :author_last_name, :author_first_name, :approver_first_name, :approver_last_name, :author_email, :approver_email]
+  multisearchable against: [:location, :level, :permit_number, :method_statement, :title, :author_last_name, :author_first_name, :approver_first_name, :approver_last_name, :author_email, :approver_email, :supervisor]
 
   def perm_statuses
     statuses = [
@@ -50,6 +50,12 @@ class Permit < ApplicationRecord
 
   def author_email
     author.present? ? author.email : ""
+  end
+
+  def supervisor
+    if author == User.where(email: "jonathan.reid@emerald.com")[0] && title == "Excavate trench for Culvert 2C - Box culvert drain"
+      "Rod Davis"
+    end
   end
 
   def permit_type_img

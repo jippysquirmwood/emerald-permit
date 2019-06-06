@@ -21,25 +21,20 @@
         <% if @permit.who_with == @permit.author %>
           <% if @permit.author == current_user %>
             <% if @permit.status != "approved"  %>
-              <div><%= link_to "Submit for Approval", permit_submit_request_path(@permit), class: "btn btn-show show-green" %></div>
+              <div><%= link_to "Submit for Approval", permit_request_approval_path(@permit), method: :get, class: "btn btn-show show-green" %></div>
             <% end %>
               <div><%= link_to "Edit", edit_permit_path(@permit), class: "btn btn-show show-" %></div>
               <div><%= link_to 'Archive', permit_path(@permit), method: :delete, data: { confirm: "Archiving permit... are you sure?" }, class: "btn btn-show show-red " %></div>
           <% end %>
         <% elsif @permit.who_with == @permit.approver %>
           <% if @permit.author == current_user %>
-            <div><%= link_to 'withdraw request', permit_recall_path(@permit), method: :get, data: { confirm: "Are you sure you want to recall?" }, class: "btn btn-show" %></div>
+            <div><%= link_to 'withdraw request', permit_recall_path(@permit), method: :get, class: "btn btn-show" %></div>
           <% elsif @permit.approver == current_user %>
             <div><%= link_to 'approve', permit_approve_path(@permit), class: "btn btn-show" %></div>
             <div><%= link_to 'reject', permit_reject_path(@permit), class: "btn btn-show" %></div>
           <% end %>
         <% end %>
         </div>
-
-
-        <%#= link_to 'back to dashboard', permits_path, class: "dashboard-btn" %>
-
-
 
       </div>
 
@@ -103,11 +98,18 @@
       <p id="posted"></p>
     </div>
   </div>
+  <% if @permit.site_layout_img %>
+  <hr>
+    <div>
+      <h5>Location</h5>
+      <%= image_tag((@permit.site_layout_img), class: "site-layout")%>
+    </div>
+  <% end %>
 </div>
-
 <div>
-
 </div>
+
+
 
 <%= javascript_pack_tag "workflow" %>
 
