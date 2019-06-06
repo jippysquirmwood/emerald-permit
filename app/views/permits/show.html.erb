@@ -95,7 +95,7 @@
     </div>
     <div>
       <p id="post-head"><strong>Comments</strong></p>
-      <p id="posted"></p>
+      <div id="posted"></div>
     </div>
   </div>
   <% if @permit.site_layout_img %>
@@ -121,17 +121,17 @@
   submit.addEventListener('click', (event) => {
     event.preventDefault();
     <% if current_user.author %>
-      posted.insertAdjacentHTML("beforeend", `${comment.value} - JR<br>`);
+      posted.insertAdjacentHTML("beforeend", `<p id="my-text">${comment.value}</p>`);
       comment.value = "";
       setTimeout(typing, 4500);
     <% elsif current_user.approver %>
-      posted.insertAdjacentHTML("beforeend", `${comment.value} - AW<br>`);
+      posted.insertAdjacentHTML("beforeend", `<p id="my-text">${comment.value}</p>`);
       comment.value = "";
     <% end %>
   });
 
   const typing = () => {
-    posted.insertAdjacentHTML("beforeend", "<p>Yep, all done here Jonno! - ZH</p>");
+    posted.insertAdjacentHTML("beforeend", "<p id='response'>Yep, all done here Jonno!</p>");
   };
 </script>
 
