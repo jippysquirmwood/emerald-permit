@@ -120,17 +120,18 @@
 
   submit.addEventListener('click', (event) => {
     event.preventDefault();
-    posted.insertAdjacentHTML("beforeend", `${comment.value} - JR<br>`);
-    comment.value = "";
     <% if current_user.author %>
+      posted.insertAdjacentHTML("beforeend", `${comment.value} - JR<br>`);
+      comment.value = "";
       setTimeout(typing, 4500);
+    <% elsif current_user.approver %>
+      posted.insertAdjacentHTML("beforeend", `${comment.value} - AW<br>`);
+      comment.value = "";
     <% end %>
   });
 
   const typing = () => {
     posted.insertAdjacentHTML("beforeend", "<p>Yep, all done here Jonno! - ZH</p>");
   };
-
-
 </script>
 
