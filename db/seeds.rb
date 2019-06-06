@@ -278,8 +278,8 @@ end
 puts "Random Permits created"
 
 puts "Creating Jono's permits"
-# presentation_time = Date.new(2019, 6, 6) + 10.hours + 30.minutes
-presentation_time = Time.now.to_datetime + 1.hours
+presentation_time = Date.new(2019, 6, 6) + 16.hours
+# presentation_time = Time.now.to_datetime + 1.hours
 Permit.create!(
   {
     status: "expired",
@@ -432,7 +432,7 @@ Permit.create!(
 Permit.create!(
   {
     status: "draft",
-    start_date: presentation_time + 3.day,
+    start_date: presentation_time + 3.day + 16.hours,
     end_date: presentation_time + 8.day,
     permit_type: "permit to dig",
     level: "G01 - Ground",
