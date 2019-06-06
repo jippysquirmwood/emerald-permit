@@ -65,10 +65,10 @@ const validity = (startDate, endDate, statusTag) => {
       return [approved ? messages[3] : messages[6], false];
     }
     else if (diffStart > hour) {
-      return [approved ? messages[4] : messages[7], false];
+      return [approved ? messages[4] : messages[7], rag[0]];
     }
     else {
-      return [approved ? messages[5] : messages[8], false];
+      return [approved ? messages[5] : messages[8], rag[0]];
     }
   }
 };

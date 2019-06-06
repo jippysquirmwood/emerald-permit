@@ -103,10 +103,10 @@ const validity = (startDate, endDate) => {
       return [approved ? messages[3] : messages[6], false];
     }
     else if (diffStart > hour) {
-      return [approved ? messages[4] : messages[7], false];
+      return [approved ? messages[4] : messages[7], rag[0]];
     }
     else {
-      return [approved ? messages[5] : messages[8], false];
+      return [approved ? messages[5] : messages[8], rag[0]];
     }
   }
 };
@@ -137,7 +137,7 @@ const validityShow = () => {
 
   validityTag.innerText = validCall[0];
   if (validCall[1] !== false) {
-    validityTag.classList.add(`${iconClasses.red}`);
+    validityTag.classList.add(`${iconClasses.yellow}`);
   }
 
   if (validCall[2]) {
