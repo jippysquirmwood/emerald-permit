@@ -1,7 +1,8 @@
 <div class="my-perm-index">
   <div class="index-cards">
-    <% if @permits.present? %>
+    <% if @pending_permits.present? %>
       <% @permits.each do |permit| %>
+        <% if permit.who_with == current_user %>
         <%= link_to permit_path(permit) do %>
           <div class="permit-card">
             <div class="permit-sections">
@@ -16,7 +17,6 @@
               </div>
               <div class="icons-container">
                 <span class="charcoal text-status"><%= permit.status.capitalize %></span>
-                <!-- <i class="icon-status <%= permit.status_icon %>"></i> -->
                 <div class="img-tooltip">
                   <%= image_tag((permit.author.avatar), class: "avatar-sml avatar-card-permit")%>
                   <span class="tooltip-text">author <%= permit.author.short_last_name %></span>
@@ -31,6 +31,7 @@
               </div>
             </div>
           </div>
+        <% end %>
         <% end %>
       <% end %>
     <% else %>

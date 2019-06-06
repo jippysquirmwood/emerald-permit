@@ -4,7 +4,7 @@ class PermitsController < ApplicationController
   before_action :set_root_permit, only: [:request_approval, :submit_request, :recall, :approve, :reject]
 
   def index
-    @permits = policy_scope(Permit)
+    @permits = policy_scope(Permit).order(start_date: :asc)
     if params[:status].present? && params[:author_id].present?
       @all_permits = Permit.where(status: params[:status]).where(author: current_user)
     elsif params[:status].present? && params[:approver_id].present?
