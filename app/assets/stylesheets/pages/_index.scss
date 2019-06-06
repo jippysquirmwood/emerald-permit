@@ -158,3 +158,19 @@ td.row-text a {
   }
 }
 
+#status-list li a{
+  text-decoration: none;
+  color: $charcoal;
+}
+
+#status-list li {
+  list-style: none;
+  text-decoration: none;
+}
+
+h4 #results-back a {
+  text-decoration: none !important;
+  color: $charcoal !important;
+}
+
+
