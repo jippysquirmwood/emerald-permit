@@ -36,11 +36,6 @@
         <% end %>
         </div>
 
-
-        <%#= link_to 'back to dashboard', permits_path, class: "dashboard-btn" %>
-
-
-
       </div>
 
       <div class="status-section">
@@ -99,11 +94,18 @@
       <p>something else</p>
     </div>
   </div>
+  <% if @permit.site_layout_img %>
+  <hr>
+    <div>
+      <h5>Location</h5>
+      <%= image_tag((@permit.site_layout_img), class: "site-layout")%>
+    </div>
+  <% end %>
 </div>
-
 <div>
-
 </div>
+
+
 
 <%= javascript_pack_tag "workflow" %>
 
