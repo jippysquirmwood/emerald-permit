@@ -1,6 +1,7 @@
 const statusTag = document.getElementById('permit-status');
 let permitStatus = statusTag.innerText.toLowerCase();
 
+
 const icons = {
   draft: document.getElementById('icon1'),
   pendRej: document.getElementById('icon2'),

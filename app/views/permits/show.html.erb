@@ -87,11 +87,15 @@
       </div>
     </div>
     <div class="comment-section">
-      <p>Add a comment</p>
-      <p>comments box</p>
+      <p><strong>Add a comment</strong></p>
+      <form>
+        <input id="comments" type="text">
+        <input class="btn green-btn" id="comment-btn" type="submit" value="Submit">
+      </form>
     </div>
     <div>
-      <p>something else</p>
+      <p id="post-head"><strong>Comments</strong></p>
+      <p id="posted"></p>
     </div>
   </div>
   <% if @permit.site_layout_img %>
@@ -108,4 +112,25 @@
 
 
 <%= javascript_pack_tag "workflow" %>
+
+<script>
+  const comment = document.getElementById('comments');
+  const submit = document.getElementById('comment-btn');
+  const posted = document.getElementById('posted');
+
+  submit.addEventListener('click', (event) => {
+    event.preventDefault();
+    posted.insertAdjacentHTML("beforeend", `${comment.value} - JR<br>`);
+    comment.value = "";
+    <% if current_user.author %>
+      setTimeout(typing, 4500);
+    <% end %>
+  });
+
+  const typing = () => {
+    posted.insertAdjacentHTML("beforeend", "<p>Yep, all done here Jonno! - ZH</p>");
+  };
+
+
+</script>
 
