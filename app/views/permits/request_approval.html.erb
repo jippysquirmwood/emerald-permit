@@ -1,4 +1,4 @@
-<div class="container col-6" style="margin-top: 30px;">
+<div class="container col-4" style="margin-top: 20vh;">
   <%= simple_form_for @permit, url: permit_submit_request_path(@permit) do |f| %>
     <%= f.input :approver_id, collection: User.where(approver: true), label_method: :fullname, default: @permit.approver %>
     <div class="confirm-cancel" style="text-align:right;">
