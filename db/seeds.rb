@@ -83,7 +83,7 @@ users_attributes = [
     approver: true,
     author: false,
     admin: false,
-    avatar: "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/mpxp9qgpasl5r2drm9vy.jpg"
+    avatar: "https://pbs.twimg.com/media/D8X-XY5XoAEe1Fv.jpg:large"
   },
   {
     email: "jonathan.reid@emerald.com",
