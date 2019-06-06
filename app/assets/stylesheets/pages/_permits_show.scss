@@ -124,10 +124,22 @@ h5 {
 }
 
 #post-head {
-  text-align: left;
+  text-align: center;
 }
 
+#my-text {
+  margin-left: 3vw;
+  float: right;
+  background-color: $emerald-dark;
+  color: $charcoal;
+  width: fit-content;
+  padding: 0 5px;
+}
 
-
-
+#response {
+  float: left;
+  background-color: $charcoal;
+  color: $emerald-dark;
+  padding: 0 5px;
+}
 
