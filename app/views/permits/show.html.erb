@@ -28,10 +28,10 @@
           <% end %>
         <% elsif @permit.who_with == @permit.approver %>
           <% if @permit.author == current_user %>
-            <div><%= link_to 'withdraw request', permit_recall_path(@permit), method: :get, class: "btn btn-show" %></div>
+            <div><%= link_to 'Withdraw Request', permit_recall_path(@permit), method: :get, class: "btn btn-show" %></div>
           <% elsif @permit.approver == current_user %>
-            <div><%= link_to 'approve', permit_approve_path(@permit), class: "btn btn-show" %></div>
-            <div><%= link_to 'reject', permit_reject_path(@permit), class: "btn btn-show" %></div>
+            <div><%= link_to 'Approve', permit_approve_path(@permit), class: "btn btn-show" %></div>
+            <div><%= link_to 'Reject', permit_reject_path(@permit), class: "btn btn-show" %></div>
           <% end %>
         <% end %>
         </div>
