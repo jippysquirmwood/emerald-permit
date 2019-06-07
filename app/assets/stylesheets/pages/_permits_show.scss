@@ -1,4 +1,6 @@
-
+.action-with {
+  border-left: 4px solid $red;
+}
 
 .top-three-sections {
   display: flex;
@@ -50,6 +52,7 @@
 
 .people-show {
   display: flex;
+  padding-left: 8px;
 }
 
 .submit-btn {
