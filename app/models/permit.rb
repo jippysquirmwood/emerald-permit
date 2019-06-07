@@ -53,7 +53,7 @@ class Permit < ApplicationRecord
   end
 
   def supervisor
-    if author == User.where(email: "jonathan.reid@emerald.com")[0] && title == "Excavate trench for Culvert 2C - Box culvert drain"
+    if author == User.where(email: "jonathan.reid@laminar.com")[0] && title == "Excavate trench for Culvert 2C - Box culvert drain"
       "Rod Davis"
     end
   end

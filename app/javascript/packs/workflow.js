@@ -51,7 +51,7 @@ if (permitStatus === "draft") {
   icons.pendRej.classList = `${iconClasses.tick} ${iconClasses.green}`;
   icons.approved.classList = `${iconClasses.tick} ${iconClasses.green}`;
   icons.expired.classList = `${iconClasses.circle} ${iconClasses.grey} ${iconClasses.trans}`;
-  author.classList.add(`${iconClasses.action}`);
+  author.classList.remove(`${iconClasses.action}`);
   approver.classList.remove(`${iconClasses.action}`);
 } else if (permitStatus === "expired") {
   icons.draft.classList = `${iconClasses.tick} ${iconClasses.red}`;
