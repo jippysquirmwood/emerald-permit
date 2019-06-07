@@ -66,6 +66,7 @@ individual cards
 
 .btn-green2 {
   // background-color: $grey-lighter;
+  font-size: 12px;
   border-bottom: 2px solid rgba(153, 221, 204, .2);
   color: $charcoal;
   &:hover {
@@ -126,6 +127,17 @@ text-decoration:none;
   opacity: 0.08;
 }
 
+.table-hover {
+  th {
+    font-size: 12px;
+  }
+
+  tr {
+    font-size: 12px;
+  }
+
+}
+
 .table-hover tbody tr td th {
   background-color: white;
   border-bottom: none;
@@ -135,6 +147,7 @@ text-decoration:none;
   background-color: white;
   border-bottom: 1px solid $emerald-bright;
 }
+
 
 
 .show {
@@ -177,6 +190,10 @@ td.row-text a {
   } a h4 :hover {
     text-decoration: none;
   }
+}
+
+.index-btm p {
+  font-size: 12px;
 }
 
 

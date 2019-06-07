@@ -1,5 +1,7 @@
 const statusTag = document.getElementById('permit-status');
 let permitStatus = statusTag.innerText.toLowerCase();
+let approver = document.getElementById('approver-show');
+let author = document.getElementById('author-show');
 
 
 const icons = {
@@ -18,7 +20,8 @@ const iconClasses = {
   green: "i-green",
   yellow: "i-yellow",
   grey: "i-grey",
-  trans: "i-trans"
+  trans: "i-trans",
+  action: "action-with"
 };
 
 
@@ -27,27 +30,37 @@ if (permitStatus === "draft") {
   icons.pendRej.classList = `${iconClasses.circle} ${iconClasses.grey} ${iconClasses.trans}`;
   icons.approved.classList = `${iconClasses.circle} ${iconClasses.grey} ${iconClasses.trans}`;
   icons.expired.classList = `${iconClasses.circle} ${iconClasses.grey} ${iconClasses.trans}`;
+  author.classList.add(`${iconClasses.action}`);
+  approver.classList.remove(`${iconClasses.action}`);
 } else if (permitStatus === "pending approval") {
   icons.draft.classList = `${iconClasses.tick} ${iconClasses.green}`;
   icons.pendRej.classList = `${iconClasses.dot} ${iconClasses.yellow}`;
   icons.approved.classList = `${iconClasses.circle} ${iconClasses.grey} ${iconClasses.trans}`;
   icons.expired.classList = `${iconClasses.circle} ${iconClasses.grey} ${iconClasses.trans}`;
+  author.classList.remove(`${iconClasses.action}`);
+  approver.classList.add(`${iconClasses.action}`);
 } else if (permitStatus === "rejected") {
   icons.draft.classList = `${iconClasses.tick} ${iconClasses.green}`;
   icons.pendRej.classList = `${iconClasses.cross} ${iconClasses.red}`;
   icons.approved.classList = `${iconClasses.circle} ${iconClasses.grey} ${iconClasses.trans}`;
   icons.expired.classList = `${iconClasses.circle} ${iconClasses.grey} ${iconClasses.trans}`;
+  author.classList.add(`${iconClasses.action}`);
+  approver.classList.remove(`${iconClasses.action}`);
 } else if (permitStatus === "approved") {
   icons.draft.classList = `${iconClasses.tick} ${iconClasses.green}`;
   icons.pendRej.classList = `${iconClasses.tick} ${iconClasses.green}`;
   icons.approved.classList = `${iconClasses.tick} ${iconClasses.green}`;
   icons.expired.classList = `${iconClasses.circle} ${iconClasses.grey} ${iconClasses.trans}`;
+  author.classList.remove(`${iconClasses.action}`);
+  approver.classList.remove(`${iconClasses.action}`);
 } else if (permitStatus === "expired") {
   icons.draft.classList = `${iconClasses.tick} ${iconClasses.red}`;
   icons.pendRej.classList = `${iconClasses.tick} ${iconClasses.red}`;
   icons.approved.classList = `${iconClasses.tick} ${iconClasses.red}`;
   icons.expired.classList = `${iconClasses.tick} ${iconClasses.red}`;
   statusTag.classList.add(`${iconClasses.red}`);
+  author.classList.remove(`${iconClasses.action}`);
+  approver.classList.remove(`${iconClasses.action}`);
 }
 
 const minute = 1000 * 60;
