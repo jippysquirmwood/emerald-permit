@@ -1,5 +1,5 @@
 <div class="filter-row">
-   <button class="btn btn-green2 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Permits</button>
+   <button class="btn btn-green2 font12 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Permits</button>
      <div class="dropdown-menu" id="dropdown" aria-labelledby="dropdownMenuButton">
        <ul id="status-list">
          <li><%= link_to "All", dashboard_path %></li>
@@ -9,10 +9,10 @@
          <li><%= link_to "Drafts", dashboard_path(status:  "draft") %></li>
        </ul>
      </div>
-     <button class="btn btn-green2"><%= link_to "My approved", dashboard_path(status:  "approved", approver_id: current_user.id) %></button>
-     <button class="btn btn-green2"><%= link_to "To be approved", dashboard_path(status:  "pending approval", approver_id: current_user.id) %></button>
-     <button class="btn btn-green2"><%= link_to "My rejections", dashboard_path(status:  "rejected", approver_id: current_user.id) %></button>
-     <button class="btn btn-green2"><%= link_to "My drafts", dashboard_path(status: "draft", author_id: current_user.id) %></button>
+     <button class="btn btn-green2 font12"><%= link_to "My approved", dashboard_path(status:  "approved", approver_id: current_user.id) %></button>
+     <button class="btn btn-green2 font12"><%= link_to "To be approved", dashboard_path(status:  "pending approval", approver_id: current_user.id) %></button>
+     <button class="btn btn-green2 font12"><%= link_to "My rejections", dashboard_path(status:  "rejected", approver_id: current_user.id) %></button>
+     <button class="btn btn-green2 font12"><%= link_to "My drafts", dashboard_path(status: "draft", author_id: current_user.id) %></button>
  </div>
 
   <div style="overflow: scroll">
@@ -37,7 +37,7 @@
                  <td class="row-text"> <%= permit.permit_type.capitalize %> </td>
                  <td> <%= permit.short_date(permit.start_date) %> </td>
                  <td> <%= permit.short_date(permit.end_date) %> </td>
-                 <td class="row-text"> <%= permit.author.first_name[0] + " " + permit.author.last_name %> </td>
+                 <td class="row-text"> <%= permit.author.first_name[0].capitalize + " " + permit.author.last_name.capitalize %> </td>
                  <td class="row-text"> <%= permit.status.capitalize %> </td>
                <% end %>
              </tr>

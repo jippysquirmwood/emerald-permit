@@ -66,7 +66,7 @@ individual cards
 
 .btn-green2 {
   // background-color: $grey-lighter;
-  font-size: 12px;
+  // font-size: 12px;
   border-bottom: 2px solid rgba(153, 221, 204, .2);
   color: $charcoal;
   &:hover {
@@ -193,6 +193,10 @@ td.row-text a {
 }
 
 .index-btm p {
+  font-size: 12px;
+}
+
+.font12 {
   font-size: 12px;
 }
 

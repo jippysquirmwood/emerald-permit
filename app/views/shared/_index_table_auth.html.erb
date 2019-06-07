@@ -1,5 +1,5 @@
 <div class="filter-row">
-   <button class="btn btn-green2 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Permits</button>
+   <button class="btn btn-green2 font12 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Permits</button>
      <div class="dropdown-menu" id="dropdown" aria-labelledby="dropdownMenuButton">
        <ul id="status-list">
          <li><%= link_to "All", dashboard_path %></li>
@@ -9,10 +9,10 @@
          <li><%= link_to "Drafts", dashboard_path(status:  "draft") %></li>
        </ul>
      </div>
-     <button class="btn btn-green2" id="selecta"><%= link_to "My approved", dashboard_path(status:  "approved", author_id: current_user.id) %></button>
-     <button class="btn btn-green2" id="selecta"><%= link_to "To be approved", dashboard_path(status:  "pending approval", author_id: current_user.id) %></button>
-     <button class="btn btn-green2" id="selecta"><%= link_to "My rejections", dashboard_path(status:  "rejected", author_id: current_user.id) %></button>
-     <button class="btn btn-green2" id="selecta"><%= link_to "My drafts", dashboard_path(status: "draft", author_id: current_user.id) %></button>
+     <button class="btn btn-green2 font12" id="selecta"><%= link_to "My approved", dashboard_path(status:  "approved", author_id: current_user.id) %></button>
+     <button class="btn btn-green2 font12" id="selecta"><%= link_to "To be approved", dashboard_path(status:  "pending approval", author_id: current_user.id) %></button>
+     <button class="btn btn-green2 font12" id="selecta"><%= link_to "My rejections", dashboard_path(status:  "rejected", author_id: current_user.id) %></button>
+     <button class="btn btn-green2 font12" id="selecta"><%= link_to "My drafts", dashboard_path(status: "draft", author_id: current_user.id) %></button>
  </div>
   <div style="overflow: scroll">
      <table class="table table-hover" id="permit-table">

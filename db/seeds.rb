@@ -278,13 +278,13 @@ end
 puts "Random Permits created"
 
 puts "Creating Jono's permits"
-presentation_time = Date.new(2019, 6, 7) + 18.hours
+presentation_time = Date.new(2019, 6, 7) + 11.hours + 45.minutes
 # presentation_time = Time.now.to_datetime + 1.hours
 Permit.create!(
   {
     status: "expired",
-    start_date: presentation_time - 3.day,
-    end_date: presentation_time - 1.day + 11.hours,
+    start_date: presentation_time - 3.day - 45.minutes,
+    end_date: presentation_time - 1.day + 11.hours - 45.minutes,
     permit_type: "permit to dig",
     level: "G01 - Ground",
     location: "Grid 2, Culvert 2C",
@@ -332,8 +332,8 @@ Permit.create!(
 Permit.create!(
   {
     status: "approved",
-    start_date: presentation_time - 1.day,
-    end_date: presentation_time + 30.minutes,
+    start_date: presentation_time - 1.day - 45.minutes,
+    end_date: presentation_time + 45.minutes,
     permit_type: "permit to dig",
     level: "G01 - Ground",
     location: "Grid 4, manhole MH-2",
@@ -382,8 +382,8 @@ Permit.create!(
 Permit.create!(
   {
     status: "draft",
-    start_date: presentation_time + 2.hours,
-    end_date: presentation_time + 24.hours,
+    start_date: presentation_time + 2.hours - 45.minutes,
+    end_date: presentation_time + 24.hours - 45.minutes,
     permit_type: "permit to dig",
     level: "G01 - Ground",
     location: "Grid 2, Culvert 2C",
@@ -429,54 +429,54 @@ Permit.create!(
   }
 )
 
-Permit.create!(
-  {
-    status: "draft",
-    start_date: presentation_time + 3.day + 16.hours,
-    end_date: presentation_time + 8.day,
-    permit_type: "permit to dig",
-    level: "G01 - Ground",
-    location: "Grid 17, manhole MH-1",
-    project_id: project_id,
-    permit_number: project_id + "-CIV-PERM-00" + permit_numbers.sample.to_s + rand(9).to_s,
-    method_statement: project_id + "-WPP-CS-000462/496",
-    xwidth: 600,
-    xlength: 12,
-    xdepth: 1500,
-    gas: true,
-    fibre_optic: false,
-    water: false,
-    unknown: false,
-    hv_electricity: true,
-    bt: true,
-    traffic_signal: false,
-    signal_cable: false,
-    lv_electricity: false,
-    drains: false,
-    street_lighting: true,
-    no_services: false,
-    hand_digging: true,
-    confirm_work_package_plan: true,
-    confirm_machine_operator: false,
-    services_protected: true,
-    exlusion_zone: true,
-    buried_cables_identified: true,
-    drawing_updated: true,
-    physical_barrier_available: false,
-    excavation_undermining_foundations: false,
-    cat_scan_model: cat_models.sample,
-    genny_model: genny_models.sample,
-    calibration_expires: Time.now().beginning_of_day + 180.day,
-    cat_scanner_serial: "AR003BYARDFD-D93485839394",
-    genny_serial: "FD-D93AR003BYARD485839394",
-    cat_genny_operator: User.where(email: "rod.davis@laminar.com")[0].fullname,
-    author_id: User.where(email: "jonathan.reid@laminar.com")[0].id,
-    approver_id: User.where(email: "anthony.wildman@laminar.com")[0].id,
-    title: "Excavate Manhole MH-1",
-    works_description: "Excavate with CAT 320 Excavator within sheet pile protected excavation. propping as per Temporary Works Design",
-    hand_diggin_text: "no machine digging within 500mm of electrical services",
-    site_layout_img: "site_layout_mh1.svg"
-  }
-)
+# Permit.create!(
+#   {
+#     status: "draft",
+#     start_date: presentation_time + 3.day + 16.hours - 45.minutes,
+#     end_date: presentation_time + 8.day - 45.minutes,
+#     permit_type: "permit to dig",
+#     level: "G01 - Ground",
+#     location: "Grid 17, manhole MH-1",
+#     project_id: project_id,
+#     permit_number: project_id + "-CIV-PERM-00" + permit_numbers.sample.to_s + rand(9).to_s,
+#     method_statement: project_id + "-WPP-CS-000462/496",
+#     xwidth: 600,
+#     xlength: 12,
+#     xdepth: 1500,
+#     gas: true,
+#     fibre_optic: false,
+#     water: false,
+#     unknown: false,
+#     hv_electricity: true,
+#     bt: true,
+#     traffic_signal: false,
+#     signal_cable: false,
+#     lv_electricity: false,
+#     drains: false,
+#     street_lighting: true,
+#     no_services: false,
+#     hand_digging: true,
+#     confirm_work_package_plan: true,
+#     confirm_machine_operator: false,
+#     services_protected: true,
+#     exlusion_zone: true,
+#     buried_cables_identified: true,
+#     drawing_updated: true,
+#     physical_barrier_available: false,
+#     excavation_undermining_foundations: false,
+#     cat_scan_model: cat_models.sample,
+#     genny_model: genny_models.sample,
+#     calibration_expires: Time.now().beginning_of_day + 180.day,
+#     cat_scanner_serial: "AR003BYARDFD-D93485839394",
+#     genny_serial: "FD-D93AR003BYARD485839394",
+#     cat_genny_operator: User.where(email: "rod.davis@laminar.com")[0].fullname,
+#     author_id: User.where(email: "jonathan.reid@laminar.com")[0].id,
+#     approver_id: User.where(email: "anthony.wildman@laminar.com")[0].id,
+#     title: "Excavate Manhole MH-1",
+#     works_description: "Excavate with CAT 320 Excavator within sheet pile protected excavation. propping as per Temporary Works Design",
+#     hand_diggin_text: "no machine digging within 500mm of electrical services",
+#     site_layout_img: "site_layout_mh1.svg"
+#   }
+# )
 
 puts 'Finished!'
