@@ -333,7 +333,7 @@ Permit.create!(
   {
     status: "approved",
     start_date: presentation_time - 1.day,
-    end_date: presentation_time + 3.minutes,
+    end_date: presentation_time + 10.minutes,
     permit_type: "permit to dig",
     level: "G01 - Ground",
     location: "Grid 4, manhole MH-2",
