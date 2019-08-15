@@ -278,7 +278,7 @@ end
 puts "Random Permits created"
 
 puts "Creating Jono's permits"
-presentation_time = Date.new(2019, 6, 24) + 10.hours + 30.minutes
+presentation_time = Date.new(2019, 8, 15) + 17.hours
 # presentation_time = Time.now.to_datetime + 1.hours
 Permit.create!(
   {
@@ -333,7 +333,7 @@ Permit.create!(
   {
     status: "approved",
     start_date: presentation_time - 1.day,
-    end_date: presentation_time + 45.minutes,
+    end_date: presentation_time + 3.minutes,
     permit_type: "permit to dig",
     level: "G01 - Ground",
     location: "Grid 4, manhole MH-2",
